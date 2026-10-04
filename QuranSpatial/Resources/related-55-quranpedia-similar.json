@@ -1,0 +1,32 @@
+{
+ "source": "Quranpedia similar.json dump (https://quranpedia.net/dumps/similar.json.gz)",
+ "dumpVersion": "2026-10-03",
+ "sourceLicense": "Quranpedia.net Data License, version 2026-10-03 (free to use inside apps; republishing as a dataset requires credit and the dump version). This file carries ayah REFERENCES only - no text.",
+ "rawSHA256": "6716ea2913cfe40626728d969c750f543179cb3cdb92d785219283bb5a5f48b2",
+ "downloadedAt": "2026-10-04T00:44:10Z",
+ "surah": 55,
+ "rule": "For each Surah 55 ayah that has 'similar' groups, the other Surah 55 ayat appearing in those groups, deduplicated and sorted. Ayat outside Surah 55 are counted but not listed.",
+ "related": {
+  "11": {
+   "within55": [
+    52,
+    68
+   ],
+   "outside55Count": 11
+  },
+  "52": {
+   "within55": [
+    11,
+    68
+   ],
+   "outside55Count": 11
+  },
+  "68": {
+   "within55": [
+    11,
+    52
+   ],
+   "outside55Count": 11
+  }
+ }
+}

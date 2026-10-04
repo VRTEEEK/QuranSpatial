@@ -27,3 +27,7 @@ QuranSpatial/Resources/en-*.json
 
 # Review environment asset (67 MB): placed by hand; SHA-256 recorded in docs/baseline-disclosure.md
 QuranSpatial/Resources/Environment/QuranSpatial_Review.usdz
+
+# Swift package build products (Packages/AskCore)
+.build/
+.swiftpm/
