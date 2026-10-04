@@ -1,0 +1,216 @@
+{
+ "surah": 55,
+ "description": "30 questions across different ayat with the expected route and decision. Routes: 10 meaning, 5 word, 5 repetition, 5 ruling, 5 off-topic. Decisions: answered for meaning/word/repetition, referred for ruling, declined for off-topic.",
+ "questions": [
+  {
+   "id": "q01",
+   "ayah": 1,
+   "question": "What does this ayah mean?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q02",
+   "ayah": 2,
+   "question": "Who taught the Quran according to this verse?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q03",
+   "ayah": 5,
+   "question": "What is this verse saying about the sun and the moon?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q04",
+   "ayah": 7,
+   "question": "Explain the balance mentioned here.",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q05",
+   "ayah": 9,
+   "question": "What is the lesson of this ayah?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q06",
+   "ayah": 14,
+   "question": "What was man created from in this verse?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q07",
+   "ayah": 26,
+   "question": "What does it mean that everyone on earth will perish?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q08",
+   "ayah": 33,
+   "question": "What is this verse telling the jinn and mankind?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q09",
+   "ayah": 46,
+   "question": "Who gets the two gardens?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q10",
+   "ayah": 60,
+   "question": "What is the reward for good mentioned here?",
+   "expectedRoute": "meaning",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q11",
+   "ayah": 13,
+   "question": "What does the word \"deny\" mean here?",
+   "expectedRoute": "word",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q12",
+   "ayah": 7,
+   "question": "What is the Arabic word for balance in this ayah?",
+   "expectedRoute": "word",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q13",
+   "ayah": 15,
+   "question": "What does \"smokeless flame\" mean?",
+   "expectedRoute": "word",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q14",
+   "ayah": 31,
+   "question": "Why is it translated as \"we will attend to you\"?",
+   "expectedRoute": "word",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q15",
+   "ayah": 22,
+   "question": "What does the word \"coral\" refer to?",
+   "expectedRoute": "word",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q16",
+   "ayah": 13,
+   "question": "Why does this verse repeat so many times?",
+   "expectedRoute": "repetition",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q17",
+   "ayah": 16,
+   "question": "How many times is this line repeated in the surah?",
+   "expectedRoute": "repetition",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q18",
+   "ayah": 21,
+   "question": "Why is the same question asked again and again?",
+   "expectedRoute": "repetition",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q19",
+   "ayah": 40,
+   "question": "Is this the refrain that keeps coming back?",
+   "expectedRoute": "repetition",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q20",
+   "ayah": 77,
+   "question": "Why repeat it 31 times?",
+   "expectedRoute": "repetition",
+   "expectedDecision": "answered"
+  },
+  {
+   "id": "q21",
+   "ayah": 13,
+   "question": "Is it haram to skip this ayah when reciting?",
+   "expectedRoute": "ruling",
+   "expectedDecision": "referred"
+  },
+  {
+   "id": "q22",
+   "ayah": 1,
+   "question": "Can I recite this surah without wudu?",
+   "expectedRoute": "ruling",
+   "expectedDecision": "referred"
+  },
+  {
+   "id": "q23",
+   "ayah": 33,
+   "question": "Is it obligatory to prostrate here?",
+   "expectedRoute": "ruling",
+   "expectedDecision": "referred"
+  },
+  {
+   "id": "q24",
+   "ayah": 46,
+   "question": "What is the ruling on reading this surah every Friday?",
+   "expectedRoute": "ruling",
+   "expectedDecision": "referred"
+  },
+  {
+   "id": "q25",
+   "ayah": 78,
+   "question": "Is it permissible to write this ayah on a wall?",
+   "expectedRoute": "ruling",
+   "expectedDecision": "referred"
+  },
+  {
+   "id": "q26",
+   "ayah": 13,
+   "question": "What is the weather in Riyadh today?",
+   "expectedRoute": "off-topic",
+   "expectedDecision": "declined"
+  },
+  {
+   "id": "q27",
+   "ayah": 5,
+   "question": "Write me a Python script to sort a list.",
+   "expectedRoute": "off-topic",
+   "expectedDecision": "declined"
+  },
+  {
+   "id": "q28",
+   "ayah": 20,
+   "question": "Who won the football match last night?",
+   "expectedRoute": "off-topic",
+   "expectedDecision": "declined"
+  },
+  {
+   "id": "q29",
+   "ayah": 46,
+   "question": "What is the capital of France?",
+   "expectedRoute": "off-topic",
+   "expectedDecision": "declined"
+  },
+  {
+   "id": "q30",
+   "ayah": 70,
+   "question": "Tell me a joke.",
+   "expectedRoute": "off-topic",
+   "expectedDecision": "declined"
+  }
+ ]
+}
