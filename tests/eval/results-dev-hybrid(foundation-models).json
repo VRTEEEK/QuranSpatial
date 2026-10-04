@@ -1,20 +1,20 @@
 {
   "availability" : "available",
-  "decisionAccuracy" : 0.9333333333333333,
-  "decisionCorrect" : 56,
+  "decisionAccuracy" : 1,
+  "decisionCorrect" : 60,
   "fallbacks" : 0,
   "overCautious" : 0,
   "perRoute" : {
-    "meaning" : "14\/18",
-    "off-topic" : "6\/7",
-    "related" : "4\/6",
+    "meaning" : "17\/18",
+    "off-topic" : "7\/7",
+    "related" : "6\/6",
     "repetition" : "8\/8",
     "ruling" : "8\/8",
     "unclear" : "4\/4",
-    "word" : "6\/9"
+    "word" : "8\/9"
   },
-  "routeAccuracy" : 0.8333333333333334,
-  "routeCorrect" : 50,
+  "routeAccuracy" : 0.9666666666666667,
+  "routeCorrect" : 58,
   "router" : "hybrid(foundation-models)",
   "rows" : [
     {
@@ -61,8 +61,8 @@
       "expectedRoute" : "word",
       "id" : "d04",
       "question" : "what is eloquence here in the arabic is it bayan like speech or is it something more than that",
-      "route" : "meaning",
-      "routeOK" : false,
+      "route" : "word",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -103,14 +103,14 @@
     },
     {
       "ayah" : 10,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "meaning",
       "id" : "d08",
       "question" : "who are the creatures its talking about in this verse is that only people or animals too",
-      "route" : "related",
-      "routeOK" : false,
+      "route" : "meaning",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -133,8 +133,8 @@
       "expectedRoute" : "related",
       "id" : "d10",
       "question" : "fruit and palm trees does that come up again later in the sura in the paradise part",
-      "route" : "unclear",
-      "routeOK" : false,
+      "route" : "related",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -169,8 +169,8 @@
       "expectedRoute" : "word",
       "id" : "d13",
       "question" : "why does the translation say pottery is it like a specific kind of clay",
-      "route" : "word",
-      "routeOK" : true,
+      "route" : "meaning",
+      "routeOK" : false,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -223,14 +223,14 @@
     },
     {
       "ayah" : 19,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "meaning",
       "id" : "d18",
       "question" : "which two seas is this about is it an actual place on a map",
-      "route" : "related",
-      "routeOK" : false,
+      "route" : "meaning",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -277,8 +277,8 @@
       "expectedRoute" : "word",
       "id" : "d22",
       "question" : "coral in this verse is that actually coral or a different stone some people say its small pearls",
-      "route" : "unclear",
-      "routeOK" : false,
+      "route" : "word",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -367,14 +367,14 @@
     },
     {
       "ayah" : 31,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "meaning",
       "id" : "d30",
       "question" : "who is being addressed here the prominent beings is that us",
-      "route" : "related",
-      "routeOK" : false,
+      "route" : "meaning",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -433,8 +433,8 @@
       "expectedRoute" : "meaning",
       "id" : "d35",
       "question" : "wait why would nobody be asked about their sin on that day i thought everyone gets questioned",
-      "route" : "unclear",
-      "routeOK" : false,
+      "route" : "meaning",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -457,8 +457,8 @@
       "expectedRoute" : "meaning",
       "id" : "d37",
       "question" : "ok so the criminals get grabbed by the forelock and feet why those parts whats the significance",
-      "route" : "meaning",
-      "routeOK" : true,
+      "route" : "word",
+      "routeOK" : false,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -475,14 +475,14 @@
     },
     {
       "ayah" : 45,
-      "decision" : "referred",
-      "decisionOK" : false,
+      "decision" : "declined",
+      "decisionOK" : true,
       "expectedDecision" : "declined",
       "expectedRoute" : "off-topic",
       "id" : "d39",
       "question" : "hey is the battery on the vision pro supposed to get this warm",
-      "route" : "ruling",
-      "routeOK" : false,
+      "route" : "off-topic",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -541,8 +541,8 @@
       "expectedRoute" : "related",
       "id" : "d44",
       "question" : "two kinds of every fruit is that the same as what it says about the gardens further down or a different set",
-      "route" : "meaning",
-      "routeOK" : false,
+      "route" : "related",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {
@@ -685,8 +685,8 @@
       "expectedRoute" : "word",
       "id" : "d56",
       "question" : "pavilions what are pavilions in this context like tents",
-      "route" : "meaning",
-      "routeOK" : false,
+      "route" : "word",
+      "routeOK" : true,
       "routedBy" : "hybrid(foundation-models)"
     },
     {

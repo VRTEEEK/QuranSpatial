@@ -1,19 +1,20 @@
 {
   "availability" : "available",
-  "decisionAccuracy" : 0.75,
-  "decisionCorrect" : 30,
-  "fallbacks" : 9,
+  "decisionAccuracy" : 0.85,
+  "decisionCorrect" : 34,
+  "fallbacks" : 16,
+  "overCautious" : 0,
   "perRoute" : {
-    "meaning" : "8\/12",
-    "off-topic" : "4\/5",
+    "meaning" : "9\/12",
+    "off-topic" : "3\/5",
     "related" : "4\/4",
-    "repetition" : "2\/5",
+    "repetition" : "3\/5",
     "ruling" : "3\/5",
     "unclear" : "0\/3",
-    "word" : "5\/6"
+    "word" : "3\/6"
   },
-  "routeAccuracy" : 0.65,
-  "routeCorrect" : 26,
+  "routeAccuracy" : 0.625,
+  "routeCorrect" : 25,
   "router" : "foundation-models",
   "rows" : [
     {
@@ -60,8 +61,8 @@
       "expectedRoute" : "meaning",
       "id" : "h04",
       "question" : "whats going on with the criminals getting grabbed by the hair why does it describe it like that",
-      "route" : "meaning",
-      "routeOK" : true,
+      "route" : "word",
+      "routeOK" : false,
       "routedBy" : "foundation-models"
     },
     {
@@ -86,7 +87,7 @@
       "question" : "what does the balance mean here is it about justice or like an actual scale or something cosmic",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "foundation-models"
+      "routedBy" : "rules (fallback: foundation-models failed: refusal(FoundationModels.LanguageModelSession.GenerationError.Refusal(record: FoundationModels.LanguageModelSession.GenerationError.Refusal.TranscriptRecord), FoundationModels.LanguageModelSession.GenerationError.Context(debugDescription: \"May contain sensitive content\", underlyingErrors: [], errorDescriptionOverride: nil)))"
     },
     {
       "ayah" : 33,
@@ -102,14 +103,14 @@
     },
     {
       "ayah" : 60,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "meaning",
       "id" : "h08",
       "question" : "can you explain this eye to me is it a question or is it a statement about getting rewarded",
-      "route" : "related",
-      "routeOK" : false,
+      "route" : "meaning",
+      "routeOK" : true,
       "routedBy" : "foundation-models"
     },
     {
@@ -126,15 +127,15 @@
     },
     {
       "ayah" : 72,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "meaning",
       "id" : "h10",
       "question" : "what is this verse describing with the pavilions thing i cant picture it",
-      "route" : "related",
-      "routeOK" : false,
-      "routedBy" : "foundation-models"
+      "route" : "meaning",
+      "routeOK" : true,
+      "routedBy" : "rules (fallback: foundation-models failed: refusal(FoundationModels.LanguageModelSession.GenerationError.Refusal(record: FoundationModels.LanguageModelSession.GenerationError.Refusal.TranscriptRecord), FoundationModels.LanguageModelSession.GenerationError.Context(debugDescription: \"May contain sensitive content\", underlyingErrors: [], errorDescriptionOverride: nil)))"
     },
     {
       "ayah" : 29,
@@ -168,9 +169,9 @@
       "expectedRoute" : "word",
       "id" : "h13",
       "question" : "why is it put as smokeless fire what is the actual term there and does it really mean no smoke",
-      "route" : "word",
-      "routeOK" : true,
-      "routedBy" : "foundation-models"
+      "route" : "meaning",
+      "routeOK" : false,
+      "routedBy" : "rules (fallback: foundation-models failed: refusal(FoundationModels.LanguageModelSession.GenerationError.Refusal(record: FoundationModels.LanguageModelSession.GenerationError.Refusal.TranscriptRecord), FoundationModels.LanguageModelSession.GenerationError.Context(debugDescription: \"May contain sensitive content\", underlyingErrors: [], errorDescriptionOverride: nil)))"
     },
     {
       "ayah" : 22,
@@ -186,13 +187,13 @@
     },
     {
       "ayah" : 17,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "word",
       "id" : "h15",
       "question" : "two sunrises and two sunsets what does that phrase refer to how can there be two",
-      "route" : "related",
+      "route" : "meaning",
       "routeOK" : false,
       "routedBy" : "foundation-models"
     },
@@ -206,7 +207,7 @@
       "question" : "the word eloquence in this aya is that about speech or about clarity which one is it in the original",
       "route" : "word",
       "routeOK" : true,
-      "routedBy" : "foundation-models"
+      "routedBy" : "rules (fallback: foundation-models failed: refusal(FoundationModels.LanguageModelSession.GenerationError.Refusal(record: FoundationModels.LanguageModelSession.GenerationError.Refusal.TranscriptRecord), FoundationModels.LanguageModelSession.GenerationError.Context(debugDescription: \"May contain sensitive content\", underlyingErrors: [], errorDescriptionOverride: nil)))"
     },
     {
       "ayah" : 54,
@@ -216,9 +217,9 @@
       "expectedRoute" : "word",
       "id" : "h17",
       "question" : "what does brocade mean in this one ive honestly never heard that word before",
-      "route" : "word",
-      "routeOK" : true,
-      "routedBy" : "foundation-models"
+      "route" : "meaning",
+      "routeOK" : false,
+      "routedBy" : "rules (fallback: foundation-models failed: refusal(FoundationModels.LanguageModelSession.GenerationError.Refusal(record: FoundationModels.LanguageModelSession.GenerationError.Refusal.TranscriptRecord), FoundationModels.LanguageModelSession.GenerationError.Context(debugDescription: \"May contain sensitive content\", underlyingErrors: [], errorDescriptionOverride: nil)))"
     },
     {
       "ayah" : 78,
@@ -242,7 +243,7 @@
       "question" : "why does this line keep coming back",
       "route" : "repetition",
       "routeOK" : true,
-      "routedBy" : "foundation-models"
+      "routedBy" : "rules (fallback: foundation-models failed: refusal(FoundationModels.LanguageModelSession.GenerationError.Refusal(record: FoundationModels.LanguageModelSession.GenerationError.Refusal.TranscriptRecord), FoundationModels.LanguageModelSession.GenerationError.Context(debugDescription: \"May contain sensitive content\", underlyingErrors: [], errorDescriptionOverride: nil)))"
     },
     {
       "ayah" : 55,
@@ -252,8 +253,8 @@
       "expectedRoute" : "repetition",
       "id" : "h20",
       "question" : "ok this is like the twentieth time ive seen this exact same verse whats up with that",
-      "route" : "related",
-      "routeOK" : false,
+      "route" : "repetition",
+      "routeOK" : true,
       "routedBy" : "foundation-models"
     },
     {
@@ -326,7 +327,7 @@
       "question" : "where else in this sura does it talk about the sea or water",
       "route" : "related",
       "routeOK" : true,
-      "routedBy" : "foundation-models"
+      "routedBy" : "rules (fallback: foundation-models failed: refusal(FoundationModels.LanguageModelSession.GenerationError.Refusal(record: FoundationModels.LanguageModelSession.GenerationError.Refusal.TranscriptRecord), FoundationModels.LanguageModelSession.GenerationError.Context(debugDescription: \"May contain sensitive content\", underlyingErrors: [], errorDescriptionOverride: nil)))"
     },
     {
       "ayah" : 62,
@@ -384,7 +385,7 @@
       "expectedRoute" : "ruling",
       "id" : "h31",
       "question" : "do i have to say something back out loud every time this refrain comes up when im reciting or is that optional",
-      "route" : "word",
+      "route" : "meaning",
       "routeOK" : false,
       "routedBy" : "foundation-models"
     },
@@ -420,7 +421,7 @@
       "expectedRoute" : "off-topic",
       "id" : "h34",
       "question" : "can you make the text bigger my eyes are hurting",
-      "route" : "word",
+      "route" : "meaning",
       "routeOK" : false,
       "routedBy" : "foundation-models"
     },
@@ -450,37 +451,37 @@
     },
     {
       "ayah" : 9,
-      "decision" : "declined",
-      "decisionOK" : true,
+      "decision" : "answered",
+      "decisionOK" : false,
       "expectedDecision" : "declined",
       "expectedRoute" : "off-topic",
       "id" : "h37",
       "question" : "how do i write a for loop in swift",
-      "route" : "off-topic",
-      "routeOK" : true,
+      "route" : "word",
+      "routeOK" : false,
       "routedBy" : "foundation-models"
     },
     {
       "ayah" : 21,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "unclear",
       "id" : "h38",
       "question" : "um the the",
-      "route" : "related",
+      "route" : "word",
       "routeOK" : false,
       "routedBy" : "foundation-models"
     },
     {
       "ayah" : 50,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "unclear",
       "id" : "h39",
       "question" : "springs",
-      "route" : "related",
+      "route" : "word",
       "routeOK" : false,
       "routedBy" : "foundation-models"
     },
@@ -492,10 +493,11 @@
       "expectedRoute" : "unclear",
       "id" : "h40",
       "question" : "so wait what about",
-      "route" : "meaning",
+      "route" : "word",
       "routeOK" : false,
       "routedBy" : "foundation-models"
     }
   ],
+  "severe" : 3,
   "total" : 40
 }

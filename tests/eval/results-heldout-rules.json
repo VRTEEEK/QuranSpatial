@@ -3,6 +3,7 @@
   "decisionAccuracy" : 0.825,
   "decisionCorrect" : 33,
   "fallbacks" : 0,
+  "overCautious" : 2,
   "perRoute" : {
     "meaning" : "10\/12",
     "off-topic" : "3\/5",
@@ -497,5 +498,6 @@
       "routedBy" : "rules"
     }
   ],
+  "severe" : 2,
   "total" : 40
 }

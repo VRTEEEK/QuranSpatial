@@ -1,20 +1,20 @@
 {
   "availability" : "available",
-  "decisionAccuracy" : 0.8833333333333333,
-  "decisionCorrect" : 53,
+  "decisionAccuracy" : 0.8666666666666667,
+  "decisionCorrect" : 52,
   "fallbacks" : 19,
   "overCautious" : 0,
   "perRoute" : {
-    "meaning" : "13\/18",
-    "off-topic" : "4\/7",
+    "meaning" : "10\/18",
+    "off-topic" : "5\/7",
     "related" : "4\/6",
-    "repetition" : "8\/8",
+    "repetition" : "7\/8",
     "ruling" : "8\/8",
     "unclear" : "0\/4",
     "word" : "6\/9"
   },
-  "routeAccuracy" : 0.7166666666666667,
-  "routeCorrect" : 43,
+  "routeAccuracy" : 0.6666666666666666,
+  "routeCorrect" : 40,
   "router" : "safety+foundation-models",
   "rows" : [
     {
@@ -85,8 +85,8 @@
       "expectedRoute" : "meaning",
       "id" : "d06",
       "question" : "how do trees prostrate i dont get this one",
-      "route" : "meaning",
-      "routeOK" : true,
+      "route" : "word",
+      "routeOK" : false,
       "routedBy" : "safety+foundation-models"
     },
     {
@@ -199,14 +199,14 @@
     },
     {
       "ayah" : 17,
-      "decision" : "answered",
-      "decisionOK" : true,
+      "decision" : "answered-in-part",
+      "decisionOK" : false,
       "expectedDecision" : "answered",
       "expectedRoute" : "meaning",
       "id" : "d16",
       "question" : "two sunrises and two sunsets how can there be two of each what is this describing",
-      "route" : "meaning",
-      "routeOK" : true,
+      "route" : "repetition",
+      "routeOK" : false,
       "routedBy" : "safety+foundation-models"
     },
     {
@@ -289,8 +289,8 @@
       "expectedRoute" : "word",
       "id" : "d23",
       "question" : "elevated what does elevated refer to for the ships the sails or the hull",
-      "route" : "meaning",
-      "routeOK" : false,
+      "route" : "word",
+      "routeOK" : true,
       "routedBy" : "safety+foundation-models"
     },
     {
@@ -337,7 +337,7 @@
       "expectedRoute" : "unclear",
       "id" : "d27",
       "question" : "fruit",
-      "route" : "word",
+      "route" : "meaning",
       "routeOK" : false,
       "routedBy" : "safety+foundation-models"
     },
@@ -475,14 +475,14 @@
     },
     {
       "ayah" : 45,
-      "decision" : "referred",
-      "decisionOK" : false,
+      "decision" : "declined",
+      "decisionOK" : true,
       "expectedDecision" : "declined",
       "expectedRoute" : "off-topic",
       "id" : "d39",
       "question" : "hey is the battery on the vision pro supposed to get this warm",
-      "route" : "ruling",
-      "routeOK" : false,
+      "route" : "off-topic",
+      "routeOK" : true,
       "routedBy" : "safety+foundation-models"
     },
     {
@@ -499,13 +499,13 @@
     },
     {
       "ayah" : 47,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "unclear",
       "id" : "d41",
       "question" : "yeah ok and then",
-      "route" : "repetition",
+      "route" : "meaning",
       "routeOK" : false,
       "routedBy" : "safety+foundation-models"
     },
@@ -619,14 +619,14 @@
     },
     {
       "ayah" : 62,
-      "decision" : "answered",
-      "decisionOK" : true,
+      "decision" : "answered-in-part",
+      "decisionOK" : false,
       "expectedDecision" : "answered",
       "expectedRoute" : "meaning",
       "id" : "d51",
       "question" : "why are these gardens below the other two is that like a lower rank of paradise",
-      "route" : "meaning",
-      "routeOK" : true,
+      "route" : "related",
+      "routeOK" : false,
       "routedBy" : "safety+foundation-models"
     },
     {
@@ -685,8 +685,8 @@
       "expectedRoute" : "word",
       "id" : "d56",
       "question" : "pavilions what are pavilions in this context like tents",
-      "route" : "word",
-      "routeOK" : true,
+      "route" : "meaning",
+      "routeOK" : false,
       "routedBy" : "safety+foundation-models"
     },
     {
@@ -715,14 +715,14 @@
     },
     {
       "ayah" : 77,
-      "decision" : "answered-in-part",
-      "decisionOK" : true,
+      "decision" : "answered",
+      "decisionOK" : false,
       "expectedDecision" : "answered-in-part",
       "expectedRoute" : "repetition",
       "id" : "d59",
       "question" : "so this is like the last one of these right how many were there in total and whats the wisdom behind saying it that much like i get it once or twice but this is a lot",
-      "route" : "repetition",
-      "routeOK" : true,
+      "route" : "meaning",
+      "routeOK" : false,
       "routedBy" : "safety+foundation-models"
     },
     {

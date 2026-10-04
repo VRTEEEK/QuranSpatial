@@ -1,20 +1,20 @@
 {
   "availability" : "available",
-  "decisionAccuracy" : 0.7166666666666667,
-  "decisionCorrect" : 43,
+  "decisionAccuracy" : 0.7333333333333333,
+  "decisionCorrect" : 44,
   "fallbacks" : 0,
   "overCautious" : 6,
   "perRoute" : {
     "meaning" : "15\/18",
-    "off-topic" : "2\/7",
+    "off-topic" : "3\/7",
     "related" : "3\/6",
     "repetition" : "2\/8",
     "ruling" : "8\/8",
     "unclear" : "0\/4",
     "word" : "2\/9"
   },
-  "routeAccuracy" : 0.5333333333333333,
-  "routeCorrect" : 32,
+  "routeAccuracy" : 0.55,
+  "routeCorrect" : 33,
   "router" : "safety+rules",
   "rows" : [
     {
@@ -475,14 +475,14 @@
     },
     {
       "ayah" : 45,
-      "decision" : "referred",
-      "decisionOK" : false,
+      "decision" : "declined",
+      "decisionOK" : true,
       "expectedDecision" : "declined",
       "expectedRoute" : "off-topic",
       "id" : "d39",
       "question" : "hey is the battery on the vision pro supposed to get this warm",
-      "route" : "ruling",
-      "routeOK" : false,
+      "route" : "off-topic",
+      "routeOK" : true,
       "routedBy" : "safety+rules"
     },
     {

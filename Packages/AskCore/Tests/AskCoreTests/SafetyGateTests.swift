@@ -47,9 +47,11 @@ struct SafetyGateTests {
         #expect(HybridRouter.highConfidenceRoute("where else does this come up") == .related)
         #expect(HybridRouter.highConfidenceRoute("what does the word deny mean") == .word)
         #expect(HybridRouter.highConfidenceRoute("can you make the text bigger") == .offTopic)
-        #expect(HybridRouter.highConfidenceRoute("what is this ayah about") == nil)
-        // An off-topic cue inside an on-topic question is not decided by the rules.
-        #expect(HybridRouter.highConfidenceRoute("is this verse about a game between jinn and men") == nil)
+        #expect(HybridRouter.highConfidenceRoute("what is this ayah about") == .meaning)
+        #expect(HybridRouter.highConfidenceRoute("so like what is this bit saying") == nil)
+        // An off-topic cue inside an on-topic question is never decided as off-topic by the rules.
+        #expect(HybridRouter.highConfidenceRoute("is this verse about a game between jinn and men") != .offTopic)
+        #expect(HybridRouter.highConfidenceRoute("does this verse mention a car or a bus") == nil)
         #expect(try await h.route("is it haram to do this", anchorAyah: 13) == .ruling)
         #expect(try await h.route("what is this ayah about", anchorAyah: 13) == .meaning)
     }
