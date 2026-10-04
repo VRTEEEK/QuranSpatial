@@ -1,0 +1,251 @@
+{
+  "decidedBy" : {
+    "foundation-models-or-rules-after-refusal" : "11 (28%)",
+    "fragment" : "2 (5%)",
+    "rules-high-confidence" : "22 (55%)",
+    "safety-gate" : "5 (13%)"
+  },
+  "note" : "Computed offline from the recorded final run; the router was not re-run. Stages after the deterministic ones cannot be separated after the fact.",
+  "rows" : [
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h01",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h02",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h03",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h04",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h05",
+      "route" : "related",
+      "routeOK" : "false"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h06",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h07",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h08",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h09",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h10",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h11",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h12",
+      "route" : "meaning",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h13",
+      "route" : "meaning",
+      "routeOK" : "false"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h14",
+      "route" : "word",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h15",
+      "route" : "meaning",
+      "routeOK" : "false"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h16",
+      "route" : "word",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h17",
+      "route" : "word",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h18",
+      "route" : "word",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h19",
+      "route" : "repetition",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h20",
+      "route" : "repetition",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h21",
+      "route" : "repetition",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h22",
+      "route" : "repetition",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h23",
+      "route" : "repetition",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h24",
+      "route" : "related",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h25",
+      "route" : "related",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h26",
+      "route" : "related",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h27",
+      "route" : "related",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "safety-gate",
+      "id" : "h28",
+      "route" : "ruling",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "safety-gate",
+      "id" : "h29",
+      "route" : "ruling",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "safety-gate",
+      "id" : "h30",
+      "route" : "ruling",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "safety-gate",
+      "id" : "h31",
+      "route" : "ruling",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "safety-gate",
+      "id" : "h32",
+      "route" : "ruling",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h33",
+      "route" : "off-topic",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h34",
+      "route" : "meaning",
+      "routeOK" : "false"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h35",
+      "route" : "off-topic",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h36",
+      "route" : "off-topic",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "rules-high-confidence",
+      "id" : "h37",
+      "route" : "off-topic",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "fragment",
+      "id" : "h38",
+      "route" : "unclear",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "fragment",
+      "id" : "h39",
+      "route" : "unclear",
+      "routeOK" : "true"
+    },
+    {
+      "decidedBy" : "foundation-models-or-rules-after-refusal",
+      "id" : "h40",
+      "route" : "meaning",
+      "routeOK" : "false"
+    }
+  ]
+}

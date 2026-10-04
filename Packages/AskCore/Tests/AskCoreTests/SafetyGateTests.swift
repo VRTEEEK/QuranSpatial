@@ -52,6 +52,9 @@ struct SafetyGateTests {
         // An off-topic cue inside an on-topic question is never decided as off-topic by the rules.
         #expect(HybridRouter.highConfidenceRoute("is this verse about a game between jinn and men") != .offTopic)
         #expect(HybridRouter.highConfidenceRoute("does this verse mention a car or a bus") == nil)
+        // The eye/eyes bug (held-out h34): "eyes" is not the speech-error cue for "ayah".
+        #expect(HybridRouter.highConfidenceRoute("can you make the text bigger my eyes are hurting") == .offTopic)
+        #expect(HybridRouter.highConfidenceRoute("which eye was that about the palm trees") != .offTopic)
         #expect(try await h.route("is it haram to do this", anchorAyah: 13) == .ruling)
         #expect(try await h.route("what is this ayah about", anchorAyah: 13) == .meaning)
     }

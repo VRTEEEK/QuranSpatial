@@ -1,5 +1,8 @@
 {
   "availability" : "n\/a",
+  "decidedBy" : {
+    "rules" : "40 (100%)"
+  },
   "decisionAccuracy" : 0.825,
   "decisionCorrect" : 33,
   "fallbacks" : 0,

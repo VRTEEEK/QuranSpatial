@@ -1,19 +1,23 @@
 {
   "availability" : "available",
-  "decisionAccuracy" : 0.7333333333333333,
+  "decidedBy" : {
+    "rules" : "55 (87%)",
+    "safety-gate" : "8 (13%)"
+  },
+  "decisionAccuracy" : 0.6984126984126984,
   "decisionCorrect" : 44,
   "fallbacks" : 0,
   "overCautious" : 6,
   "perRoute" : {
     "meaning" : "15\/18",
-    "off-topic" : "3\/7",
+    "off-topic" : "3\/10",
     "related" : "3\/6",
     "repetition" : "2\/8",
     "ruling" : "8\/8",
     "unclear" : "0\/4",
     "word" : "2\/9"
   },
-  "routeAccuracy" : 0.55,
+  "routeAccuracy" : 0.5238095238095238,
   "routeCorrect" : 33,
   "router" : "safety+rules",
   "rows" : [
@@ -27,7 +31,7 @@
       "question" : "so this first one is just the most merciful and nothing else like why does the sura open like that what is it getting at",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 2,
@@ -39,7 +43,7 @@
       "question" : "how do i write a for loop in swift",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 3,
@@ -51,7 +55,7 @@
       "question" : "whats the weather going to be like tomorrow in dubai",
       "route" : "off-topic",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 4,
@@ -63,7 +67,7 @@
       "question" : "what is eloquence here in the arabic is it bayan like speech or is it something more than that",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 5,
@@ -75,7 +79,7 @@
       "question" : "um what does it mean that the sun and moon are calculated like is it saying something about astronomy or is it a bigger point",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 6,
@@ -87,7 +91,7 @@
       "question" : "how do trees prostrate i dont get this one",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 9,
@@ -99,7 +103,7 @@
       "question" : "i run a small shop and sometimes i round the weight down a little bit for regulars is that a sin",
       "route" : "ruling",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [safety-gate]"
     },
     {
       "ayah" : 10,
@@ -111,7 +115,7 @@
       "question" : "who are the creatures its talking about in this verse is that only people or animals too",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 11,
@@ -123,7 +127,7 @@
       "question" : "the word sheaths what does that even refer to on a palm tree",
       "route" : "word",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 11,
@@ -135,7 +139,7 @@
       "question" : "fruit and palm trees does that come up again later in the sura in the paradise part",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 13,
@@ -147,7 +151,7 @@
       "question" : "ok this is the first time this line shows up how many more times is it going to come back",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 13,
@@ -159,7 +163,7 @@
       "question" : "is it required to say a response out loud every time this line is read when im listening to the recitation",
       "route" : "ruling",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [safety-gate]"
     },
     {
       "ayah" : 14,
@@ -171,7 +175,7 @@
       "question" : "why does the translation say pottery is it like a specific kind of clay",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 15,
@@ -183,7 +187,7 @@
       "question" : "so like it says the gin were made from fire what does that actually tell us about them",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 16,
@@ -195,7 +199,7 @@
       "question" : "how do i make the text bigger on this thing",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 17,
@@ -207,7 +211,7 @@
       "question" : "two sunrises and two sunsets how can there be two of each what is this describing",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 18,
@@ -219,7 +223,7 @@
       "question" : "um so the",
       "route" : "off-topic",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 19,
@@ -231,7 +235,7 @@
       "question" : "which two seas is this about is it an actual place on a map",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 19,
@@ -243,7 +247,7 @@
       "question" : "can i eat fish that comes from the place where the two waters mix if im not sure its halal",
       "route" : "ruling",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [safety-gate]"
     },
     {
       "ayah" : 20,
@@ -255,7 +259,7 @@
       "question" : "which other ayat in ar rahman use the idea of not transgressing i think there was one about the balance earlier",
       "route" : "related",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 21,
@@ -267,7 +271,7 @@
       "question" : "why does the sura keep asking the same question over and over",
       "route" : "repetition",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 22,
@@ -279,7 +283,7 @@
       "question" : "coral in this verse is that actually coral or a different stone some people say its small pearls",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 24,
@@ -291,7 +295,7 @@
       "question" : "elevated what does elevated refer to for the ships the sails or the hull",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 25,
@@ -303,7 +307,7 @@
       "question" : "so um my boss asked me to work through friday prayer this week were out on the boat all day and theres no mosque anywhere near am i allowed to skip jumuah in that situation or do i have to say no to him",
       "route" : "ruling",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [safety-gate]"
     },
     {
       "ayah" : 26,
@@ -315,7 +319,7 @@
       "question" : "this one is kind of heavy everyone on the earth dies what is the point its making right after all the blessings",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 27,
@@ -327,7 +331,7 @@
       "question" : "what does face of your lord mean here is it literally a face",
       "route" : "word",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 28,
@@ -339,7 +343,7 @@
       "question" : "fruit",
       "route" : "off-topic",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 29,
@@ -351,7 +355,7 @@
       "question" : "this eye says god is doing something every single day what is that referring to",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 30,
@@ -363,7 +367,7 @@
       "question" : "um i feel like ive read this exact aya already like five times is that on purpose",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 31,
@@ -375,7 +379,7 @@
       "question" : "who is being addressed here the prominent beings is that us",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 33,
@@ -387,7 +391,7 @@
       "question" : "is this a challenge or a threat when it tells the gin and people to try and pass through the heavens",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 34,
@@ -399,7 +403,7 @@
       "question" : "can you tell me a joke",
       "route" : "off-topic",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 35,
@@ -411,7 +415,7 @@
       "question" : "um who is this flame and smoke being sent on and when does that happen",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 36,
@@ -423,7 +427,7 @@
       "question" : "i read this while i wasnt in wudu on the headset is that ok or do i need to be clean to read quran on a screen",
       "route" : "ruling",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [safety-gate]"
     },
     {
       "ayah" : 39,
@@ -435,7 +439,7 @@
       "question" : "wait why would nobody be asked about their sin on that day i thought everyone gets questioned",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 40,
@@ -447,7 +451,7 @@
       "question" : "whats the reason this is repeated so many times in ar rahman",
       "route" : "repetition",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 41,
@@ -459,7 +463,7 @@
       "question" : "ok so the criminals get grabbed by the forelock and feet why those parts whats the significance",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 43,
@@ -471,7 +475,7 @@
       "question" : "if i missed fajr because i overslept do i have to make it up or is it just forgiven",
       "route" : "ruling",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [safety-gate]"
     },
     {
       "ayah" : 45,
@@ -483,7 +487,7 @@
       "question" : "hey is the battery on the vision pro supposed to get this warm",
       "route" : "off-topic",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 46,
@@ -495,7 +499,7 @@
       "question" : "two gardens for the person who fears standing before his lord so does that mean one for gin and one for humans or does one person get both of them i never understood this",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 47,
@@ -507,7 +511,7 @@
       "question" : "yeah ok and then",
       "route" : "off-topic",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 50,
@@ -519,7 +523,7 @@
       "question" : "compare this one with the springs in the second pair of gardens whats the difference",
       "route" : "related",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 51,
@@ -531,7 +535,7 @@
       "question" : "is there a different reason each time this line comes up or is it always the same point",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 52,
@@ -543,7 +547,7 @@
       "question" : "two kinds of every fruit is that the same as what it says about the gardens further down or a different set",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 54,
@@ -555,7 +559,7 @@
       "question" : "silk brocade whats brocade never heard that term",
       "route" : "off-topic",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 54,
@@ -567,7 +571,7 @@
       "question" : "is wearing silk forbidden for men in this life since its described as a reward in paradise",
       "route" : "ruling",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [safety-gate]"
     },
     {
       "ayah" : 55,
@@ -579,7 +583,7 @@
       "question" : "who won the champions league last year",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 56,
@@ -591,7 +595,7 @@
       "question" : "is there another verse later on that says almost the same thing about them being untouched",
       "route" : "off-topic",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 60,
@@ -603,7 +607,7 @@
       "question" : "i like this one is it basically saying if you do good you get good back or is there more to it",
       "route" : "unclear",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 61,
@@ -615,7 +619,7 @@
       "question" : "hold on didnt we just have this one a second ago why is it back again",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 62,
@@ -627,7 +631,7 @@
       "question" : "why are these gardens below the other two is that like a lower rank of paradise",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 63,
@@ -639,7 +643,7 @@
       "question" : "um how do i go back to the start of the recitation on the app i pressed something by accident",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 68,
@@ -651,7 +655,7 @@
       "question" : "pomegranates where else does the sura talk about fruit i think there was one near the beginning",
       "route" : "related",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 69,
@@ -663,7 +667,7 @@
       "question" : "how often does which of the favours come up in this sura is it like thirty times",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 70,
@@ -675,7 +679,7 @@
       "question" : "um my wife and i are fasting can we still like hug and stuff during the day",
       "route" : "ruling",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [safety-gate]"
     },
     {
       "ayah" : 72,
@@ -687,7 +691,7 @@
       "question" : "pavilions what are pavilions in this context like tents",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 73,
@@ -699,7 +703,7 @@
       "question" : "the thing with the uh",
       "route" : "off-topic",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 76,
@@ -711,7 +715,7 @@
       "question" : "what are the cushions called in the arabic and is carpets really the right translation for the second thing",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 77,
@@ -723,7 +727,7 @@
       "question" : "so this is like the last one of these right how many were there in total and whats the wisdom behind saying it that much like i get it once or twice but this is a lot",
       "route" : "meaning",
       "routeOK" : false,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
     },
     {
       "ayah" : 78,
@@ -735,9 +739,45 @@
       "question" : "the sura ends by blessing the name of god why end it like that what ties it back to the first aya",
       "route" : "meaning",
       "routeOK" : true,
-      "routedBy" : "safety+rules"
+      "routedBy" : "safety+rules [rules]"
+    },
+    {
+      "ayah" : 47,
+      "decision" : "answered",
+      "decisionOK" : false,
+      "expectedDecision" : "declined",
+      "expectedRoute" : "off-topic",
+      "id" : "d61",
+      "question" : "can you make the text bigger my eyes are hurting",
+      "route" : "unclear",
+      "routeOK" : false,
+      "routedBy" : "safety+rules [rules]"
+    },
+    {
+      "ayah" : 30,
+      "decision" : "answered",
+      "decisionOK" : false,
+      "expectedDecision" : "declined",
+      "expectedRoute" : "off-topic",
+      "id" : "d62",
+      "question" : "the text is kind of blurry for my eyes is there a way to bring it closer",
+      "route" : "unclear",
+      "routeOK" : false,
+      "routedBy" : "safety+rules [rules]"
+    },
+    {
+      "ayah" : 12,
+      "decision" : "answered",
+      "decisionOK" : false,
+      "expectedDecision" : "declined",
+      "expectedRoute" : "off-topic",
+      "id" : "d63",
+      "question" : "my eye is itching under the headset how do i pause this and take a break",
+      "route" : "meaning",
+      "routeOK" : false,
+      "routedBy" : "safety+rules [rules]"
     }
   ],
-  "severe" : 4,
-  "total" : 60
+  "severe" : 7,
+  "total" : 63
 }

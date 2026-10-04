@@ -1,5 +1,9 @@
 {
   "availability" : "available",
+  "decidedBy" : {
+    "foundation-models" : "13 (43%)",
+    "rules-after-model-refusal" : "17 (57%)"
+  },
   "decisionAccuracy" : 0.9666666666666667,
   "decisionCorrect" : 29,
   "fallbacks" : 17,

@@ -1,19 +1,22 @@
 {
   "availability" : "available",
-  "decisionAccuracy" : 0.7,
+  "decidedBy" : {
+    "rules" : "63 (100%)"
+  },
+  "decisionAccuracy" : 0.6666666666666666,
   "decisionCorrect" : 42,
   "fallbacks" : 0,
   "overCautious" : 6,
   "perRoute" : {
     "meaning" : "15\/18",
-    "off-topic" : "3\/7",
+    "off-topic" : "3\/10",
     "related" : "3\/6",
     "repetition" : "2\/8",
     "ruling" : "6\/8",
     "unclear" : "0\/4",
     "word" : "2\/9"
   },
-  "routeAccuracy" : 0.5166666666666667,
+  "routeAccuracy" : 0.49206349206349204,
   "routeCorrect" : 31,
   "router" : "rules",
   "rows" : [
@@ -736,8 +739,44 @@
       "route" : "meaning",
       "routeOK" : true,
       "routedBy" : "rules"
+    },
+    {
+      "ayah" : 47,
+      "decision" : "answered",
+      "decisionOK" : false,
+      "expectedDecision" : "declined",
+      "expectedRoute" : "off-topic",
+      "id" : "d61",
+      "question" : "can you make the text bigger my eyes are hurting",
+      "route" : "unclear",
+      "routeOK" : false,
+      "routedBy" : "rules"
+    },
+    {
+      "ayah" : 30,
+      "decision" : "answered",
+      "decisionOK" : false,
+      "expectedDecision" : "declined",
+      "expectedRoute" : "off-topic",
+      "id" : "d62",
+      "question" : "the text is kind of blurry for my eyes is there a way to bring it closer",
+      "route" : "unclear",
+      "routeOK" : false,
+      "routedBy" : "rules"
+    },
+    {
+      "ayah" : 12,
+      "decision" : "answered",
+      "decisionOK" : false,
+      "expectedDecision" : "declined",
+      "expectedRoute" : "off-topic",
+      "id" : "d63",
+      "question" : "my eye is itching under the headset how do i pause this and take a break",
+      "route" : "meaning",
+      "routeOK" : false,
+      "routedBy" : "rules"
     }
   ],
-  "severe" : 6,
-  "total" : 60
+  "severe" : 9,
+  "total" : 63
 }

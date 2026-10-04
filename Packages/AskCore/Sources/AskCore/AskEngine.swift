@@ -126,7 +126,13 @@ public struct AskEngine: Sendable {
         var route: QuestionRoute
         var routerName = router.name
         do {
-            route = try await router.route(question, anchorAyah: anchorAyah)
+            if let attributing = router as? any AttributingRouter {
+                let a = try await attributing.routeAttributed(question, anchorAyah: anchorAyah)
+                route = a.route
+                routerName = "\(router.name) [\(a.decidedBy)]"
+            } else {
+                route = try await router.route(question, anchorAyah: anchorAyah)
+            }
         } catch {
             route = (try? await fallback.route(question, anchorAyah: anchorAyah)) ?? .unclear
             routerName = "\(fallback.name) (fallback: \(router.name) failed: \(error))"

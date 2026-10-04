@@ -24,6 +24,21 @@ public protocol QuestionRouter: Sendable {
     func route(_ question: String, anchorAyah: Int) async throws -> QuestionRoute
 }
 
+/// A route with the component that decided it, for the evaluation's attribution counts.
+public struct AttributedRoute: Sendable, Equatable {
+    public let route: QuestionRoute
+    /// One of: "safety-gate", "fragment", "rules-high-confidence", "foundation-models",
+    /// "rules-after-model-refusal", "rules-after-model-error", "rules-no-model", or a plain
+    /// router's own name.
+    public let decidedBy: String
+    public init(route: QuestionRoute, decidedBy: String) { self.route = route; self.decidedBy = decidedBy }
+}
+
+/// Routers made of several components report which one decided.
+public protocol AttributingRouter: QuestionRouter {
+    func routeAttributed(_ question: String, anchorAyah: Int) async throws -> AttributedRoute
+}
+
 /// Rule-based classifier: ordered keyword rules. Deterministic, dependency-free, and the
 /// fallback when the on-device model is not available.
 public struct RuleBasedRouter: QuestionRouter {

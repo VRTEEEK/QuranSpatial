@@ -43,22 +43,26 @@ public struct RulingSafetyGate: Sendable {
 }
 
 /// Any router, with the safety gate in front of it.
-public struct SafetyGatedRouter: QuestionRouter {
+public struct SafetyGatedRouter: AttributingRouter {
     public let inner: any QuestionRouter
     public let gate = RulingSafetyGate()
     public var name: String { "safety+\(inner.name)" }
     public init(_ inner: any QuestionRouter) { self.inner = inner }
 
     public func route(_ question: String, anchorAyah: Int) async throws -> QuestionRoute {
-        if gate.looksLikeRuling(question) { return .ruling }
-        return try await inner.route(question, anchorAyah: anchorAyah)
+        try await routeAttributed(question, anchorAyah: anchorAyah).route
+    }
+
+    public func routeAttributed(_ question: String, anchorAyah: Int) async throws -> AttributedRoute {
+        if gate.looksLikeRuling(question) { return AttributedRoute(route: .ruling, decidedBy: "safety-gate") }
+        return AttributedRoute(route: try await inner.route(question, anchorAyah: anchorAyah), decidedBy: inner.name)
     }
 }
 
 /// Day 3 hybrid: the safety gate first; then rules only where they are HIGH-CONFIDENCE
 /// (unambiguous cue words); then the on-device model for everything else; rules if the model
 /// refuses, errors or is absent.
-public struct HybridRouter: QuestionRouter {
+public struct HybridRouter: AttributingRouter {
     public let model: (any QuestionRouter)?
     public let rules = RuleBasedRouter()
     public let gate = RulingSafetyGate()
@@ -89,7 +93,9 @@ public struct HybridRouter: QuestionRouter {
     public static func highConfidenceRoute(_ question: String) -> QuestionRoute? {
         if isFragment(question) { return .unclear }
         let q = question.lowercased()
-        let onTopic = q.range(of: #"\b(ayah|ayat|aya|eye|verse|surah|sura|quran|koran|allah|god|lord|jinn|gin|favou?rs?|blessings?|bount)"#, options: .regularExpression) != nil
+        // WHOLE WORDS. "eye" is the speech-recogniser's rendering of "ayah" and must not match
+        // "eyes" (held-out h34, "my eyes are hurting", slipped past the off-topic rule this way).
+        let onTopic = q.range(of: #"\b(ayah|ayat|aya|ayas|eye|verse|verses|surah|sura|quran|koran|allah|god|lord|jinn|gin|favou?rs?|blessings?|bounties|bounty)\b"#, options: .regularExpression) != nil
         for (route, patterns) in highConfidence where patterns.contains(where: { q.range(of: $0, options: .regularExpression) != nil }) {
             // An off-topic cue inside an on-topic question is not high confidence.
             if route == .offTopic && onTopic { continue }
@@ -99,11 +105,28 @@ public struct HybridRouter: QuestionRouter {
     }
 
     public func route(_ question: String, anchorAyah: Int) async throws -> QuestionRoute {
-        if gate.looksLikeRuling(question) { return .ruling }
-        if let sure = Self.highConfidenceRoute(question) { return sure }
-        if let model {
-            if let r = try? await model.route(question, anchorAyah: anchorAyah) { return r }
+        try await routeAttributed(question, anchorAyah: anchorAyah).route
+    }
+
+    /// The deterministic stages alone - gate, fragment, high-confidence rules - or nil when the
+    /// question would go on to the model. Used to attribute a past run without re-running it.
+    public static func deterministicStage(_ question: String) -> AttributedRoute? {
+        if RulingSafetyGate().looksLikeRuling(question) { return AttributedRoute(route: .ruling, decidedBy: "safety-gate") }
+        if isFragment(question) { return AttributedRoute(route: .unclear, decidedBy: "fragment") }
+        if let sure = highConfidenceRoute(question) { return AttributedRoute(route: sure, decidedBy: "rules-high-confidence") }
+        return nil
+    }
+
+    public func routeAttributed(_ question: String, anchorAyah: Int) async throws -> AttributedRoute {
+        if let decided = Self.deterministicStage(question) { return decided }
+        guard let model else {
+            return AttributedRoute(route: try await rules.route(question, anchorAyah: anchorAyah), decidedBy: "rules-no-model")
         }
-        return try await rules.route(question, anchorAyah: anchorAyah)
+        do {
+            return AttributedRoute(route: try await model.route(question, anchorAyah: anchorAyah), decidedBy: model.name)
+        } catch {
+            let why = String(describing: error).contains("refusal") ? "rules-after-model-refusal" : "rules-after-model-error"
+            return AttributedRoute(route: try await rules.route(question, anchorAyah: anchorAyah), decidedBy: why)
+        }
     }
 }

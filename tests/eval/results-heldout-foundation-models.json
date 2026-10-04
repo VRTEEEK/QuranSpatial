@@ -1,11 +1,15 @@
 {
   "availability" : "available",
+  "decidedBy" : {
+    "foundation-models" : "24 (60%)",
+    "rules-after-model-refusal" : "16 (40%)"
+  },
   "decisionAccuracy" : 0.85,
   "decisionCorrect" : 34,
   "fallbacks" : 16,
   "overCautious" : 0,
   "perRoute" : {
-    "meaning" : "9\/12",
+    "meaning" : "10\/12",
     "off-topic" : "3\/5",
     "related" : "4\/4",
     "repetition" : "3\/5",
@@ -13,8 +17,8 @@
     "unclear" : "0\/3",
     "word" : "3\/6"
   },
-  "routeAccuracy" : 0.625,
-  "routeCorrect" : 25,
+  "routeAccuracy" : 0.65,
+  "routeCorrect" : 26,
   "router" : "foundation-models",
   "rows" : [
     {
@@ -67,14 +71,14 @@
     },
     {
       "ayah" : 46,
-      "decision" : "answered-in-part",
-      "decisionOK" : false,
+      "decision" : "answered",
+      "decisionOK" : true,
       "expectedDecision" : "answered",
       "expectedRoute" : "meaning",
       "id" : "h05",
       "question" : "whats the deal with the two gardens why two and not one",
-      "route" : "related",
-      "routeOK" : false,
+      "route" : "meaning",
+      "routeOK" : true,
       "routedBy" : "foundation-models"
     },
     {
@@ -379,13 +383,13 @@
     },
     {
       "ayah" : 25,
-      "decision" : "answered",
+      "decision" : "answered-in-part",
       "decisionOK" : false,
       "expectedDecision" : "referred",
       "expectedRoute" : "ruling",
       "id" : "h31",
       "question" : "do i have to say something back out loud every time this refrain comes up when im reciting or is that optional",
-      "route" : "meaning",
+      "route" : "repetition",
       "routeOK" : false,
       "routedBy" : "foundation-models"
     },
@@ -487,13 +491,13 @@
     },
     {
       "ayah" : 58,
-      "decision" : "answered",
-      "decisionOK" : true,
+      "decision" : "answered-in-part",
+      "decisionOK" : false,
       "expectedDecision" : "answered",
       "expectedRoute" : "unclear",
       "id" : "h40",
       "question" : "so wait what about",
-      "route" : "word",
+      "route" : "related",
       "routeOK" : false,
       "routedBy" : "foundation-models"
     }
