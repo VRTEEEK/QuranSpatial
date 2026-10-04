@@ -62,8 +62,10 @@ struct ImmersiveView: View {
 
     /// So the first-frame timing is taken once rather than every frame.
     @State private var hasReportedFirstFrame = false
-    /// The Meaning panel's attachment entity; enabled only while asking.
+    /// The Ask panel's attachment entity; enabled only while asking.
     @State private var meaningEntity: Entity?
+    /// The Ask flow: speech, engine, display (challenge day 2).
+    @State private var askSession = AskSession()
 
     /// Stage 3's A/B capture. Sequences both phases in one wearing.
     @State private var capture = EnvironmentCapture()
@@ -374,9 +376,9 @@ struct ImmersiveView: View {
                               arabicTextures: textures, to: englishEntity)
         } attachments: {
             Attachment(id: Self.meaningPanelAttachmentID) {
-                MeaningPanelView(segmentIndex: recitation.displayedSegmentIndex,
-                                 passage: RecitationMeaning.passage(forSegmentIndex: recitation.displayedSegmentIndex),
-                                 onContinue: { recitation.exitAsk() })
+                AskPanelView(session: askSession, segmentIndex: recitation.displayedSegmentIndex,
+                             onDone: { askSession.done() },
+                             onContinue: { recitation.exitAsk() })
             }
             Attachment(id: Self.duaDebugHUDAttachmentID) {
                 DuaDebugHUDView(session: handTrackingSession, dissolve: dissolve, recitation: recitation,
@@ -387,6 +389,19 @@ struct ImmersiveView: View {
                     handTrackingSession.experienceEnded()
                     #endif
                 }
+            }
+        }
+        // The real Ask trigger: look at the Arabic and pinch. The ayah entity carries an
+        // InputTargetComponent and a collision box sized to the plane (set where the plane is
+        // built), so the system's gaze-and-pinch lands on it at any distance.
+        .gesture(TapGesture().targetedToEntity(ayahEntity).onEnded { _ in
+            recitation.enterAsk()
+        })
+        .onChange(of: recitation.experiencePhase) {
+            if recitation.experiencePhase == .asking {
+                askSession.begin(anchor: recitation.displayedSegmentIndex)
+            } else {
+                askSession.end()
             }
         }
         .task {
@@ -500,6 +515,11 @@ struct ImmersiveView: View {
         // line count.
         let planeWidth = Float(entry.pixelSize.width) * AyahPlaneGeometry.metresPerPixel
         let planeHeight = Float(entry.pixelSize.height) * AyahPlaneGeometry.metresPerPixel
+        // Pinch target (challenge day 2): a thin box the size of the plane, in the plane's own
+        // local space, so it scales with the text root exactly as the mesh does.
+        entity.components.set(CollisionComponent(shapes: [.generateBox(width: planeWidth, height: planeHeight, depth: 0.01)]))
+        entity.components.set(InputTargetComponent())
+        entity.components.set(HoverEffectComponent())
         entity.model = ModelComponent(
             mesh: .generatePlane(width: planeWidth, height: planeHeight),
             materials: [material]
