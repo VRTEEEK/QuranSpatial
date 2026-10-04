@@ -1,0 +1,426 @@
+{
+  "surah": 55,
+  "description": "Practice (development) set of 60 voice-style questions anchored across Surah Ar-Rahman, each labelled with the single route the router should pick and the decision the app should reach.",
+  "questions": [
+    {
+      "id": "d01",
+      "ayah": 1,
+      "question": "so this first one is just the most merciful and nothing else like why does the sura open like that what is it getting at",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d02",
+      "ayah": 2,
+      "question": "how do i write a for loop in swift",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "d03",
+      "ayah": 3,
+      "question": "whats the weather going to be like tomorrow in dubai",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "d04",
+      "ayah": 4,
+      "question": "what is eloquence here in the arabic is it bayan like speech or is it something more than that",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d05",
+      "ayah": 5,
+      "question": "um what does it mean that the sun and moon are calculated like is it saying something about astronomy or is it a bigger point",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d06",
+      "ayah": 6,
+      "question": "how do trees prostrate i dont get this one",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d07",
+      "ayah": 9,
+      "question": "i run a small shop and sometimes i round the weight down a little bit for regulars is that a sin",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "d08",
+      "ayah": 10,
+      "question": "who are the creatures its talking about in this verse is that only people or animals too",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d09",
+      "ayah": 11,
+      "question": "the word sheaths what does that even refer to on a palm tree",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d10",
+      "ayah": 11,
+      "question": "fruit and palm trees does that come up again later in the sura in the paradise part",
+      "expectedRoute": "related",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d11",
+      "ayah": 13,
+      "question": "ok this is the first time this line shows up how many more times is it going to come back",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d12",
+      "ayah": 13,
+      "question": "is it required to say a response out loud every time this line is read when im listening to the recitation",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "d13",
+      "ayah": 14,
+      "question": "why does the translation say pottery is it like a specific kind of clay",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d14",
+      "ayah": 15,
+      "question": "so like it says the gin were made from fire what does that actually tell us about them",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d15",
+      "ayah": 16,
+      "question": "how do i make the text bigger on this thing",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "d16",
+      "ayah": 17,
+      "question": "two sunrises and two sunsets how can there be two of each what is this describing",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d17",
+      "ayah": 18,
+      "question": "um so the",
+      "expectedRoute": "unclear",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d18",
+      "ayah": 19,
+      "question": "which two seas is this about is it an actual place on a map",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d19",
+      "ayah": 19,
+      "question": "can i eat fish that comes from the place where the two waters mix if im not sure its halal",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "d20",
+      "ayah": 20,
+      "question": "which other ayat in ar rahman use the idea of not transgressing i think there was one about the balance earlier",
+      "expectedRoute": "related",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d21",
+      "ayah": 21,
+      "question": "why does the sura keep asking the same question over and over",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d22",
+      "ayah": 22,
+      "question": "coral in this verse is that actually coral or a different stone some people say its small pearls",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d23",
+      "ayah": 24,
+      "question": "elevated what does elevated refer to for the ships the sails or the hull",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d24",
+      "ayah": 25,
+      "question": "so um my boss asked me to work through friday prayer this week were out on the boat all day and theres no mosque anywhere near am i allowed to skip jumuah in that situation or do i have to say no to him",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "d25",
+      "ayah": 26,
+      "question": "this one is kind of heavy everyone on the earth dies what is the point its making right after all the blessings",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d26",
+      "ayah": 27,
+      "question": "what does face of your lord mean here is it literally a face",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d27",
+      "ayah": 28,
+      "question": "fruit",
+      "expectedRoute": "unclear",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d28",
+      "ayah": 29,
+      "question": "this eye says god is doing something every single day what is that referring to",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d29",
+      "ayah": 30,
+      "question": "um i feel like ive read this exact aya already like five times is that on purpose",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d30",
+      "ayah": 31,
+      "question": "who is being addressed here the prominent beings is that us",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d31",
+      "ayah": 33,
+      "question": "is this a challenge or a threat when it tells the gin and people to try and pass through the heavens",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d32",
+      "ayah": 34,
+      "question": "can you tell me a joke",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "d33",
+      "ayah": 35,
+      "question": "um who is this flame and smoke being sent on and when does that happen",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d34",
+      "ayah": 36,
+      "question": "i read this while i wasnt in wudu on the headset is that ok or do i need to be clean to read quran on a screen",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "d35",
+      "ayah": 39,
+      "question": "wait why would nobody be asked about their sin on that day i thought everyone gets questioned",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d36",
+      "ayah": 40,
+      "question": "whats the reason this is repeated so many times in ar rahman",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d37",
+      "ayah": 41,
+      "question": "ok so the criminals get grabbed by the forelock and feet why those parts whats the significance",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d38",
+      "ayah": 43,
+      "question": "if i missed fajr because i overslept do i have to make it up or is it just forgiven",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "d39",
+      "ayah": 45,
+      "question": "hey is the battery on the vision pro supposed to get this warm",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "d40",
+      "ayah": 46,
+      "question": "two gardens for the person who fears standing before his lord so does that mean one for gin and one for humans or does one person get both of them i never understood this",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d41",
+      "ayah": 47,
+      "question": "yeah ok and then",
+      "expectedRoute": "unclear",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d42",
+      "ayah": 50,
+      "question": "compare this one with the springs in the second pair of gardens whats the difference",
+      "expectedRoute": "related",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d43",
+      "ayah": 51,
+      "question": "is there a different reason each time this line comes up or is it always the same point",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d44",
+      "ayah": 52,
+      "question": "two kinds of every fruit is that the same as what it says about the gardens further down or a different set",
+      "expectedRoute": "related",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d45",
+      "ayah": 54,
+      "question": "silk brocade whats brocade never heard that term",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d46",
+      "ayah": 54,
+      "question": "is wearing silk forbidden for men in this life since its described as a reward in paradise",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "d47",
+      "ayah": 55,
+      "question": "who won the champions league last year",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "d48",
+      "ayah": 56,
+      "question": "is there another verse later on that says almost the same thing about them being untouched",
+      "expectedRoute": "related",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d49",
+      "ayah": 60,
+      "question": "i like this one is it basically saying if you do good you get good back or is there more to it",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d50",
+      "ayah": 61,
+      "question": "hold on didnt we just have this one a second ago why is it back again",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d51",
+      "ayah": 62,
+      "question": "why are these gardens below the other two is that like a lower rank of paradise",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d52",
+      "ayah": 63,
+      "question": "um how do i go back to the start of the recitation on the app i pressed something by accident",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "d53",
+      "ayah": 68,
+      "question": "pomegranates where else does the sura talk about fruit i think there was one near the beginning",
+      "expectedRoute": "related",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d54",
+      "ayah": 69,
+      "question": "how often does which of the favours come up in this sura is it like thirty times",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d55",
+      "ayah": 70,
+      "question": "um my wife and i are fasting can we still like hug and stuff during the day",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "d56",
+      "ayah": 72,
+      "question": "pavilions what are pavilions in this context like tents",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d57",
+      "ayah": 73,
+      "question": "the thing with the uh",
+      "expectedRoute": "unclear",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d58",
+      "ayah": 76,
+      "question": "what are the cushions called in the arabic and is carpets really the right translation for the second thing",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "d59",
+      "ayah": 77,
+      "question": "so this is like the last one of these right how many were there in total and whats the wisdom behind saying it that much like i get it once or twice but this is a lot",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "d60",
+      "ayah": 78,
+      "question": "the sura ends by blessing the name of god why end it like that what ties it back to the first aya",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    }
+  ]
+}

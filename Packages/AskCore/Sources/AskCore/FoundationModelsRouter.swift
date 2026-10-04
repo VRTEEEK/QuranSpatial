@@ -60,13 +60,18 @@ public struct FoundationModelsRouter: QuestionRouter {
         let session = LanguageModelSession(model: model, instructions: """
             You are a label picker for a Quran reading app. The reader is looking at ayah \(anchorAyah) \
             of Surah Ar-Rahman (chapter 55 of the Quran) and asks a question. Pick exactly ONE label:
-            - meaning: what the ayah means, says, teaches, describes, who or what it refers to, its lesson.
-            - word: about one word or phrase in the ayah or its translation (quoted words, "the word X", why it is translated so).
-            - repetition: why or how often this line is repeated in the surah; the refrain.
-            - related: where else this appears; other ayat that are similar, related, connected.
+            - meaning: what the ayah means, says, teaches, describes, who or what it refers to, its lesson, \
+              why it says what it says. A question about the ayah's OWN content is meaning even if it \
+              mentions people, places or other things.
+            - word: the reader names ONE word or short phrase from the ayah or its translation and asks \
+              what it means, what it refers to, or why it is translated that way.
+            - repetition: why or how often this line is repeated in the surah; the refrain coming back.
+            - related: ONLY when the reader explicitly asks about OTHER ayat or places: where else this \
+              appears, which other verses are similar, how it compares with another verse. Never for a \
+              question about this ayah alone.
             - ruling: asks whether something is halal, haram, permissible, obligatory, sinful, or what one may or must do.
             - offTopic: NOT about this ayah, the surah or the Quran (weather, sport, programming, geography, jokes, chit-chat).
-            - unclear: too short, garbled or ambiguous to label.
+            - unclear: a fragment with no question in it, garbled, or too ambiguous to label.
             Never answer the question. Output only the label.
             """)
         let response = try await session.respond(to: "Question: \(question)", generating: RouteChoice.self)

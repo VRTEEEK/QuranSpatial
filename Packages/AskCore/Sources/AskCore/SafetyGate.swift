@@ -18,14 +18,15 @@ public struct RulingSafetyGate: Sendable {
         // explicit ruling vocabulary
         #"\bhalal\b"#, #"\bharam\b"#, #"\bhar+am\b"#, #"\bpermissib"#, #"\bpermitted\b"#, #"\ballow(ed|able)\b"#, #"\bforbidden\b"#,
         #"\bprohibit"#, #"\bobligat"#, #"\bwajib\b"#, #"\bfard\b"#, #"\bsunnah to\b"#, #"\bmakruh\b"#, #"\bmustahab"#,
-        #"\bruling\b"#, #"\bfatwa\b"#, #"\b(a )?sin\b"#, #"\bsinful\b"#, #"\bsins\b"#, #"\bpunish"#, #"\bkaffara"#, #"\bexpiat"#,
+        #"\bruling\b"#, #"\bfatwa\b"#, #"\b(a|any) sin\b"#, #"\bsin (to|if|for)\b"#, #"\bsinful\b"#, #"\bpunish"#, #"\bkaffara"#, #"\bexpiat"#,
         #"\bvalid\b"#, #"\binvalid"#, #"\bcount(s)? as\b"#, #"\bbreak(s|ing)? (my|the|your) (fast|wudu|wudhu|prayer|salah)\b"#,
         #"\bwudu\b"#, #"\bwudhu\b"#, #"\bablution"#, #"\bzakat\b"#, #"\bsadaqa"#, #"\bfasting\b"#, #"\bmy fast\b"#, #"\bramadan\b"#,
-        #"\bsalah\b"#, #"\bsalat\b"#, #"\bprayers?\b"#, #"\bprostrat"#, #"\bsajda"#, #"\bsujood"#, #"\bqibla"#,
+        #"\bsalah\b"#, #"\bsalat\b"#, #"\bprayers?\b"#, #"\bqibla"#,
         #"\bhijab\b"#, #"\bmahram\b"#, #"\bnikah"#, #"\bdivorce"#, #"\btalaq"#, #"\binterest\b"#, #"\briba\b"#, #"\bloan\b"#, #"\bmortgage"#,
         // asking for permission or obligation
         #"\b(am|are) (i|we) (allowed|permitted|supposed|required|obliged|obligated)\b"#, #"\bis (it|this|that) (ok|okay|fine|alright|all right|wrong|bad|allowed|permissible|a problem|acceptable)\b"#,
-        #"\b(can|could|may|should|must) (i|we|one|a (muslim|woman|man|person|believer)|someone|you) "#, #"\bdo (i|we) (have to|need to)\b"#,
+        #"\b(can|could|may|should|must) (i|we|one|a (muslim|woman|man|person|believer)|someone) "#, #"\bdo (i|we) (have to|need to)\b"#,
+        #"\b(is|are|was) (it|this|that) (required|necessary|mandatory|needed|compulsory|expected|obligatory)\b"#, #"\brequired to\b"#, #"\bsupposed to\b"#, #"\bneed to be\b"#,
         #"\b(is|are) (i|we|they|he|she) (allowed|permitted|supposed)\b"#, #"\bwhat (should|must|do) (i|we) do\b"#, #"\bwhat (am|are) (i|we) supposed to\b"#,
         #"\bis (it|there) (any )?(sin|harm|problem) (in|if|to)\b"#, #"\bwould (it|that) be (ok|okay|wrong|a sin|haram)\b"#,
         // a personal situation brought for judgement
@@ -67,13 +68,25 @@ public struct HybridRouter: QuestionRouter {
 
     /// The cues the rules may decide on alone. Everything else goes to the model.
     static let highConfidence: [(QuestionRoute, [String])] = [
-        (.repetition, [#"\brepeat"#, #"\brepetition"#, #"\bagain and again\b"#, #"\bover and over\b"#, #"\brefrain\b"#, #"\bhow many times\b"#, #"\bso many times\b"#, #"\b(same|this|that) (verse|ayah|aya|eye|line|question) (again|keeps|over)\b"#, #"\bkeeps? (coming|popping|showing) (up|back)\b"#, #"\b(twentieth|thirtieth|tenth|fifth|umpteenth) time\b"#, #"\b(already|just) (read|saw|seen|had) (this|that|it)\b"#, #"\bexact same (verse|ayah|aya|line|wording)\b"#]),
+        (.repetition, [#"\brepeat"#, #"\brepetition"#, #"\bagain and again\b"#, #"\bover and over\b"#, #"\brefrain\b"#, #"\bhow many (more )?times\b"#, #"\bso many times\b"#, #"\b(same|this|that) (verse|ayah|aya|eye|line|question) (again|keeps|over)\b"#, #"\bkeeps? (coming|popping|showing) (up|back)\b"#, #"\b(twentieth|thirtieth|tenth|fifth|umpteenth) time\b"#, #"\b(already|just) (read|saw|seen|had) (this|that|it)\b"#, #"\bexact same (verse|ayah|aya|line|wording)\b"#,
+                       #"\balready\b.*\btimes\b"#, #"\b(back|here) again\b"#, #"\bis it back\b"#, #"\bcome(s)? back\b"#, #"\bhow many were there\b"#, #"\blast one of these\b"#, #"\bfirst time this (line|verse|ayah|aya|eye)\b"#, #"\b(this|that) (line|verse|ayah|aya|eye) (shows|comes|pops) up\b"#, #"\bwisdom behind (saying|repeating) it\b"#]),
         (.related, [#"\bwhere else\b"#, #"\bother (verses?|ayahs?|ayas?|ayat|eyes?|places?|parts?) (in|of|that|which|with)\b"#, #"\bsimilar (to|verse|ayah|aya|one)\b"#, #"\brelated (to|verse|ayah)\b"#, #"\bcompare(d|s)? (to|with)\b"#, #"\bsounds (a lot )?like (the|an|another)\b"#, #"\bearlier (one|verse|ayah|aya)\b"#, #"\bcross.?reference"#, #"\bconnect(ed|ion) (to|with|between)\b"#]),
         (.word, [#"\bthe word\b"#, #"\bthis word\b"#, #"\bthat word\b"#, #"\barabic (word|term)\b"#, #"\bword for\b"#, #"\bthe term\b"#, #"\btranslat(ed|ion) (as|for|of|here)\b"#, #"\bright translation\b"#, #"\bliterally mean"#, #"\bwhat does ["'“‘][^"'”’]+["'”’] mean"#, #"\bnever heard (that|this|the) word\b"#, #"\bwhat('s| is) (a|an) [a-z]+\b"#]),
         (.offTopic, [#"\b(weather|forecast|football|soccer|arsenal|liverpool|match|score|bitcoin|stock|crypto|recipe|python|javascript|swift code|for loop|iphone|vision pro|headset|battery|brightness|text (bigger|smaller|larger)|font size|volume|wifi|bluetooth|movie|netflix|song|playlist|capital of|president|election|joke|poem|homework|flight|hotel|restaurant|dinner|lunch|coffee|time is it|what day|birthday|game|car|bus|train|traffic)\b"#]),
     ]
 
+    /// Filler words that do not count toward a question's substance.
+    static let fillers: Set<String> = ["um", "uh", "er", "hmm", "so", "like", "ok", "okay", "yeah", "yes", "no", "and", "then", "the", "a", "an", "wait", "well", "oh", "right", "with", "of", "to", "in", "on", "it", "this", "that", "thing", "stuff", "i", "me", "you"]
+
+    /// A fragment: after removing fillers, one substantive word or none, and no question mark.
+    public static func isFragment(_ question: String) -> Bool {
+        let words = question.lowercased().split { !$0.isLetter && $0 != "'" && $0 != "’" }.map(String.init)
+        let substantive = words.filter { !fillers.contains($0) }
+        return substantive.count <= 1 && !question.contains("?")
+    }
+
     public static func highConfidenceRoute(_ question: String) -> QuestionRoute? {
+        if isFragment(question) { return .unclear }
         let q = question.lowercased()
         let onTopic = q.range(of: #"\b(ayah|ayat|aya|eye|verse|surah|sura|quran|koran|allah|god|lord|jinn|gin|favou?rs?|blessings?|bount)"#, options: .regularExpression) != nil
         for (route, patterns) in highConfidence where patterns.contains(where: { q.range(of: $0, options: .regularExpression) != nil }) {
