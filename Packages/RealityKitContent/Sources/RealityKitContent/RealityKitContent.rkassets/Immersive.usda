@@ -1,0 +1,26 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+# Root kept deliberately: ImmersiveView loads this scene by name and adds its root entity
+# to the RealityView. The Xcode visionOS starter template's two GridMaterial spheres were
+# removed on 2026-09-04 - they sat at (+/-0.5, 1.5, -1.5), the ayah plane's exact y and z,
+# with half of each sphere in front of the text, occluding both edges of every ayah wider
+# than 0.8m.
+def Xform "Root"
+{
+    # The dissolve material is referenced here so the asset compiler keeps it. Standalone
+    # files under Materials/ are pruned from the compiled .reality unless a scene refers to
+    # them - which is why it silently vanished when the template scenes that used to
+    # reference Materials/ were deleted.
+    def "DissolveMaterial" (
+        active = true
+        prepend references = @Materials/DissolveMaterial.usda@
+    )
+    {
+    }
+
+}

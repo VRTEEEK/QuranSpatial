@@ -1,0 +1,218 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    # THE NOISE NODE HERE IS fractal3d, NOT fractal2d, AND THAT IS NOT A STYLE CHOICE.
+    #
+    # ND_fractal2d_float makes realitytool DROP THE ENTIRE MATERIAL while still exiting 0.
+    # The compiled scene comes out carrying only the Root Xform - no shader nodes, no
+    # material - and the runtime then reports
+    # ShaderGraphMaterial.LoadError.materialNameNotFound for every spelling of the path, as
+    # though the file were missing. ND_unifiednoise2d_float and ND_unifiednoise3d_float do
+    # the same. fractal3d, noise2d/3d, cellnoise2d/3d and worleynoise2d/3d all survive.
+    #
+    # fractal3d takes the same amplitude/octaves/lacunarity/diminish knobs as fractal2d and
+    # differs only in wanting a vector3, so the seeded UV is widened to one with a convert
+    # node and the third component left at zero. That is the whole difference between a
+    # material that loads and one that does not.
+    def Material "DissolveMaterial"
+    {
+        # Driven from Swift every frame. 0 = fully visible, 1 = fully dissolved.
+        float inputs:progress = 0
+        # Per-ayah noise offset, so byte-identical refrains break up differently.
+        float2 inputs:noiseOffset = (0, 0)
+        # Width of the soft burn edge, in noise units.
+        float inputs:edgeWidth = 0.12
+        # Noise cells across the plane, per axis. TWO components, not one: every ayah shares
+        # one metres-per-pixel scale but not one aspect ratio - a one-line refrain is 3.2:1
+        # and ayah 33 is nearer 1.7:1 - so a single scalar would stretch the noise cells
+        # horizontally by a different amount in every ayah. The driver sets x from a fixed
+        # cells-across-width constant and derives y from the texture's aspect, which makes a
+        # cell square in world space and the grain identical in every ayah.
+        float2 inputs:noiseScale = (14, 14)
+        # Flat colour of the text. The raster is opaque white glyphs on transparency, so
+        # SHAPE comes from the texture's alpha and COLOUR comes from here.
+        #
+        # Deliberately NOT sampled from the texture's RGB. That raster is
+        # CGImageAlphaInfo.premultipliedLast, so its stored RGB is already multiplied by
+        # alpha; multiplying it by opacity again squares alpha on every antialiased glyph
+        # edge and thins the diacritics. Alpha carries no such convention - it means the
+        # same thing premultiplied or not - so reading only alpha is correct whether or not
+        # TextureResource un-premultiplies on load.
+        color3f inputs:textColor = (1, 1, 1)
+        # THE DEFAULT ASSET IS LOAD-BEARING AND MUST RESOLVE. It is not decoration and it
+        # is not a fallback image.
+        #
+        # `realitytool` allocates a texture slot for a promoted `asset` input only when the
+        # path resolves at compile time. With `@@`, or with a path that does not resolve,
+        # the parameter still APPEARS in `parameterNames` but has no slot behind it:
+        # `getParameter` returns nil and `setParameter` rejects every single
+        # `MaterialParameters.Value` case with `incorrectTypeForParameterName` - including
+        # `.float` and `.bool`, which is what proves it is a missing slot rather than a
+        # wrong type. Verified by compiling with and without a resolving path and counting
+        # `Texture` entries in the manifest: 1 versus 0.
+        #
+        # The path resolves against THIS FILE's directory, not the .rkassets root, which is
+        # why the placeholder sits beside it in Materials/.
+        #
+        # It is 4x4 and fully transparent on purpose: the driver replaces it per ayah, and
+        # if that swap ever failed the plane should show nothing rather than a white
+        # rectangle hanging in the room. The failure is reported through the HUD and the log,
+        # not through the scene.
+        asset inputs:textTexture = @ayah-texture-placeholder.png@ (
+            colorSpace = "srgb_texture"
+        )
+
+        token outputs:mtlx:surface.connect = </Root/DissolveMaterial/UnlitSurface.outputs:out>
+        token outputs:realitykit:vertex
+        token outputs:surface
+
+        def Shader "Texcoord"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            int inputs:index = 0
+            vector2 outputs:out
+        }
+
+        # ND_image_float, NOT ND_image_color4, AND THAT IS THE WHOLE REASON THE TEXTURE
+        # PARAMETER WORKS.
+        #
+        # Measured by counting `Texture` entries in the compiled manifest, holding the file,
+        # the path and everything else constant and varying only the node: with a PROMOTED
+        # asset input, ND_image_float allocates a texture slot and ND_image_color3,
+        # ND_image_color4 and ND_RealityKitTexture2D_color4 all allocate none. A material
+        # with no slot still lists the parameter in `parameterNames`, but `getParameter`
+        # returns nil and `setParameter` rejects every MaterialParameters.Value case.
+        #
+        # Sampling a single float rather than RGBA costs nothing here: the ayah raster is
+        # opaque white glyphs drawn into a premultipliedLast context, so red and alpha are
+        # equal at every pixel and a one-channel sample IS the coverage. Colour comes from
+        # `textColor`, which is what the note on that input already required.
+        def Shader "TextImage"
+        {
+            uniform token info:id = "ND_image_float"
+            asset inputs:file.connect = </Root/DissolveMaterial.inputs:textTexture>
+            string inputs:filtertype = "linear"
+            vector2 inputs:texcoord.connect = </Root/DissolveMaterial/Texcoord.outputs:out>
+            float outputs:out
+        }
+
+        # --- noise field, seeded by offsetting where it is sampled -------------------
+        def Shader "ScaledUV"
+        {
+            uniform token info:id = "ND_multiply_vector2"
+            vector2 inputs:in1.connect = </Root/DissolveMaterial/Texcoord.outputs:out>
+            vector2 inputs:in2.connect = </Root/DissolveMaterial.inputs:noiseScale>
+            vector2 outputs:out
+        }
+
+        def Shader "SeededUV"
+        {
+            uniform token info:id = "ND_add_vector2"
+            vector2 inputs:in1.connect = </Root/DissolveMaterial/ScaledUV.outputs:out>
+            vector2 inputs:in2.connect = </Root/DissolveMaterial.inputs:noiseOffset>
+            vector2 outputs:out
+        }
+
+        def Shader "NoisePosition"
+        {
+            uniform token info:id = "ND_convert_vector2_vector3"
+            vector2 inputs:in.connect = </Root/DissolveMaterial/SeededUV.outputs:out>
+            vector3 outputs:out
+        }
+
+        # amplitude 0.5 is deliberately conservative and the errors are NOT symmetric.
+        # `NoiseCentred` shifts this to sit around 0.5, and the threshold sweep below spans
+        # [-edgeWidth, 1]. Too LOW an amplitude costs dead time - the sweep runs past both
+        # ends of the noise's actual range, so the burn starts a little after progress
+        # leaves 0 and finishes a little before it reaches 1. Too HIGH pushes noise outside
+        # [0, 1], and a pixel below 0 is already dissolved at progress 0: permanent holes in
+        # settled scripture. Raise this only against what the headset shows, and check
+        # settled text for holes afterwards.
+        def Shader "Noise"
+        {
+            uniform token info:id = "ND_fractal3d_float"
+            vector3 inputs:position.connect = </Root/DissolveMaterial/NoisePosition.outputs:out>
+            float inputs:amplitude = 0.5
+            int inputs:octaves = 3
+            float inputs:lacunarity = 2
+            float inputs:diminish = 0.5
+            float outputs:out
+        }
+
+        def Shader "NoiseCentred"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/DissolveMaterial/Noise.outputs:out>
+            float inputs:in2 = 0.5
+            float outputs:out
+        }
+
+        # --- threshold: low = progress*(1+edge) - edge, high = low + edge ------------
+        def Shader "EdgePlusOne"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/DissolveMaterial.inputs:edgeWidth>
+            float inputs:in2 = 1
+            float outputs:out
+        }
+
+        def Shader "ProgressScaled"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/DissolveMaterial.inputs:progress>
+            float inputs:in2.connect = </Root/DissolveMaterial/EdgePlusOne.outputs:out>
+            float outputs:out
+        }
+
+        def Shader "ThresholdLow"
+        {
+            uniform token info:id = "ND_subtract_float"
+            float inputs:in1.connect = </Root/DissolveMaterial/ProgressScaled.outputs:out>
+            float inputs:in2.connect = </Root/DissolveMaterial.inputs:edgeWidth>
+            float outputs:out
+        }
+
+        def Shader "ThresholdHigh"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/DissolveMaterial/ThresholdLow.outputs:out>
+            float inputs:in2.connect = </Root/DissolveMaterial.inputs:edgeWidth>
+            float outputs:out
+        }
+
+        def Shader "Mask"
+        {
+            uniform token info:id = "ND_smoothstep_float"
+            float inputs:in.connect = </Root/DissolveMaterial/NoiseCentred.outputs:out>
+            float inputs:low.connect = </Root/DissolveMaterial/ThresholdLow.outputs:out>
+            float inputs:high.connect = </Root/DissolveMaterial/ThresholdHigh.outputs:out>
+            float outputs:out
+        }
+
+        def Shader "Opacity"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/DissolveMaterial/TextImage.outputs:out>
+            float inputs:in2.connect = </Root/DissolveMaterial/Mask.outputs:out>
+            float outputs:out
+        }
+
+        # opacityThreshold is left at its default 0, which is alpha BLENDING rather than
+        # alpha testing - a cut-out edge would defeat the soft burn entirely.
+        def Shader "UnlitSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            color3f inputs:color.connect = </Root/DissolveMaterial.inputs:textColor>
+            float inputs:opacity.connect = </Root/DissolveMaterial/Opacity.outputs:out>
+            bool inputs:applyPostProcessToneMap = 0
+            bool inputs:hasPremultipliedAlpha = 0
+            token outputs:out
+        }
+    }
+}

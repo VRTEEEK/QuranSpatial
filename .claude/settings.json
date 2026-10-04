@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(**/*.pbxproj)",
+      "Edit(**/*.xcworkspace/**)",
+      "Edit(**/*.xcscheme)"
+    ]
+  }
+}

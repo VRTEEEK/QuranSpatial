@@ -1,0 +1,37 @@
+written: 2026-10-03T12:08:00Z
+
+--- measured from the built scene ---
+entities:                 39
+mesh parts (draw calls):  28
+triangles:                8658
+lights:                   9
+
+--- constants as built ---
+platformRadius            3.0 m
+platformCenterZ           1.75 m
+platformThickness         0.2 m
+platformTopY              0.0 m
+waterY                    -0.05 m
+waterSize                 1000.0 m
+pavilionInnerRadius       3.5 m
+pavilionColumnCount       8
+pavilionColumnWidth       0.4 m
+pavilionColumnHeight      3.5 m
+pavilionLintelHeight      0.5 m
+mountainDistance          300.0 m
+mountainHeight            50.0 m
+mountainSegments          24
+skyRadius                 900.0 m
+lanternCount              8
+lanternRingRadius         2.6 m
+lanternSize               SIMD3<Float>(0.3, 0.6, 0.3) m
+moonlightDirection        SIMD3<Float>(-0.35, -1.0, 0.25)
+moonlightIntensity        80.0 lux
+lanternIntensity          900.0 lm
+lanternAttenuationRadius  2.5 m
+
+--- text plane, for confirmation that it was not touched ---
+firstLineBaselineHeight   24.5 m
+assumedViewingDistance    60.0 m (plane at z = -that)
+platform front rim at z   -1.25 m
+pavilion front gap at z    -1.75 m

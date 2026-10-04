@@ -1,0 +1,7 @@
+written: 2026-10-03T12:08:00Z
+shipFontResourceName: AmiriQuran
+isShipFontBundled: true
+probe: ayah 1 from the corpus
+bundledPostScriptName: AmiriQuran-Regular
+resolvedPostScriptName: AmiriQuran-Regular
+verdict: OK - resolved to the bundled ship font

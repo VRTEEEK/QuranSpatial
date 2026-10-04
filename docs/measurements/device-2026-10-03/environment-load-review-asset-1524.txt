@@ -1,0 +1,62 @@
+written: 2026-10-03T12:24:15Z
+asset: QuranSpatial_Review.usdz  (self-contained; see the note in the source)
+isolateForMeasurement: false
+
+--- 1. ORIENTATION (uncorrected) ---
+root T=(0.0000, 0.0000, 0.0000)  S=(1.0000, 1.0000, 1.0000)
+root orientation 0.00 deg about (nan, nan, nan)  [kept, not corrected]
+Platform entity not found by name.
+
+--- 2. INSTANCING / DRAW CALLS ---
+entities in hierarchy       : 22
+entities carrying a mesh    : 15
+mesh parts (draw submissions): 17
+MeshInstancesComponent found: 0 entit(y/ies), 0 instance part(s)
+-> NO MeshInstancesComponent anywhere: USD instancing was EXPANDED on import
+
+--- 3. TRIANGLES ---
+triangles as RealityKit sees them: 147232
+
+--- 4. TEXTURE MEMORY ---
+distinct textures resident: 1, total 85.33 MB
+  emissiveColor     4096 x 4096   rgba8Unorm_srgb              mips 13    85.33 MB
+
+--- 5. TOTAL FOOTPRINT ---
+phys_footprint before load : 442.42 MB
+phys_footprint after load  : 704.33 MB
+delta attributable to load : +261.91 MB
+
+--- 6. LIGHTS ---
+USD authored 10: 1 DistantLight (Moon_Key) + 9 SphereLight (8 lantern pools + 1 ceiling)
+arrived in RealityKit: 0
+  NONE — every authored light was dropped on import.
+
+--- 7. LOAD TIME ---
+Entity(named:) returned in 1.547 s
+load start -> first rendered frame: 1.622 s  [ON DEVICE]
+
+--- LIGHTING AUDIT (not a substitute for looking) ---
+lights created: 2
+  moon-key  directional  400 lux  dir(-0.35, -1.00, 0.25)
+  Lantern_08       point  1400 lm  r=2.8m  at (0.000, 0.450, 0.000)
+  MISSING (named in EnvironmentLighting, absent from the asset):
+    Lantern_01
+    Lantern_02
+    Lantern_03
+    Lantern_04
+    Lantern_05
+    Lantern_06
+    Lantern_07
+    Lantern_Ceiling
+ok: 2 light entities created
+FAIL: 8 named lantern(s) not found in the asset
+base colours sampled: 17, non-black or textured: 0
+FAIL: every sampled surface is black — scene would be black under any light
+GLOW-CARDS: Lantern_08[0]: PhysicallyBasedMaterial blending=opaque opacityThreshold=nil baseColorTexture=no emissiveTexture=no emissiveIntensity=1.0 | Step_Edge_Glow[0]: PhysicallyBasedMaterial blending=opaque opacityThreshold=nil baseColorTexture=no emissiveTexture=no emissiveIntensity=1.0 | GlowCards_Merged[0]: PhysicallyBasedMaterial blending=transparent(scale 1.0, opacityTexture YES) opacityThreshold=nil baseColorTexture=no emissiveTexture=YES emissiveIntensity=1.0
+GLOW-CARDS: hidden 3 [Lantern_08, Step_Edge_Glow, GlowCards_Merged]
+IBL: textures/night_sky_2k.png not found inside the usdz  -> NOT ATTACHED
+SKY: no entity named 'Night_Sky_Dome' — material NOT replaced
+DOME: 'Night_Sky_Dome' not found; radius NOT changed
+STARS: sprite mesh 1300 quads, 5200 verts, 2600 tris, 1 material part(s) = 1 DRAW CALL(S); quad 3.0944715 m = 0.18 deg at r=985.0 m; bound starFieldBrightness 1.0
+--- material 'Water' as loaded ---
+  [0] baseColor tint (0.000, 0.000, 0.000) tex=none  roughness=Roughness(scale: 1.0, texture: nil)  metallic=Metallic(scale: 0.0, texture: nil)

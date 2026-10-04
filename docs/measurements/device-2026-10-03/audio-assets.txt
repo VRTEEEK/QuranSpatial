@@ -1,0 +1,8 @@
+written: 2026-10-03T12:08:00Z
+audio: found via bundle root, 8881584 bytes
+timings: found via bundle root, 11250 bytes
+timings decoded: 79 segments, ayahCount 78, totalDuration 678.243
+timings kinds: ayah 47, intro 1, refrain 31
+audio duration: 678.230s
+duration vs timings totalDuration: -0.013s
+verdict: OK - both assets resolved and agree

@@ -1,0 +1,109 @@
+{
+  "_note": [
+    "Ground-truth labels for the threshold search. Segments are [start, end] in seconds",
+    "relative to the first frame of the capture.",
+    "",
+    "LABELS FOR THE TWO EXISTING CAPTURES ARE DERIVED FROM DEVICE DETECTIONS, which is",
+    "circular: they mark where the recognizer fired, not independently where the posture",
+    "was. They are usable as a starting point because the postures were confirmed by the",
+    "wearer afterwards, but captures from here on should carry human-labelled spans",
+    "recorded at capture time. Add 'intent_end' to a dua segment to get a release-latency",
+    "number out of the release report.",
+    "",
+    "'role' is advisory. Any capture containing a segment of kind 'pinch' is forced into",
+    "the holdout set by the harness regardless of what this file says.",
+    "",
+    "dua-narrow / dua-natural / dua-wide are deliberate variations along the separation axis, not repetitions. separation is the parameter expected to vary most between people (hand size, arm length, how close someone naturally cups), and it already binds the two tightest duas in the 2026-09-03T20-53-24Z capture at roughly half the margin of the three that bind on inward. Read them as a sweep, never aggregated."
+  ],
+  "captures": [
+    {
+      "file": "capture/dua-capture-2026-09-03T20-53-24Z.json",
+      "role": "search",
+      "segments": [
+        {
+          "kind": "dua",
+          "start": 0.94,
+          "end": 7.65
+        },
+        {
+          "kind": "dua",
+          "start": 10.93,
+          "end": 18.84
+        },
+        {
+          "kind": "dua",
+          "start": 70.67,
+          "end": 76.19
+        },
+        {
+          "kind": "dua",
+          "start": 120.26,
+          "end": 125.92
+        },
+        {
+          "kind": "dua",
+          "start": 127.29,
+          "end": 134.65
+        },
+        {
+          "kind": "mushaf-seated",
+          "start": 25.65,
+          "end": 59.35
+        },
+        {
+          "kind": "mushaf-standing",
+          "start": 79.6,
+          "end": 120.3
+        }
+      ]
+    },
+    {
+      "file": "capture/dua-capture-2026-09-03T20-10-57Z.json",
+      "role": "search",
+      "segments": [
+        {
+          "kind": "dua",
+          "start": 0.41,
+          "end": 8.19
+        },
+        {
+          "kind": "dua",
+          "start": 15.91,
+          "end": 23.52
+        },
+        {
+          "kind": "phone",
+          "start": 9.62,
+          "end": 13.29
+        },
+        {
+          "kind": "headset-adjust",
+          "start": 13.3,
+          "end": 15.95
+        }
+      ]
+    }
+  ],
+  "true_kinds": [
+    "dua",
+    "dua-narrow",
+    "dua-natural",
+    "dua-wide"
+  ],
+  "confuser_kinds": [
+    "pinch",
+    "face-wipe",
+    "lap-rest",
+    "headset-adjust",
+    "conversation",
+    "takbir",
+    "mushaf-seated",
+    "mushaf-standing",
+    "mushaf-palms-inward",
+    "mushaf-one-palm",
+    "phone"
+  ],
+  "holdout_kinds": [
+    "pinch"
+  ]
+}

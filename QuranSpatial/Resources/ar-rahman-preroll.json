@@ -1,0 +1,707 @@
+{
+ "source": "rahman-single.mp3",
+ "mp3SHA256": "bf48c019846310aac307d1c0edb64918a0cb39ef4ec79796e9f2377f3f7be8c0",
+ "marginDb": 6.0,
+ "method": "300-3400 Hz band energy, 20 ms frames at 10 ms hop, 50 ms smoothing; floor = p5 of +-10 s excluding digital silence and t < 3.761 s; speech-free = below floor + margin",
+ "note": "gapStart is where the speech-free gap before the boundary begins; resume there and fade in before speechOnset. Segment 0 has no row: it is the intro, never an Ask anchor.",
+ "segments": [
+  {
+   "index": 1,
+   "kind": "ayah",
+   "boundary": 3.31,
+   "status": "unmeasured",
+   "reason": "no bed to measure against: the intro (0-3.637 s) carries no bed and decays below the later floor; 124 ms of digital silence at 3.637-3.761 s (a splice) sits inside segment 1; the boundary at 3.31 s is in the intro's decay tail. onset_s is the first rise above the post-splice floor + margin"
+  },
+  {
+   "index": 2,
+   "kind": "ayah",
+   "boundary": 7.24,
+   "status": "measured",
+   "gapStart": 6.93,
+   "speechOnset": 7.48,
+   "usablePreroll": 0.55
+  },
+  {
+   "index": 3,
+   "kind": "ayah",
+   "boundary": 11.69,
+   "status": "measured",
+   "gapStart": 11.38,
+   "speechOnset": 11.89,
+   "usablePreroll": 0.51
+  },
+  {
+   "index": 4,
+   "kind": "ayah",
+   "boundary": 16.88,
+   "status": "measured",
+   "gapStart": 16.61,
+   "speechOnset": 17.1,
+   "usablePreroll": 0.49
+  },
+  {
+   "index": 5,
+   "kind": "ayah",
+   "boundary": 20.67,
+   "status": "measured",
+   "gapStart": 20.39,
+   "speechOnset": 20.87,
+   "usablePreroll": 0.48
+  },
+  {
+   "index": 6,
+   "kind": "ayah",
+   "boundary": 25.78,
+   "status": "measured",
+   "gapStart": 25.42,
+   "speechOnset": 25.9,
+   "usablePreroll": 0.48
+  },
+  {
+   "index": 7,
+   "kind": "ayah",
+   "boundary": 31.8,
+   "status": "measured",
+   "gapStart": 31.51,
+   "speechOnset": 32.04,
+   "usablePreroll": 0.53
+  },
+  {
+   "index": 8,
+   "kind": "ayah",
+   "boundary": 39.09,
+   "status": "measured",
+   "gapStart": 38.69,
+   "speechOnset": 39.31,
+   "usablePreroll": 0.62
+  },
+  {
+   "index": 9,
+   "kind": "ayah",
+   "boundary": 44.23,
+   "status": "measured",
+   "gapStart": 43.78,
+   "speechOnset": 44.32,
+   "usablePreroll": 0.54
+  },
+  {
+   "index": 10,
+   "kind": "ayah",
+   "boundary": 52.18,
+   "status": "measured",
+   "gapStart": 51.81,
+   "speechOnset": 52.4,
+   "usablePreroll": 0.59
+  },
+  {
+   "index": 11,
+   "kind": "ayah",
+   "boundary": 57.25,
+   "status": "measured",
+   "gapStart": 56.85,
+   "speechOnset": 57.48,
+   "usablePreroll": 0.63
+  },
+  {
+   "index": 12,
+   "kind": "ayah",
+   "boundary": 64.88,
+   "status": "measured",
+   "gapStart": 64.44,
+   "speechOnset": 65.01,
+   "usablePreroll": 0.57
+  },
+  {
+   "index": 13,
+   "kind": "refrain",
+   "boundary": 70.4,
+   "status": "measured",
+   "gapStart": 69.99,
+   "speechOnset": 70.56,
+   "usablePreroll": 0.57
+  },
+  {
+   "index": 14,
+   "kind": "ayah",
+   "boundary": 78.23,
+   "status": "measured",
+   "gapStart": 77.76,
+   "speechOnset": 78.39,
+   "usablePreroll": 0.63
+  },
+  {
+   "index": 15,
+   "kind": "ayah",
+   "boundary": 87.28,
+   "status": "measured",
+   "gapStart": 86.79,
+   "speechOnset": 87.5,
+   "usablePreroll": 0.71
+  },
+  {
+   "index": 16,
+   "kind": "refrain",
+   "boundary": 97.4,
+   "status": "measured",
+   "gapStart": 97.17,
+   "speechOnset": 97.49,
+   "usablePreroll": 0.32
+  },
+  {
+   "index": 17,
+   "kind": "ayah",
+   "boundary": 106.7,
+   "status": "measured",
+   "gapStart": 106.45,
+   "speechOnset": 106.92,
+   "usablePreroll": 0.47
+  },
+  {
+   "index": 18,
+   "kind": "refrain",
+   "boundary": 113.69,
+   "status": "measured",
+   "gapStart": 113.32,
+   "speechOnset": 113.95,
+   "usablePreroll": 0.63
+  },
+  {
+   "index": 19,
+   "kind": "ayah",
+   "boundary": 121.37,
+   "status": "measured",
+   "gapStart": 121.02,
+   "speechOnset": 121.58,
+   "usablePreroll": 0.56
+  },
+  {
+   "index": 20,
+   "kind": "ayah",
+   "boundary": 126.76,
+   "status": "measured",
+   "gapStart": 126.42,
+   "speechOnset": 127.06,
+   "usablePreroll": 0.64
+  },
+  {
+   "index": 21,
+   "kind": "refrain",
+   "boundary": 131.82,
+   "status": "measured",
+   "gapStart": 131.5,
+   "speechOnset": 132.06,
+   "usablePreroll": 0.56
+  },
+  {
+   "index": 22,
+   "kind": "ayah",
+   "boundary": 139.61,
+   "status": "measured",
+   "gapStart": 139.33,
+   "speechOnset": 139.88,
+   "usablePreroll": 0.55
+  },
+  {
+   "index": 23,
+   "kind": "refrain",
+   "boundary": 145.2,
+   "status": "measured",
+   "gapStart": 144.92,
+   "speechOnset": 145.45,
+   "usablePreroll": 0.53
+  },
+  {
+   "index": 24,
+   "kind": "ayah",
+   "boundary": 152.45,
+   "status": "measured",
+   "gapStart": 152.16,
+   "speechOnset": 152.7,
+   "usablePreroll": 0.54
+  },
+  {
+   "index": 25,
+   "kind": "refrain",
+   "boundary": 160.51,
+   "status": "measured",
+   "gapStart": 160.18,
+   "speechOnset": 160.78,
+   "usablePreroll": 0.6
+  },
+  {
+   "index": 26,
+   "kind": "ayah",
+   "boundary": 168.34,
+   "status": "measured",
+   "gapStart": 167.87,
+   "speechOnset": 168.53,
+   "usablePreroll": 0.66
+  },
+  {
+   "index": 27,
+   "kind": "ayah",
+   "boundary": 178.84,
+   "status": "measured",
+   "gapStart": 178.42,
+   "speechOnset": 178.9,
+   "usablePreroll": 0.48
+  },
+  {
+   "index": 28,
+   "kind": "refrain",
+   "boundary": 187.51,
+   "status": "measured",
+   "gapStart": 186.94,
+   "speechOnset": 187.94,
+   "usablePreroll": 1.0
+  },
+  {
+   "index": 29,
+   "kind": "ayah",
+   "boundary": 197.29,
+   "status": "measured",
+   "gapStart": 196.99,
+   "speechOnset": 197.55,
+   "usablePreroll": 0.56
+  },
+  {
+   "index": 30,
+   "kind": "refrain",
+   "boundary": 207.42,
+   "status": "measured",
+   "gapStart": 207.09,
+   "speechOnset": 207.66,
+   "usablePreroll": 0.57
+  },
+  {
+   "index": 31,
+   "kind": "ayah",
+   "boundary": 216.01,
+   "status": "measured",
+   "gapStart": 215.53,
+   "speechOnset": 216.19,
+   "usablePreroll": 0.66
+  },
+  {
+   "index": 32,
+   "kind": "refrain",
+   "boundary": 221.97,
+   "status": "measured",
+   "gapStart": 221.54,
+   "speechOnset": 222.16,
+   "usablePreroll": 0.62
+  },
+  {
+   "index": 33,
+   "kind": "ayah",
+   "boundary": 231.2,
+   "status": "measured",
+   "gapStart": 230.61,
+   "speechOnset": 231.57,
+   "usablePreroll": 0.96
+  },
+  {
+   "index": 34,
+   "kind": "refrain",
+   "boundary": 265.63,
+   "status": "measured",
+   "gapStart": 265.24,
+   "speechOnset": 265.83,
+   "usablePreroll": 0.59
+  },
+  {
+   "index": 35,
+   "kind": "ayah",
+   "boundary": 273.79,
+   "status": "measured",
+   "gapStart": 273.32,
+   "speechOnset": 273.84,
+   "usablePreroll": 0.52
+  },
+  {
+   "index": 36,
+   "kind": "refrain",
+   "boundary": 288.67,
+   "status": "measured",
+   "gapStart": 288.26,
+   "speechOnset": 288.85,
+   "usablePreroll": 0.59
+  },
+  {
+   "index": 37,
+   "kind": "ayah",
+   "boundary": 296.62,
+   "status": "measured",
+   "gapStart": 296.26,
+   "speechOnset": 296.85,
+   "usablePreroll": 0.59
+  },
+  {
+   "index": 38,
+   "kind": "refrain",
+   "boundary": 305.35,
+   "status": "suspect",
+   "reason": "boundary lies inside continuous speech 304.40-305.96 s; nearest speech-free gaps 304.11-304.40 s (before) and 305.96-306.48 s (after); energy cannot place the ayah start - needs a listening check"
+  },
+  {
+   "index": 39,
+   "kind": "ayah",
+   "boundary": 314.39,
+   "status": "measured",
+   "gapStart": 314.06,
+   "speechOnset": 314.66,
+   "usablePreroll": 0.6
+  },
+  {
+   "index": 40,
+   "kind": "refrain",
+   "boundary": 329.48,
+   "status": "measured",
+   "gapStart": 329.16,
+   "speechOnset": 329.77,
+   "usablePreroll": 0.61
+  },
+  {
+   "index": 41,
+   "kind": "ayah",
+   "boundary": 336.95,
+   "status": "measured",
+   "gapStart": 336.7,
+   "speechOnset": 337.2,
+   "usablePreroll": 0.5
+  },
+  {
+   "index": 42,
+   "kind": "refrain",
+   "boundary": 351.76,
+   "status": "measured",
+   "gapStart": 351.61,
+   "speechOnset": 351.87,
+   "usablePreroll": 0.26
+  },
+  {
+   "index": 43,
+   "kind": "ayah",
+   "boundary": 361.23,
+   "status": "measured",
+   "gapStart": 360.85,
+   "speechOnset": 361.66,
+   "usablePreroll": 0.81
+  },
+  {
+   "index": 44,
+   "kind": "ayah",
+   "boundary": 369.1,
+   "status": "measured",
+   "gapStart": 368.84,
+   "speechOnset": 369.35,
+   "usablePreroll": 0.51
+  },
+  {
+   "index": 45,
+   "kind": "refrain",
+   "boundary": 375.58,
+   "status": "measured",
+   "gapStart": 375.3,
+   "speechOnset": 375.83,
+   "usablePreroll": 0.53
+  },
+  {
+   "index": 46,
+   "kind": "ayah",
+   "boundary": 382.54,
+   "status": "measured",
+   "gapStart": 382.27,
+   "speechOnset": 382.77,
+   "usablePreroll": 0.5
+  },
+  {
+   "index": 47,
+   "kind": "refrain",
+   "boundary": 390.22,
+   "status": "measured",
+   "gapStart": 389.92,
+   "speechOnset": 390.49,
+   "usablePreroll": 0.57
+  },
+  {
+   "index": 48,
+   "kind": "ayah",
+   "boundary": 397.69,
+   "status": "measured",
+   "gapStart": 397.24,
+   "speechOnset": 397.96,
+   "usablePreroll": 0.72
+  },
+  {
+   "index": 49,
+   "kind": "refrain",
+   "boundary": 403.28,
+   "status": "measured",
+   "gapStart": 403.0,
+   "speechOnset": 403.52,
+   "usablePreroll": 0.52
+  },
+  {
+   "index": 50,
+   "kind": "ayah",
+   "boundary": 410.68,
+   "status": "measured",
+   "gapStart": 410.3,
+   "speechOnset": 410.92,
+   "usablePreroll": 0.62
+  },
+  {
+   "index": 51,
+   "kind": "refrain",
+   "boundary": 415.53,
+   "status": "measured",
+   "gapStart": 415.26,
+   "speechOnset": 415.76,
+   "usablePreroll": 0.5
+  },
+  {
+   "index": 52,
+   "kind": "ayah",
+   "boundary": 422.63,
+   "status": "measured",
+   "gapStart": 422.25,
+   "speechOnset": 422.93,
+   "usablePreroll": 0.68
+  },
+  {
+   "index": 53,
+   "kind": "refrain",
+   "boundary": 428.94,
+   "status": "measured",
+   "gapStart": 428.67,
+   "speechOnset": 429.19,
+   "usablePreroll": 0.52
+  },
+  {
+   "index": 54,
+   "kind": "ayah",
+   "boundary": 436.49,
+   "status": "measured",
+   "gapStart": 436.18,
+   "speechOnset": 436.76,
+   "usablePreroll": 0.58
+  },
+  {
+   "index": 55,
+   "kind": "refrain",
+   "boundary": 454.14,
+   "status": "measured",
+   "gapStart": 453.85,
+   "speechOnset": 454.4,
+   "usablePreroll": 0.55
+  },
+  {
+   "index": 56,
+   "kind": "ayah",
+   "boundary": 461.36,
+   "status": "measured",
+   "gapStart": 461.03,
+   "speechOnset": 461.68,
+   "usablePreroll": 0.65
+  },
+  {
+   "index": 57,
+   "kind": "refrain",
+   "boundary": 481.31,
+   "status": "measured",
+   "gapStart": 481.01,
+   "speechOnset": 481.6,
+   "usablePreroll": 0.59
+  },
+  {
+   "index": 58,
+   "kind": "ayah",
+   "boundary": 488.97,
+   "status": "measured",
+   "gapStart": 488.55,
+   "speechOnset": 489.33,
+   "usablePreroll": 0.78
+  },
+  {
+   "index": 59,
+   "kind": "refrain",
+   "boundary": 496.93,
+   "status": "measured",
+   "gapStart": 496.64,
+   "speechOnset": 497.2,
+   "usablePreroll": 0.56
+  },
+  {
+   "index": 60,
+   "kind": "ayah",
+   "boundary": 504.74,
+   "status": "measured",
+   "gapStart": 504.43,
+   "speechOnset": 505.08,
+   "usablePreroll": 0.65
+  },
+  {
+   "index": 61,
+   "kind": "refrain",
+   "boundary": 523.43,
+   "status": "measured",
+   "gapStart": 523.07,
+   "speechOnset": 523.75,
+   "usablePreroll": 0.68
+  },
+  {
+   "index": 62,
+   "kind": "ayah",
+   "boundary": 532.64,
+   "status": "measured",
+   "gapStart": 532.32,
+   "speechOnset": 532.88,
+   "usablePreroll": 0.56
+  },
+  {
+   "index": 63,
+   "kind": "refrain",
+   "boundary": 539.4,
+   "status": "measured",
+   "gapStart": 539.18,
+   "speechOnset": 539.62,
+   "usablePreroll": 0.44
+  },
+  {
+   "index": 64,
+   "kind": "ayah",
+   "boundary": 546.45,
+   "status": "measured",
+   "gapStart": 546.19,
+   "speechOnset": 546.69,
+   "usablePreroll": 0.5
+  },
+  {
+   "index": 65,
+   "kind": "refrain",
+   "boundary": 552.66,
+   "status": "measured",
+   "gapStart": 552.39,
+   "speechOnset": 552.9,
+   "usablePreroll": 0.51
+  },
+  {
+   "index": 66,
+   "kind": "ayah",
+   "boundary": 560.04,
+   "status": "measured",
+   "gapStart": 559.73,
+   "speechOnset": 560.31,
+   "usablePreroll": 0.58
+  },
+  {
+   "index": 67,
+   "kind": "refrain",
+   "boundary": 564.97,
+   "status": "measured",
+   "gapStart": 564.71,
+   "speechOnset": 565.21,
+   "usablePreroll": 0.5
+  },
+  {
+   "index": 68,
+   "kind": "ayah",
+   "boundary": 572.73,
+   "status": "measured",
+   "gapStart": 572.46,
+   "speechOnset": 572.98,
+   "usablePreroll": 0.52
+  },
+  {
+   "index": 69,
+   "kind": "refrain",
+   "boundary": 579.97,
+   "status": "measured",
+   "gapStart": 579.69,
+   "speechOnset": 580.22,
+   "usablePreroll": 0.53
+  },
+  {
+   "index": 70,
+   "kind": "ayah",
+   "boundary": 588.08,
+   "status": "measured",
+   "gapStart": 587.72,
+   "speechOnset": 588.42,
+   "usablePreroll": 0.7
+  },
+  {
+   "index": 71,
+   "kind": "refrain",
+   "boundary": 595.72,
+   "status": "measured",
+   "gapStart": 595.4,
+   "speechOnset": 596.0,
+   "usablePreroll": 0.6
+  },
+  {
+   "index": 72,
+   "kind": "ayah",
+   "boundary": 603.61,
+   "status": "measured",
+   "gapStart": 603.1,
+   "speechOnset": 603.65,
+   "usablePreroll": 0.55
+  },
+  {
+   "index": 73,
+   "kind": "refrain",
+   "boundary": 610.1,
+   "status": "measured",
+   "gapStart": 609.78,
+   "speechOnset": 610.37,
+   "usablePreroll": 0.59
+  },
+  {
+   "index": 74,
+   "kind": "ayah",
+   "boundary": 617.68,
+   "status": "measured",
+   "gapStart": 617.27,
+   "speechOnset": 617.91,
+   "usablePreroll": 0.64
+  },
+  {
+   "index": 75,
+   "kind": "refrain",
+   "boundary": 632.73,
+   "status": "measured",
+   "gapStart": 632.42,
+   "speechOnset": 633.02,
+   "usablePreroll": 0.6
+  },
+  {
+   "index": 76,
+   "kind": "ayah",
+   "boundary": 641.7,
+   "status": "measured",
+   "gapStart": 641.39,
+   "speechOnset": 641.99,
+   "usablePreroll": 0.6
+  },
+  {
+   "index": 77,
+   "kind": "refrain",
+   "boundary": 661.39,
+   "status": "measured",
+   "gapStart": 661.04,
+   "speechOnset": 661.7,
+   "usablePreroll": 0.66
+  },
+  {
+   "index": 78,
+   "kind": "ayah",
+   "boundary": 670.11,
+   "status": "measured",
+   "gapStart": 669.76,
+   "speechOnset": 670.36,
+   "usablePreroll": 0.6
+  }
+ ]
+}

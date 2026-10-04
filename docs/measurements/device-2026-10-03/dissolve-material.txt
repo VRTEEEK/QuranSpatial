@@ -1,0 +1,53 @@
+written: 2026-10-03T12:08:00Z
+bundle: RealityKitContent_RealityKitContent.bundle
+bundlePath: /var/containers/Bundle/Application/421DA1A6-8C99-4E01-A7E5-588B328C9215/QuranSpatial.app/RealityKitContent_RealityKitContent.bundle
+
+--- ShaderGraphMaterial load probes ---
+OK    named: /Root/DissolveMaterial, from: Materials/DissolveMaterial
+      parameters: edgeWidth, noiseOffset, noiseScale, progress, textColor, textTexture
+OK    named: /Root/DissolveMaterial, from: Materials/DissolveMaterial.usda
+      parameters: edgeWidth, noiseOffset, noiseScale, progress, textColor, textTexture
+FAIL  named: /Root/DissolveMaterial, from: Immersive
+      describing:  materialNameNotFound
+      reflecting:  RealityFoundation.ShaderGraphMaterial.LoadError.materialNameNotFound
+      localized:   The operation couldn’t be completed. (RealityFoundation.ShaderGraphMaterial.LoadError error 1.)
+      domain: RealityFoundation.ShaderGraphMaterial.LoadError code: 1
+      userInfo: [:]
+OK    named: /Root/DissolveMaterial/DissolveMaterial, from: Immersive
+      parameters: edgeWidth, noiseOffset, noiseScale, progress, textColor, textTexture
+FAIL  named: DissolveMaterial, from: Materials/DissolveMaterial
+      describing:  materialNameNotFound
+      reflecting:  RealityFoundation.ShaderGraphMaterial.LoadError.materialNameNotFound
+      localized:   The operation couldn’t be completed. (RealityFoundation.ShaderGraphMaterial.LoadError error 1.)
+      domain: RealityFoundation.ShaderGraphMaterial.LoadError code: 1
+      userInfo: [:]
+FAIL  named: /Root/DissolveMaterial/DissolveMaterial, from: Materials/DissolveMaterial
+      describing:  materialNameNotFound
+      reflecting:  RealityFoundation.ShaderGraphMaterial.LoadError.materialNameNotFound
+      localized:   The operation couldn’t be completed. (RealityFoundation.ShaderGraphMaterial.LoadError error 1.)
+      domain: RealityFoundation.ShaderGraphMaterial.LoadError code: 1
+      userInfo: [:]
+
+--- setParameter type probes ---
+  -- current values --
+  get edgeWidth -> float(0.12)
+  get noiseOffset -> simd2Float(SIMD2<Float>(0.0, 0.0))
+  get noiseScale -> simd2Float(SIMD2<Float>(14.0, 14.0))
+  get progress -> float(0.0)
+  get textColor -> color(<CGColor 0x10b302450> [<CGColorSpace 0x107c0cba0> (kCGColorSpaceICCBased; kCGColorSpaceModelRGB; sRGB IEC61966-2.1 Linear; extended range)] headroom unknown ( 1 1 1 1 ))
+  get textTexture -> textureResource(RealityKit.TextureResource)
+  -- set attempts --
+OK    progress <- .float
+OK    edgeWidth <- .float
+OK    noiseOffset <- .simd2Float
+OK    noiseScale <- .simd2Float
+OK    textColor <- .color
+FAIL  textColor <- .simd3Float: incorrectTypeForParameterName
+OK    textTexture <- .textureResource
+OK    textTexture <- .texture
+
+--- Immersive scene ---
+OK    Entity(named: "Immersive")
+      Root [Entity]
+        Root [Entity]
+          DissolveMaterial [Entity]

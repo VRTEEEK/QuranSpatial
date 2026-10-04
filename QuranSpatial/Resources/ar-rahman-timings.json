@@ -1,0 +1,643 @@
+{
+  "source": "rahman-single.mp3",
+  "surah": 55,
+  "name": "Ar-Rahman",
+  "totalDuration": 678.243,
+  "ayahCount": 78,
+  "segmentCount": 79,
+  "note": "index 0 is the intro (basmala), not ayah 1. ayah N is at index N.",
+  "segments": [
+    {
+      "index": 0,
+      "ayah": null,
+      "kind": "intro",
+      "start": 0.0,
+      "end": 3.31,
+      "duration": 3.31
+    },
+    {
+      "index": 1,
+      "ayah": 1,
+      "kind": "ayah",
+      "start": 3.31,
+      "end": 7.24,
+      "duration": 3.93
+    },
+    {
+      "index": 2,
+      "ayah": 2,
+      "kind": "ayah",
+      "start": 7.24,
+      "end": 11.69,
+      "duration": 4.45
+    },
+    {
+      "index": 3,
+      "ayah": 3,
+      "kind": "ayah",
+      "start": 11.69,
+      "end": 16.88,
+      "duration": 5.19
+    },
+    {
+      "index": 4,
+      "ayah": 4,
+      "kind": "ayah",
+      "start": 16.88,
+      "end": 20.67,
+      "duration": 3.79
+    },
+    {
+      "index": 5,
+      "ayah": 5,
+      "kind": "ayah",
+      "start": 20.67,
+      "end": 25.78,
+      "duration": 5.11
+    },
+    {
+      "index": 6,
+      "ayah": 6,
+      "kind": "ayah",
+      "start": 25.78,
+      "end": 31.8,
+      "duration": 6.02
+    },
+    {
+      "index": 7,
+      "ayah": 7,
+      "kind": "ayah",
+      "start": 31.8,
+      "end": 39.09,
+      "duration": 7.29
+    },
+    {
+      "index": 8,
+      "ayah": 8,
+      "kind": "ayah",
+      "start": 39.09,
+      "end": 44.23,
+      "duration": 5.14
+    },
+    {
+      "index": 9,
+      "ayah": 9,
+      "kind": "ayah",
+      "start": 44.23,
+      "end": 52.18,
+      "duration": 7.95
+    },
+    {
+      "index": 10,
+      "ayah": 10,
+      "kind": "ayah",
+      "start": 52.18,
+      "end": 57.25,
+      "duration": 5.07
+    },
+    {
+      "index": 11,
+      "ayah": 11,
+      "kind": "ayah",
+      "start": 57.25,
+      "end": 64.88,
+      "duration": 7.63
+    },
+    {
+      "index": 12,
+      "ayah": 12,
+      "kind": "ayah",
+      "start": 64.88,
+      "end": 70.4,
+      "duration": 5.52
+    },
+    {
+      "index": 13,
+      "ayah": 13,
+      "kind": "refrain",
+      "start": 70.4,
+      "end": 78.23,
+      "duration": 7.83
+    },
+    {
+      "index": 14,
+      "ayah": 14,
+      "kind": "ayah",
+      "start": 78.23,
+      "end": 87.28,
+      "duration": 9.05
+    },
+    {
+      "index": 15,
+      "ayah": 15,
+      "kind": "ayah",
+      "start": 87.28,
+      "end": 97.4,
+      "duration": 10.12
+    },
+    {
+      "index": 16,
+      "ayah": 16,
+      "kind": "refrain",
+      "start": 97.4,
+      "end": 106.7,
+      "duration": 9.3
+    },
+    {
+      "index": 17,
+      "ayah": 17,
+      "kind": "ayah",
+      "start": 106.7,
+      "end": 113.69,
+      "duration": 6.99
+    },
+    {
+      "index": 18,
+      "ayah": 18,
+      "kind": "refrain",
+      "start": 113.69,
+      "end": 121.37,
+      "duration": 7.68
+    },
+    {
+      "index": 19,
+      "ayah": 19,
+      "kind": "ayah",
+      "start": 121.37,
+      "end": 126.76,
+      "duration": 5.39
+    },
+    {
+      "index": 20,
+      "ayah": 20,
+      "kind": "ayah",
+      "start": 126.76,
+      "end": 131.82,
+      "duration": 5.06
+    },
+    {
+      "index": 21,
+      "ayah": 21,
+      "kind": "refrain",
+      "start": 131.82,
+      "end": 139.61,
+      "duration": 7.79
+    },
+    {
+      "index": 22,
+      "ayah": 22,
+      "kind": "ayah",
+      "start": 139.61,
+      "end": 145.2,
+      "duration": 5.59
+    },
+    {
+      "index": 23,
+      "ayah": 23,
+      "kind": "refrain",
+      "start": 145.2,
+      "end": 152.45,
+      "duration": 7.25
+    },
+    {
+      "index": 24,
+      "ayah": 24,
+      "kind": "ayah",
+      "start": 152.45,
+      "end": 160.51,
+      "duration": 8.06
+    },
+    {
+      "index": 25,
+      "ayah": 25,
+      "kind": "refrain",
+      "start": 160.51,
+      "end": 168.34,
+      "duration": 7.83
+    },
+    {
+      "index": 26,
+      "ayah": 26,
+      "kind": "ayah",
+      "start": 168.34,
+      "end": 178.84,
+      "duration": 10.5
+    },
+    {
+      "index": 27,
+      "ayah": 27,
+      "kind": "ayah",
+      "start": 178.84,
+      "end": 187.51,
+      "duration": 8.67
+    },
+    {
+      "index": 28,
+      "ayah": 28,
+      "kind": "refrain",
+      "start": 187.51,
+      "end": 197.29,
+      "duration": 9.78
+    },
+    {
+      "index": 29,
+      "ayah": 29,
+      "kind": "ayah",
+      "start": 197.29,
+      "end": 207.42,
+      "duration": 10.13
+    },
+    {
+      "index": 30,
+      "ayah": 30,
+      "kind": "refrain",
+      "start": 207.42,
+      "end": 216.01,
+      "duration": 8.59
+    },
+    {
+      "index": 31,
+      "ayah": 31,
+      "kind": "ayah",
+      "start": 216.01,
+      "end": 221.97,
+      "duration": 5.96
+    },
+    {
+      "index": 32,
+      "ayah": 32,
+      "kind": "refrain",
+      "start": 221.97,
+      "end": 231.2,
+      "duration": 9.23
+    },
+    {
+      "index": 33,
+      "ayah": 33,
+      "kind": "ayah",
+      "start": 231.2,
+      "end": 265.63,
+      "duration": 34.43
+    },
+    {
+      "index": 34,
+      "ayah": 34,
+      "kind": "refrain",
+      "start": 265.63,
+      "end": 273.79,
+      "duration": 8.16
+    },
+    {
+      "index": 35,
+      "ayah": 35,
+      "kind": "ayah",
+      "start": 273.79,
+      "end": 288.67,
+      "duration": 14.88
+    },
+    {
+      "index": 36,
+      "ayah": 36,
+      "kind": "refrain",
+      "start": 288.67,
+      "end": 296.62,
+      "duration": 7.95
+    },
+    {
+      "index": 37,
+      "ayah": 37,
+      "kind": "ayah",
+      "start": 296.62,
+      "end": 305.35,
+      "duration": 8.73
+    },
+    {
+      "index": 38,
+      "ayah": 38,
+      "kind": "refrain",
+      "start": 305.35,
+      "end": 314.39,
+      "duration": 9.04
+    },
+    {
+      "index": 39,
+      "ayah": 39,
+      "kind": "ayah",
+      "start": 314.39,
+      "end": 329.48,
+      "duration": 15.09
+    },
+    {
+      "index": 40,
+      "ayah": 40,
+      "kind": "refrain",
+      "start": 329.48,
+      "end": 336.95,
+      "duration": 7.47
+    },
+    {
+      "index": 41,
+      "ayah": 41,
+      "kind": "ayah",
+      "start": 336.95,
+      "end": 351.76,
+      "duration": 14.81
+    },
+    {
+      "index": 42,
+      "ayah": 42,
+      "kind": "refrain",
+      "start": 351.76,
+      "end": 361.23,
+      "duration": 9.47
+    },
+    {
+      "index": 43,
+      "ayah": 43,
+      "kind": "ayah",
+      "start": 361.23,
+      "end": 369.1,
+      "duration": 7.87
+    },
+    {
+      "index": 44,
+      "ayah": 44,
+      "kind": "ayah",
+      "start": 369.1,
+      "end": 375.58,
+      "duration": 6.48
+    },
+    {
+      "index": 45,
+      "ayah": 45,
+      "kind": "refrain",
+      "start": 375.58,
+      "end": 382.54,
+      "duration": 6.96
+    },
+    {
+      "index": 46,
+      "ayah": 46,
+      "kind": "ayah",
+      "start": 382.54,
+      "end": 390.22,
+      "duration": 7.68
+    },
+    {
+      "index": 47,
+      "ayah": 47,
+      "kind": "refrain",
+      "start": 390.22,
+      "end": 397.69,
+      "duration": 7.47
+    },
+    {
+      "index": 48,
+      "ayah": 48,
+      "kind": "ayah",
+      "start": 397.69,
+      "end": 403.28,
+      "duration": 5.59
+    },
+    {
+      "index": 49,
+      "ayah": 49,
+      "kind": "refrain",
+      "start": 403.28,
+      "end": 410.68,
+      "duration": 7.4
+    },
+    {
+      "index": 50,
+      "ayah": 50,
+      "kind": "ayah",
+      "start": 410.68,
+      "end": 415.53,
+      "duration": 4.85
+    },
+    {
+      "index": 51,
+      "ayah": 51,
+      "kind": "refrain",
+      "start": 415.53,
+      "end": 422.63,
+      "duration": 7.1
+    },
+    {
+      "index": 52,
+      "ayah": 52,
+      "kind": "ayah",
+      "start": 422.63,
+      "end": 428.94,
+      "duration": 6.31
+    },
+    {
+      "index": 53,
+      "ayah": 53,
+      "kind": "refrain",
+      "start": 428.94,
+      "end": 436.49,
+      "duration": 7.55
+    },
+    {
+      "index": 54,
+      "ayah": 54,
+      "kind": "ayah",
+      "start": 436.49,
+      "end": 454.14,
+      "duration": 17.65
+    },
+    {
+      "index": 55,
+      "ayah": 55,
+      "kind": "refrain",
+      "start": 454.14,
+      "end": 461.36,
+      "duration": 7.22
+    },
+    {
+      "index": 56,
+      "ayah": 56,
+      "kind": "ayah",
+      "start": 461.36,
+      "end": 481.31,
+      "duration": 19.95
+    },
+    {
+      "index": 57,
+      "ayah": 57,
+      "kind": "refrain",
+      "start": 481.31,
+      "end": 488.97,
+      "duration": 7.66
+    },
+    {
+      "index": 58,
+      "ayah": 58,
+      "kind": "ayah",
+      "start": 488.97,
+      "end": 496.93,
+      "duration": 7.96
+    },
+    {
+      "index": 59,
+      "ayah": 59,
+      "kind": "refrain",
+      "start": 496.93,
+      "end": 504.74,
+      "duration": 7.81
+    },
+    {
+      "index": 60,
+      "ayah": 60,
+      "kind": "ayah",
+      "start": 504.74,
+      "end": 523.43,
+      "duration": 18.69
+    },
+    {
+      "index": 61,
+      "ayah": 61,
+      "kind": "refrain",
+      "start": 523.43,
+      "end": 532.64,
+      "duration": 9.21
+    },
+    {
+      "index": 62,
+      "ayah": 62,
+      "kind": "ayah",
+      "start": 532.64,
+      "end": 539.4,
+      "duration": 6.76
+    },
+    {
+      "index": 63,
+      "ayah": 63,
+      "kind": "refrain",
+      "start": 539.4,
+      "end": 546.45,
+      "duration": 7.05
+    },
+    {
+      "index": 64,
+      "ayah": 64,
+      "kind": "ayah",
+      "start": 546.45,
+      "end": 552.66,
+      "duration": 6.21
+    },
+    {
+      "index": 65,
+      "ayah": 65,
+      "kind": "refrain",
+      "start": 552.66,
+      "end": 560.04,
+      "duration": 7.38
+    },
+    {
+      "index": 66,
+      "ayah": 66,
+      "kind": "ayah",
+      "start": 560.04,
+      "end": 564.97,
+      "duration": 4.93
+    },
+    {
+      "index": 67,
+      "ayah": 67,
+      "kind": "refrain",
+      "start": 564.97,
+      "end": 572.73,
+      "duration": 7.76
+    },
+    {
+      "index": 68,
+      "ayah": 68,
+      "kind": "ayah",
+      "start": 572.73,
+      "end": 579.97,
+      "duration": 7.24
+    },
+    {
+      "index": 69,
+      "ayah": 69,
+      "kind": "refrain",
+      "start": 579.97,
+      "end": 588.08,
+      "duration": 8.11
+    },
+    {
+      "index": 70,
+      "ayah": 70,
+      "kind": "ayah",
+      "start": 588.08,
+      "end": 595.72,
+      "duration": 7.64
+    },
+    {
+      "index": 71,
+      "ayah": 71,
+      "kind": "refrain",
+      "start": 595.72,
+      "end": 603.61,
+      "duration": 7.89
+    },
+    {
+      "index": 72,
+      "ayah": 72,
+      "kind": "ayah",
+      "start": 603.61,
+      "end": 610.1,
+      "duration": 6.49
+    },
+    {
+      "index": 73,
+      "ayah": 73,
+      "kind": "refrain",
+      "start": 610.1,
+      "end": 617.68,
+      "duration": 7.58
+    },
+    {
+      "index": 74,
+      "ayah": 74,
+      "kind": "ayah",
+      "start": 617.68,
+      "end": 632.73,
+      "duration": 15.05
+    },
+    {
+      "index": 75,
+      "ayah": 75,
+      "kind": "refrain",
+      "start": 632.73,
+      "end": 641.7,
+      "duration": 8.97
+    },
+    {
+      "index": 76,
+      "ayah": 76,
+      "kind": "ayah",
+      "start": 641.7,
+      "end": 661.39,
+      "duration": 19.69
+    },
+    {
+      "index": 77,
+      "ayah": 77,
+      "kind": "refrain",
+      "start": 661.39,
+      "end": 670.11,
+      "duration": 8.72
+    },
+    {
+      "index": 78,
+      "ayah": 78,
+      "kind": "ayah",
+      "start": 670.11,
+      "end": 678.243,
+      "duration": 8.133
+    }
+  ]
+}

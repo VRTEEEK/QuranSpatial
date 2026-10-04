@@ -1,0 +1,29 @@
+.DS_Store
+xcuserdata/
+DerivedData/
+build/
+*.xcuserstate
+*.xcscmblueprint
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Ad-hoc pulls of the app's Documents container (see HandPoseCapture). Each dua
+# capture is ~11MB of raw frames; keep the one tracked reference take below and
+# leave later pulls out of history.
+capture/
+
+# The ship font is Amiri Quran (SIL OFL 1.1) and IS committed - QuranSpatial/Fonts/
+# is deliberately not ignored. The KFGQPC file it replaced is licensing-unresolved and
+# lives outside the build in scratch/, which is ignored.
+
+# Durable scratch for harnesses that are not part of the build (e.g. the font
+# measurement test, restored into QuranSpatialTests/ for a run and removed after).
+scratch/
+
+# The English translation (Saheeh International via Quranpedia book 1947) is held outside
+# the repo until a licence or permission is documented. Local builds place the extracted
+# file here; its ABSENCE is a supported state (RecitationTranslation). Never commit it.
+QuranSpatial/Resources/en-*.json
+
+# Review environment asset (67 MB): placed by hand; SHA-256 recorded in docs/baseline-disclosure.md
+QuranSpatial/Resources/Environment/QuranSpatial_Review.usdz

@@ -1,0 +1,76 @@
+written: 2026-10-03T12:08:04Z
+head position: (0.000, 1.600, 0.000)  source: NOMINAL 1.6 m eye at origin - no anchor yet
+
+--- PLACEMENT ---
+textDistance      180.000 m (slant from head)
+textElevationDeg  25.000
+  horizontal       163.135 m
+  rise above eye   76.071 m
+textPitchDeg      +25.000 (normal points at the head; yaw and roll untouched)
+textRootScale     3.000  = textDistance / ayahDistance (180.000 / 60.000)
+root world pos    (0.000, 77.671, -163.135)  = the first line's baseline
+
+--- ANGULAR SIZE ---
+metresPerPixel    0.032115 unscaled, 0.096345 effective
+fontSizePixels    71.746  (derived from textAngularEmDeg, not nominal)
+em                6.912 m -> subtends 2.200 deg at 180.000 m
+requested textAngularEmDeg 2.200 deg, delivered 2.200 deg
+longest segment   125.056 x 43.066 m (1298x447 px, 2 line(s)) MEASURED
+  angular width   38.312 deg
+
+--- CORNERS of the largest segment's plane (world) ---
+top-left   (-62.528, 98.016, -153.648)  r=165.884 m  elev=30.166 deg
+top-right  (62.528, 98.016, -153.648)  r=165.884 m  elev=30.166 deg
+bot-left   (-62.528, 58.985, -171.849)  r=182.871 m  elev=17.422 deg
+bot-right  (62.528, 58.985, -171.849)  r=182.871 m  elev=17.422 deg
+
+--- DISTANCE RULE ---
+pre-Stage-11 distance  60.000 m
+Stage 11b distance     60.000 m
+current  distance      180.000 m
+farther than pre-Stage-11 (>= 60 m): PASS
+farther than Stage 11b (> 180 m):    PASS
+
+--- LONGEST SEGMENT (ayah 33) AT BOTH EM SIZES ---
+  em(deg)  fontpx   lines   glyphs   glyphs/line   raster(px)      angular width
+   3.127  102.00       3       89          29.7    1259x846      37.241 deg
+   2.200   71.75       2       89          44.5    1298x447      38.312 deg
+  delivered em check: requested 2.200 deg, delivered 2.200 deg
+
+--- EM SEARCH at 25 deg elevation, 2.2 down in 0.1 steps (REPORT ONLY) ---
+  em 2.2 deg: 2 line(s), 1298px wide, 38.31 deg wide -> 8 hit(s)
+  em 2.1 deg: 2 line(s), 1243px wide, 36.80 deg wide -> 8 hit(s)
+  em 2.0 deg: 2 line(s), 1188px wide, 35.27 deg wide -> 8 hit(s)
+  em 1.9 deg: 2 line(s), 1319px wide, 38.89 deg wide -> 8 hit(s)
+  em 1.8 deg: 2 line(s), 1254px wide, 37.10 deg wide -> 8 hit(s)
+  em 1.7 deg: 2 line(s), 1190px wide, 35.33 deg wide -> 8 hit(s)
+  em 1.6 deg: 2 line(s), 1291px wide, 38.12 deg wide -> 8 hit(s)
+  em 1.5 deg: 2 line(s), 1347px wide, 39.65 deg wide -> 8 hit(s)
+  em 1.4 deg: 2 line(s), 1306px wide, 38.53 deg wide -> 8 hit(s)
+  em 1.3 deg: 2 line(s), 1330px wide, 39.19 deg wide -> 8 hit(s)
+  em 1.2 deg: 2 line(s), 1280px wide, 37.82 deg wide -> 8 hit(s)
+  em 1.1 deg: 1 line(s), 1266px wide, 37.43 deg wide -> 8 hit(s)
+  em 1.0 deg: 1 line(s), 1160px wide, 34.49 deg wide -> 6 hit(s)
+  NO em down to 1.0 deg clears the columns at 25 deg.
+
+--- ELEVATION SWEEP 15..40 deg, all four corners vs the arcade ---
+  15.000 deg: 4 hit(s)
+  20.000 deg: 4 hit(s)
+  25.000 deg: 8 hit(s)
+  30.000 deg: 6 hit(s)
+  35.000 deg: 4 hit(s)
+  40.000 deg: 20 hit(s)
+  NO elevation in 15..40 deg leaves all four corners clear.
+  The corner AZIMUTH is set by the plane's angular half-width, which is
+  distance-invariant, so the corner rays always cross the arcade inside a
+  column's angular span. Keeping 25.000 deg as asked.
+
+--- OCCLUSION: head -> each corner, against pavilion mesh AABBs ---
+Conservative: boxes, not triangles, so this over-reports rather than
+under-reports. Entities containing the eye (sky dome, lake) are skipped -
+that is containment, not occlusion.
+top-left   3 HIT(S): Environment_Root/Pavilion/Column_08/Column_Module_08/Geometry@4.842m(y=4.033,r=4.186), Environment_Root/Pavilion/Pointed_Arch_Module/Geometry@5.313m(y=4.270,r=4.594), Environment_Root/Pavilion/Pointed_Arch_Module_08/Geometry@5.313m(y=4.270,r=4.594)
+top-right  3 HIT(S): Environment_Root/Pavilion/Column_01/Column_Module/Geometry@4.842m(y=4.033,r=4.186), Environment_Root/Pavilion/Pointed_Arch_Module/Geometry@5.313m(y=4.270,r=4.594), Environment_Root/Pavilion/Pointed_Arch_Module_02/Geometry@5.313m(y=4.270,r=4.594)
+bot-left   1 HIT(S): Environment_Root/Pavilion/Column_08/Column_Module_08/Geometry@4.324m(y=2.895,r=4.126)
+bot-right  1 HIT(S): Environment_Root/Pavilion/Column_01/Column_Module/Geometry@4.324m(y=2.895,r=4.126)
+VERDICT: 8 hit(s). The text is behind pavilion geometry from this eye position. NOT moved to dodge it - reported, per the brief.

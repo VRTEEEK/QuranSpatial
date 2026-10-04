@@ -1,0 +1,89 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    # Material for the SPRITE star field - one merged mesh of camera-facing quads, each
+    # carrying a mipmapped gaussian.
+    #
+    # WHY SPRITES RATHER THAN THE SHADER FIELD. The in-shader stars failed three size
+    # iterations for one structural reason: an analytic dot has no mip chain. Its edge is
+    # recomputed per fragment at whatever the sampling rate happens to be, and with no
+    # derivative node in this MaterialX there is no way to widen that edge to match the
+    # fragment footprint. A TEXTURED sprite gets the hardware's mip selection and
+    # anisotropic filtering for free, which is precisely the machinery that stops a small
+    # bright thing scintillating when the head moves.
+    #
+    # The sprite is a gaussian with no rim - it decays to ~0.011 at the quad edge - so there
+    # is no step anywhere in the image for aliasing to catch on.
+    def Material "StarSpriteMaterial"
+    {
+        # Overall level. Per-STAR brightness is not here: it comes from which tier of the
+        # atlas a quad's UVs point at, because `MeshDescriptor` has no vertex-colour buffer
+        # (positions, normals, tangents, bitangents, textureCoordinates, triangleIndices and
+        # nothing else - see CLAUDE.md). Four tiers baked into the atlas give per-star
+        # variation without needing LowLevelMesh and without a second draw call.
+        float inputs:starFieldBrightness = 1.0
+
+        # Slightly warm white. Real starlight spans blue-white to amber; a single warm-neutral
+        # reads better against the cool moonlit scene than pure white.
+        color3f inputs:starColor = (1.0, 0.94, 0.86)
+
+        # ND_image_float, and the default MUST RESOLVE at compile time - both constraints are
+        # the ones recorded in CLAUDE.md and in DissolveMaterial.usda. The atlas is
+        # single-channel grayscale, so one channel IS the whole signal and the float node
+        # costs nothing here.
+        #
+        # The path resolves against THIS FILE's directory.
+        asset inputs:starSprite = @star_sprite_atlas.png@ (
+            colorSpace = "srgb_texture"
+        )
+
+        token outputs:mtlx:surface.connect = </Root/StarSpriteMaterial/StarSurface.outputs:out>
+        token outputs:realitykit:vertex
+        token outputs:surface
+
+        def Shader "UV"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            int inputs:index = 0
+            vector2 outputs:out
+        }
+
+        # filtertype linear so the mip chain is actually used. This is the whole point of
+        # moving to sprites.
+        def Shader "Sprite"
+        {
+            uniform token info:id = "ND_image_float"
+            asset inputs:file.connect = </Root/StarSpriteMaterial.inputs:starSprite>
+            string inputs:filtertype = "linear"
+            vector2 inputs:texcoord.connect = </Root/StarSpriteMaterial/UV.outputs:out>
+            float outputs:out
+        }
+
+        def Shader "Opacity"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/StarSpriteMaterial/Sprite.outputs:out>
+            float inputs:in2.connect = </Root/StarSpriteMaterial.inputs:starFieldBrightness>
+            float outputs:out
+        }
+
+        # Unlit, tone mapping off: a star emits, it is not lit. opacityThreshold left at 0,
+        # which is blending rather than alpha testing - a cut-out edge would undo the gaussian
+        # entirely and put the aliasing straight back.
+        def Shader "StarSurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            color3f inputs:color.connect = </Root/StarSpriteMaterial.inputs:starColor>
+            float inputs:opacity.connect = </Root/StarSpriteMaterial/Opacity.outputs:out>
+            bool inputs:applyPostProcessToneMap = 0
+            bool inputs:hasPremultipliedAlpha = 0
+            token outputs:out
+        }
+    }
+}

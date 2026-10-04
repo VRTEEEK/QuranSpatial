@@ -1,0 +1,246 @@
+written: 2026-10-03T12:13:37Z
+asset: QuranSpatial_Environment_Corrected.usdz  (self-contained; see the note in the source)
+isolateForMeasurement: false
+
+--- 1. ORIENTATION (uncorrected) ---
+root T=(0.0000, 0.0000, 0.0000)  S=(1.0000, 1.0000, 1.0000)
+root orientation 0.00 deg about (nan, nan, nan)  [kept, not corrected]
+Platform bounds  min(-5.450, -0.365, -5.450) max(5.450, 0.000, 5.450)
+Platform extents (10.900, 0.365, 10.900)  -> THINNEST IN Y
+deck top-surface world Y = 0.0000 m
+VERDICT: UPRIGHT — deck is horizontal.
+
+--- 2. INSTANCING / DRAW CALLS ---
+entities in hierarchy       : 443
+entities carrying a mesh    : 208
+mesh parts (draw submissions): 241
+MeshInstancesComponent found: 0 entit(y/ies), 0 instance part(s)
+-> NO MeshInstancesComponent anywhere: USD instancing was EXPANDED on import
+
+--- 3. TRIANGLES ---
+triangles as RealityKit sees them: 343288
+
+--- 4. TEXTURE MEMORY ---
+distinct textures resident: 183, total 972.00 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion   512 x 512    rgba8Unorm                   mips 10     1.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  baseColor         1024 x 1024   rgba8Unorm_srgb              mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  normal            1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+  ambientOcclusion  1024 x 1024   rgba8Unorm                   mips 11     5.33 MB
+
+--- 5. TOTAL FOOTPRINT ---
+phys_footprint before load : 220.84 MB
+phys_footprint after load  : 272.56 MB
+delta attributable to load : +51.72 MB
+
+--- 6. LIGHTS ---
+USD authored 10: 1 DistantLight (Moon_Key) + 9 SphereLight (8 lantern pools + 1 ceiling)
+arrived in RealityKit: 0
+  NONE — every authored light was dropped on import.
+
+--- 7. LOAD TIME ---
+Entity(named:) returned in 1.175 s
+load start -> first rendered frame: 1.387 s  [ON DEVICE]
+
+--- LIGHTING AUDIT (not a substitute for looking) ---
+lights created: 10
+  moon-key  directional  400 lux  dir(-0.35, -1.00, 0.25)
+  Lantern_01       point  1400 lm  r=2.8m  at (2.138, 0.280, -3.545)
+  Lantern_02       point  1400 lm  r=2.8m  at (4.019, 0.280, -0.995)
+  Lantern_03       point  1400 lm  r=2.8m  at (3.545, 0.280, 2.138)
+  Lantern_04       point  1400 lm  r=2.8m  at (0.995, 0.280, 4.019)
+  Lantern_05       point  1400 lm  r=2.8m  at (-2.138, 0.280, 3.545)
+  Lantern_06       point  1400 lm  r=2.8m  at (-4.019, 0.280, 0.995)
+  Lantern_07       point  1400 lm  r=2.8m  at (-3.545, 0.280, -2.138)
+  Lantern_08       point  1400 lm  r=2.8m  at (-0.995, 0.280, -4.019)
+  Lantern_Ceiling  point  4200 lm  r=9.0m  at (0.000, 5.750, 0.000)
+ok: 10 light entities created
+base colours sampled: 40, non-black or textured: 40
+ok: surfaces can reflect light
+IBL: built from textures/night_sky_2k.png, 2048x1024, 155419 bytes  -> attached, exponent 2.5
+SKY: procedural material applied to 1 mesh(es) under 'Night_Sky_Dome' — all 5 bound
+SKY: star mechanism SPRITE MESH
+SKY: read back from the loaded material -> starDensity=0.0800, starBrightness=0.0000, milkyWayIntensity=0.6000, starScale=36.0000, starSize=0.0570
+SKY: star angular radius 0.0907 deg, diameter 0.1814 deg = 6.17 foveal px @34ppd, 1.54 peripheral px @8.5ppd
+DOME: authored radius 2400 m -> target 1000 m (scale 0.41667, transform only, geometry untouched)
+STARS: sprite mesh 1300 quads, 5200 verts, 2600 tris, 1 material part(s) = 1 DRAW CALL(S); quad 3.0944715 m = 0.18 deg at r=985.0 m; bound starFieldBrightness 1.0
+--- material 'Water' as loaded ---
+  [0] baseColor tint (0.112, 0.206, 0.260) tex=none  roughness=Roughness(scale: 0.18, texture: nil)  metallic=Metallic(scale: 0.5, texture: nil)

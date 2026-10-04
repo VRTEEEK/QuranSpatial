@@ -1,0 +1,50 @@
+written: 2026-10-03T12:24:20Z
+head position: (-0.005, 0.822, -0.007)  source: DEVICE HEAD ANCHOR, sampled once at experience start
+
+--- PLACEMENT ---
+textDistance      180.000 m (slant from head)
+textElevationDeg  25.000
+  horizontal       163.135 m
+  rise above eye   76.071 m
+textPitchDeg      +25.000 (normal points at the head; yaw and roll untouched)
+textRootScale     3.000  = textDistance / ayahDistance (180.000 / 60.000)
+root world pos    (-0.005, 76.893, -163.143)  = the first line's baseline
+
+--- ANGULAR SIZE ---
+metresPerPixel    0.032115 unscaled, 0.096345 effective
+fontSizePixels    71.746  (derived from textAngularEmDeg, not nominal)
+em                6.912 m -> subtends 2.200 deg at 180.000 m
+requested textAngularEmDeg 2.200 deg, delivered 2.200 deg
+longest segment   125.056 x 43.066 m (1298x447 px, 2 line(s)) MEASURED
+  angular width   38.312 deg
+
+--- CORNERS of the largest segment's plane (world) ---
+top-left   (-62.533, 97.238, -153.656)  r=165.893 m  elev=30.166 deg
+top-right  (62.523, 97.238, -153.656)  r=165.889 m  elev=30.166 deg
+bot-left   (-62.533, 58.207, -171.856)  r=182.879 m  elev=17.422 deg
+bot-right  (62.523, 58.207, -171.856)  r=182.876 m  elev=17.422 deg
+
+--- DISTANCE RULE ---
+pre-Stage-11 distance  60.000 m
+Stage 11b distance     60.000 m
+current  distance      180.000 m
+farther than pre-Stage-11 (>= 60 m): PASS
+farther than Stage 11b (> 180 m):    PASS
+
+--- LONGEST SEGMENT (ayah 33) AT BOTH EM SIZES ---
+  em(deg)  fontpx   lines   glyphs   glyphs/line   raster(px)      angular width
+   3.127  102.00       3       89          29.7    1259x846      37.241 deg
+   2.200   71.75       2       89          44.5    1298x447      38.312 deg
+  delivered em check: requested 2.200 deg, delivered 2.200 deg
+
+--- EM SEARCH at 25 deg elevation, 2.2 down in 0.1 steps (REPORT ONLY) ---
+  not run (corpus or environment missing)
+
+--- ELEVATION SWEEP 15..40 deg, all four corners vs the arcade ---
+  environment not supplied - sweep NOT run.
+
+--- OCCLUSION: head -> each corner, against pavilion mesh AABBs ---
+Conservative: boxes, not triangles, so this over-reports rather than
+under-reports. Entities containing the eye (sky dome, lake) are skipped -
+that is containment, not occlusion.
+environment not supplied - occlusion NOT evaluated on this run.

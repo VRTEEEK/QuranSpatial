@@ -1,0 +1,366 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "Root"
+{
+    # WHY THIS MATERIAL EXISTS: the stars were a TEXTURE and a texture cannot win.
+    #
+    # night_sky_2k.png is 2048x1024 equirect, which is 2048/360 = 5.69 px per degree.
+    # Vision Pro resolves about 34 px/degree. So every star in that image is sampled about
+    # six times larger than the smallest thing the display can draw, and magnification
+    # filtering spreads it further: a star that should be a point lands as a soft blob
+    # roughly 6 px across. Raising the texture is the obvious fix and it does not fit -
+    # matching 34 px/degree needs a 12288x6144 equirect, and even the 16K the brief costed
+    # is 536 MB uncompressed for an image that is almost entirely black.
+    #
+    # Stars are the one thing in this scene that is genuinely procedural: points on a
+    # sphere with a brightness. Computed in the shader they are evaluated per FRAGMENT, so
+    # they are exactly as sharp as the display, at any resolution, for no memory at all.
+    # The texture is kept ONLY for what it is actually good at - the milky way band and the
+    # overall sky gradient, which are smooth, low-frequency, and lose nothing at 512x256.
+    #
+    # NODE CHOICE IS CONSTRAINED, NOT FREE. `realitytool` silently DROPS a material
+    # containing ND_fractal2d_float, ND_unifiednoise2d_float or ND_unifiednoise3d_float,
+    # exiting 0 and writing a .reality with no material in it at all - see the defect note
+    # in CLAUDE.md and the header of DissolveMaterial.usda. Every node used here was
+    # verified to survive by compiling this file and counting Material entries in the
+    # compiled manifest. Do not swap a noise node in this graph without re-running that
+    # check; the failure looks exactly like a missing file.
+    def Material "NightSkyMaterial"
+    {
+        # --- the three knobs, mirrored in EnvironmentLighting.swift ------------------
+
+        # Fraction of star cells that actually contain a star. 0 = empty sky, 1 = a star in
+        # every cell, which reads as noise rather than as a sky. Drives the gate's midpoint,
+        # so it is a DENSITY, not a count: the cell grid is fixed by `starScale`.
+        float inputs:starDensity = 0.35
+
+        # Peak emissive luminance of a star centre, before tone mapping.
+        float inputs:starBrightness = 1.6
+
+        # Multiplier on the low-res equirect. This is the milky way band AND the sky
+        # gradient - they are the same texture, because they are the same low-frequency
+        # signal. 0 gives procedural stars on pure black.
+        float inputs:milkyWayIntensity = 0.6
+
+        # Star cells across the sphere, per unit of normalised direction, and the star's
+        # angular RADIUS as a worley distance threshold in cell units.
+        #
+        # THESE TWO ARE ONE SETTING AND THEY ARE AN ANTI-ALIASING FLOOR, NOT A TASTE CHOICE.
+        # What matters is the RATIO starSize/starScale, which is the star's angular radius in
+        # radians. Changing either alone resizes the stars.
+        #
+        # SIZED AGAINST PERIPHERAL RESOLUTION, NOT FOVEAL, AND THAT IS THE STAGE 10 FIX.
+        # 34 px/deg is Vision Pro's FOVEAL figure. Foveated rendering samples the periphery
+        # far more coarsely, so a star sized to clear a pixel on-axis is sub-pixel again off-
+        # axis - which is exactly where the blinking was worst. The history:
+        #
+        #   stage  scale  size    diameter    foveal px   periph px (foveal/4)
+        #   8      220    0.085   0.0443 deg    1.51        0.38   <- sub-pixel everywhere
+        #   9      120    0.075   0.0716 deg    2.44        0.61   <- STILL sub-pixel off-axis
+        #   10      36    0.057   0.1814 deg    6.17        1.54   <- clears a peripheral pixel
+        #
+        # Stage 9 fixed the foveal case and left the peripheral case broken, which is why the
+        # stars kept blinking. Do not raise starScale back toward 120 without redoing this
+        # against the peripheral figure.
+        #
+        # The cell count falls with the square of starScale, so this also brings the star
+        # count somewhere real: ~16,300 cells x 0.08 density = ~1,300 stars, against ~14,500
+        # at stage 9. A naked eye sees a couple of thousand.
+        float inputs:starScale = 36
+        float inputs:starSize = 0.057
+
+        token outputs:mtlx:surface.connect = </Root/NightSkyMaterial/SkySurface.outputs:out>
+        token outputs:realitykit:vertex
+        token outputs:surface
+
+        # --- direction on the sphere ------------------------------------------------
+        #
+        # OBJECT-SPACE POSITION, NOT UV, AND THAT IS THE POINT. Equirect UVs converge at the
+        # poles, so a UV-space star field is stretched at the horizon and crushed overhead -
+        # exactly the polar waste that makes an equirect the wrong container for stars. The
+        # dome is a sphere centred on the origin, so its object-space position normalises to
+        # a direction, and a noise field sampled in that direction is uniform over the whole
+        # sky with no pole to special-case.
+        def Shader "ObjPos"
+        {
+            uniform token info:id = "ND_position_vector3"
+            string inputs:space = "object"
+            vector3 outputs:out
+        }
+
+        def Shader "Dir"
+        {
+            uniform token info:id = "ND_normalize_vector3"
+            vector3 inputs:in.connect = </Root/NightSkyMaterial/ObjPos.outputs:out>
+            vector3 outputs:out
+        }
+
+        def Shader "StarP"
+        {
+            uniform token info:id = "ND_multiply_vector3FA"
+            vector3 inputs:in1.connect = </Root/NightSkyMaterial/Dir.outputs:out>
+            float inputs:in2.connect = </Root/NightSkyMaterial.inputs:starScale>
+            vector3 outputs:out
+        }
+
+        # --- the star field -----------------------------------------------------------
+        #
+        # Worley gives distance to the nearest feature point, one per cell. Inverting it
+        # through a smoothstep turns each feature point into a small round dot whose edge is
+        # computed analytically per fragment - which is the whole reason this is sharp where
+        # a texture is not.
+        def Shader "Worley"
+        {
+            uniform token info:id = "ND_worleynoise3d_float"
+            vector3 inputs:position.connect = </Root/NightSkyMaterial/StarP.outputs:out>
+            float inputs:jitter = 1
+            float outputs:out
+        }
+
+        # low > high inverts the ramp: distance 0 (the feature point) -> 1, distance beyond
+        # starSize -> 0.
+        def Shader "Dot"
+        {
+            uniform token info:id = "ND_smoothstep_float"
+            float inputs:in.connect = </Root/NightSkyMaterial/Worley.outputs:out>
+            float inputs:low.connect = </Root/NightSkyMaterial.inputs:starSize>
+            float inputs:high = 0
+            float outputs:out
+        }
+
+        # SQUARED, to turn a dot with a rim into a soft radial falloff.
+        #
+        # A smoothstep is already C1 at both ends, but over this support it spends most of its
+        # range near 1 - so the star reads as a disc with an edge, and an edge is exactly the
+        # high-frequency content that aliases. Squaring redistributes it into a peaked profile
+        # that decays gradually: bright core, long soft skirt, no rim. Much closer to a
+        # gaussian, and a gaussian aliases far less than a step at any size.
+        #
+        # Done with a multiply rather than a power node because multiply is already proven to
+        # survive realitytool in this graph - see the header note; an unverified node here
+        # costs the whole material, silently.
+        #
+        # This is the Stage 10 answer to "soften the edge": there is no derivative node in
+        # this MaterialX (no dFdx, no fwidth, and ND_screen_* is the screen BLEND mode), so
+        # the edge cannot adapt to the fragment footprint. Widening it in world terms and
+        # smoothing the profile is the available mechanism.
+        def Shader "DotSoft"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/NightSkyMaterial/Dot.outputs:out>
+            float inputs:in2.connect = </Root/NightSkyMaterial/Dot.outputs:out>
+            float outputs:out
+        }
+
+        # Per-cell random value, constant within a cell, so it can gate whole stars in or
+        # out without cutting one in half.
+        def Shader "CellRand"
+        {
+            uniform token info:id = "ND_cellnoise3d_float"
+            vector3 inputs:position.connect = </Root/NightSkyMaterial/StarP.outputs:out>
+            float outputs:out
+        }
+
+        # Gate midpoint = 1 - starDensity, so raising starDensity lets more cells through.
+        def Shader "GateLow"
+        {
+            uniform token info:id = "ND_subtract_float"
+            float inputs:in1 = 1
+            float inputs:in2.connect = </Root/NightSkyMaterial.inputs:starDensity>
+            float outputs:out
+        }
+
+        def Shader "GateHigh"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/NightSkyMaterial/GateLow.outputs:out>
+            float inputs:in2 = 0.06
+            float outputs:out
+        }
+
+        def Shader "Gate"
+        {
+            uniform token info:id = "ND_smoothstep_float"
+            float inputs:in.connect = </Root/NightSkyMaterial/CellRand.outputs:out>
+            float inputs:low.connect = </Root/NightSkyMaterial/GateLow.outputs:out>
+            float inputs:high.connect = </Root/NightSkyMaterial/GateHigh.outputs:out>
+            float outputs:out
+        }
+
+        def Shader "GatedDot"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/NightSkyMaterial/DotSoft.outputs:out>
+            float inputs:in2.connect = </Root/NightSkyMaterial/Gate.outputs:out>
+            float outputs:out
+        }
+
+        # Per-star brightness variation, from the same per-cell random. A sky where every
+        # star is the same magnitude reads as a grid; real ones vary by orders of magnitude.
+        # Kept multiplicative and bounded so starBrightness stays the only level control.
+        def Shader "MagVary"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/NightSkyMaterial/CellRand.outputs:out>
+            float inputs:in2 = 0.75
+            float outputs:out
+        }
+
+        def Shader "MagFloor"
+        {
+            uniform token info:id = "ND_add_float"
+            float inputs:in1.connect = </Root/NightSkyMaterial/MagVary.outputs:out>
+            float inputs:in2 = 0.25
+            float outputs:out
+        }
+
+        def Shader "VariedDot"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/NightSkyMaterial/GatedDot.outputs:out>
+            float inputs:in2.connect = </Root/NightSkyMaterial/MagFloor.outputs:out>
+            float outputs:out
+        }
+
+        def Shader "StarLum"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/NightSkyMaterial/VariedDot.outputs:out>
+            float inputs:in2.connect = </Root/NightSkyMaterial.inputs:starBrightness>
+            float outputs:out
+        }
+
+        def Shader "StarRGB"
+        {
+            uniform token info:id = "ND_convert_float_color3"
+            float inputs:in.connect = </Root/NightSkyMaterial/StarLum.outputs:out>
+            color3f outputs:out
+        }
+
+        # --- milky way band and sky gradient -------------------------------------------
+        #
+        # ND_image_color3 rather than ND_image_float, and that is safe HERE specifically
+        # because this asset is NOT promoted to a material input. The
+        # one-texture-slot-only-for-ND_image_float defect applies to a PROMOTED `asset`
+        # input that Swift sets at runtime; this file is baked at compile time and never
+        # replaced, so the full colour node is fine and the band keeps its colour.
+        #
+        # The path resolves against THIS FILE's directory, not the .rkassets root.
+        #
+        # 512x256 is deliberate. At that size the original's baked stars smear into diffuse
+        # glow, which is what we want - the sharp stars now come from the graph above, and
+        # leaving the old blurry ones underneath them would be the worst of both.
+        def Shader "BandUV"
+        {
+            uniform token info:id = "ND_texcoord_vector2"
+            int inputs:index = 0
+            vector2 outputs:out
+        }
+
+        def Shader "BandImage"
+        {
+            uniform token info:id = "ND_image_color3"
+            asset inputs:file = @night_sky_band.png@ (
+                colorSpace = "srgb_texture"
+            )
+            string inputs:filtertype = "linear"
+            vector2 inputs:texcoord.connect = </Root/NightSkyMaterial/BandUV.outputs:out>
+            color3f outputs:out
+        }
+
+        def Shader "Band"
+        {
+            uniform token info:id = "ND_multiply_color3FA"
+            color3f inputs:in1.connect = </Root/NightSkyMaterial/BandImage.outputs:out>
+            float inputs:in2.connect = </Root/NightSkyMaterial.inputs:milkyWayIntensity>
+            color3f outputs:out
+        }
+
+        # --- DITHER, against 8-bit banding in the gradient -----------------------------
+        #
+        # The band texture is 8 bits per channel with no alpha (PNG colour type 2, measured).
+        # A night sky spends almost all of its range in the bottom few sRGB codes, where one
+        # code step is a large RELATIVE luminance change - so the gradient quantises into
+        # visible bands, and banding on a smooth sky reads exactly like "pixelated".
+        #
+        # A dither of roughly one code, applied before the 8-bit output, converts that step
+        # into noise the eye integrates away. This is the standard fix and it costs one noise
+        # node; raising the texture to 16 bit would not help, because the FRAMEBUFFER is the
+        # quantiser, not the texture.
+        #
+        # ND_noise3d_float survives realitytool (verified; fractal2d and the unifiednoise
+        # family do not - see the header). Sampled in direction space at high frequency so the
+        # pattern is per-fragment rather than a visible texture.
+        def Shader "DitherP"
+        {
+            uniform token info:id = "ND_multiply_vector3FA"
+            vector3 inputs:in1.connect = </Root/NightSkyMaterial/Dir.outputs:out>
+            float inputs:in2 = 4000
+            vector3 outputs:out
+        }
+
+        def Shader "DitherNoise"
+        {
+            uniform token info:id = "ND_noise3d_float"
+            vector3 inputs:position.connect = </Root/NightSkyMaterial/DitherP.outputs:out>
+            float inputs:amplitude = 1
+            float outputs:out
+        }
+
+        # 1/255 = 0.00392. One code step, which is the correct amplitude: less does not cross
+        # the quantisation boundary, more is visible as noise in its own right.
+        def Shader "DitherScaled"
+        {
+            uniform token info:id = "ND_multiply_float"
+            float inputs:in1.connect = </Root/NightSkyMaterial/DitherNoise.outputs:out>
+            float inputs:in2 = 0.00392
+            float outputs:out
+        }
+
+        def Shader "DitherRGB"
+        {
+            uniform token info:id = "ND_convert_float_color3"
+            float inputs:in.connect = </Root/NightSkyMaterial/DitherScaled.outputs:out>
+            color3f outputs:out
+        }
+
+        def Shader "BandDithered"
+        {
+            uniform token info:id = "ND_add_color3"
+            color3f inputs:in1.connect = </Root/NightSkyMaterial/Band.outputs:out>
+            color3f inputs:in2.connect = </Root/NightSkyMaterial/DitherRGB.outputs:out>
+            color3f outputs:out
+        }
+
+        # Additive: stars sit ON the band rather than replacing it, so the milky way reads
+        # as glow behind the star field exactly as it does in the sky.
+        #
+        # With the SPRITE star field in use, `starBrightness` is bound to 0 from Swift and this
+        # contributes only the dithered band - the stars are then separate geometry.
+        def Shader "SkyColour"
+        {
+            uniform token info:id = "ND_add_color3"
+            color3f inputs:in1.connect = </Root/NightSkyMaterial/BandDithered.outputs:out>
+            color3f inputs:in2.connect = </Root/NightSkyMaterial/StarRGB.outputs:out>
+            color3f outputs:out
+        }
+
+        # Unlit, like the material it replaces: the dome is the light source, not a lit
+        # surface. The original drove emissiveColor on a UsdPreviewSurface with
+        # diffuseColor black, which is the same intent expressed through a PBR node.
+        def Shader "SkySurface"
+        {
+            uniform token info:id = "ND_realitykit_unlit_surfaceshader"
+            color3f inputs:color.connect = </Root/NightSkyMaterial/SkyColour.outputs:out>
+            float inputs:opacity = 1
+            bool inputs:applyPostProcessToneMap = 0
+            bool inputs:hasPremultipliedAlpha = 0
+            token outputs:out
+        }
+    }
+}
