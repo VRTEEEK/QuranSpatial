@@ -12,10 +12,11 @@ public struct SourceFiles: Sendable {
     public var translation: URL      // QuranSpatial/Resources/en-rahman-saheeh-1947.json
     public var meaning: URL          // QuranSpatial/Resources/en-rahman-mukhtasar-27824.json
     public var related: URL?         // QuranSpatial/Resources/related-55-quranpedia-similar.json
-    public var rawTranslation: URL?  // scratch/1947.json (footnotes)
+    public var rawTranslation: URL?  // scratch/1947.json (footnotes re-extracted from the raw file)
+    public var footnotes: URL?       // QuranSpatial/Resources/en-rahman-saheeh-1947-footnotes.json (extracted, bundled)
 
-    public init(translation: URL, meaning: URL, related: URL? = nil, rawTranslation: URL? = nil) {
-        self.translation = translation; self.meaning = meaning; self.related = related; self.rawTranslation = rawTranslation
+    public init(translation: URL, meaning: URL, related: URL? = nil, rawTranslation: URL? = nil, footnotes: URL? = nil) {
+        self.translation = translation; self.meaning = meaning; self.related = related; self.rawTranslation = rawTranslation; self.footnotes = footnotes
     }
 
     /// The repository layout: walks up from `start` to the directory that contains
@@ -37,11 +38,13 @@ public struct SourceFiles: Sendable {
     public static func inRepository(root: URL) -> SourceFiles {
         let res = root.appendingPathComponent("QuranSpatial/Resources")
         let raw = root.appendingPathComponent("scratch/1947.json")
+        let notes = res.appendingPathComponent("en-rahman-saheeh-1947-footnotes.json")
         return SourceFiles(
             translation: res.appendingPathComponent("en-rahman-saheeh-1947.json"),
             meaning: res.appendingPathComponent("en-rahman-mukhtasar-27824.json"),
             related: res.appendingPathComponent("related-55-quranpedia-similar.json"),
-            rawTranslation: FileManager.default.fileExists(atPath: raw.path) ? raw : nil
+            rawTranslation: FileManager.default.fileExists(atPath: raw.path) ? raw : nil,
+            footnotes: FileManager.default.fileExists(atPath: notes.path) ? notes : nil
         )
     }
 
@@ -52,6 +55,7 @@ public struct SourceFiles: Sendable {
               let m = bundle.url(forResource: "en-rahman-mukhtasar-27824", withExtension: "json") else { return nil }
         return SourceFiles(translation: t, meaning: m,
                            related: bundle.url(forResource: "related-55-quranpedia-similar", withExtension: "json"),
-                           rawTranslation: nil)
+                           rawTranslation: nil,
+                           footnotes: bundle.url(forResource: "en-rahman-saheeh-1947-footnotes", withExtension: "json"))
     }
 }

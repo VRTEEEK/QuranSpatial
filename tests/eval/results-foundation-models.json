@@ -1,17 +1,17 @@
 {
   "availability" : "available",
-  "decisionAccuracy" : 1,
-  "decisionCorrect" : 30,
+  "decisionAccuracy" : 0.9333333333333333,
+  "decisionCorrect" : 28,
   "fallbacks" : 1,
   "perRoute" : {
     "meaning" : "10\/10",
     "off-topic" : "5\/5",
     "repetition" : "5\/5",
-    "ruling" : "5\/5",
+    "ruling" : "4\/5",
     "word" : "3\/5"
   },
-  "routeAccuracy" : 0.9333333333333333,
-  "routeCorrect" : 28,
+  "routeAccuracy" : 0.9,
+  "routeCorrect" : 27,
   "router" : "foundation-models",
   "rows" : [
     {
@@ -142,8 +142,8 @@
       "expectedRoute" : "word",
       "id" : "q11",
       "question" : "What does the word \"deny\" mean here?",
-      "route" : "meaning",
-      "routeOK" : false,
+      "route" : "word",
+      "routeOK" : true,
       "routedBy" : "foundation-models"
     },
     {
@@ -172,14 +172,14 @@
     },
     {
       "ayah" : 31,
-      "decision" : "answered",
-      "decisionOK" : true,
+      "decision" : "answered-in-part",
+      "decisionOK" : false,
       "expectedDecision" : "answered",
       "expectedRoute" : "word",
       "id" : "q14",
       "question" : "Why is it translated as \"we will attend to you\"?",
-      "route" : "word",
-      "routeOK" : true,
+      "route" : "related",
+      "routeOK" : false,
       "routedBy" : "foundation-models"
     },
     {
@@ -196,9 +196,9 @@
     },
     {
       "ayah" : 13,
-      "decision" : "answered",
+      "decision" : "answered-in-part",
       "decisionOK" : true,
-      "expectedDecision" : "answered",
+      "expectedDecision" : "answered-in-part",
       "expectedRoute" : "repetition",
       "id" : "q16",
       "question" : "Why does this verse repeat so many times?",
@@ -208,9 +208,9 @@
     },
     {
       "ayah" : 16,
-      "decision" : "answered",
+      "decision" : "answered-in-part",
       "decisionOK" : true,
-      "expectedDecision" : "answered",
+      "expectedDecision" : "answered-in-part",
       "expectedRoute" : "repetition",
       "id" : "q17",
       "question" : "How many times is this line repeated in the surah?",
@@ -220,9 +220,9 @@
     },
     {
       "ayah" : 21,
-      "decision" : "answered",
+      "decision" : "answered-in-part",
       "decisionOK" : true,
-      "expectedDecision" : "answered",
+      "expectedDecision" : "answered-in-part",
       "expectedRoute" : "repetition",
       "id" : "q18",
       "question" : "Why is the same question asked again and again?",
@@ -232,9 +232,9 @@
     },
     {
       "ayah" : 40,
-      "decision" : "answered",
+      "decision" : "answered-in-part",
       "decisionOK" : true,
-      "expectedDecision" : "answered",
+      "expectedDecision" : "answered-in-part",
       "expectedRoute" : "repetition",
       "id" : "q19",
       "question" : "Is this the refrain that keeps coming back?",
@@ -244,9 +244,9 @@
     },
     {
       "ayah" : 77,
-      "decision" : "answered",
+      "decision" : "answered-in-part",
       "decisionOK" : true,
-      "expectedDecision" : "answered",
+      "expectedDecision" : "answered-in-part",
       "expectedRoute" : "repetition",
       "id" : "q20",
       "question" : "Why repeat it 31 times?",
@@ -304,14 +304,14 @@
     },
     {
       "ayah" : 78,
-      "decision" : "referred",
-      "decisionOK" : true,
+      "decision" : "answered",
+      "decisionOK" : false,
       "expectedDecision" : "referred",
       "expectedRoute" : "ruling",
       "id" : "q25",
       "question" : "Is it permissible to write this ayah on a wall?",
-      "route" : "ruling",
-      "routeOK" : true,
+      "route" : "meaning",
+      "routeOK" : false,
       "routedBy" : "foundation-models"
     },
     {

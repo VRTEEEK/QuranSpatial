@@ -20,10 +20,35 @@ struct RuleRouterTests {
 }
 
 struct EngineTests {
-    @Test func decisionsFollowTheRoute() {
-        #expect(AskEngine.decision(for: .ruling) == .referred)
-        #expect(AskEngine.decision(for: .offTopic) == .declined)
-        for r in [QuestionRoute.meaning, .word, .repetition, .related, .unclear] { #expect(AskEngine.decision(for: r) == .answered) }
+    @Test func decisionsFollowTheRouteAndTheData() throws {
+        guard Sources.present else { withKnownIssue("sources absent") { Issue.record("local source files not present") }; return }
+        let corpus = try Corpus.load(Sources.files)
+        func d(_ r: QuestionRoute, _ ayah: Int = 13) -> Decision { AskEngine.decision(for: r, anchorAyah: ayah, corpus: corpus) }
+        #expect(d(.ruling) == .referred)
+        #expect(d(.offTopic) == .declined)
+        for r in [QuestionRoute.meaning, .word, .unclear] { #expect(d(r) == .answered) }
+        #expect(d(.repetition) == .answeredInPart)
+        #expect(d(.repetition, 1) == .answeredInPart)
+        #expect(d(.related, 11) == .answered && d(.related, 52) == .answered && d(.related, 68) == .answered)
+        #expect(d(.related, 13) == .answeredInPart && d(.related, 1) == .answeredInPart)
+    }
+
+    /// Day 2 decisions: the repetition route shows what the sources say and states the gap; the
+    /// related route answers only where the dump has data.
+    @Test func repetitionAnswersInPartWithTheFootnoteAndThePlainStatement() async throws {
+        guard Sources.present else { withKnownIssue("sources absent") { Issue.record("local source files not present") }; return }
+        let corpus = try Corpus.load(Sources.files)
+        let engine = AskEngine(corpus: corpus, router: RuleBasedRouter())
+        let a = await engine.ask("why does this keep repeating", anchorAyah: 21)
+        #expect(a.route == .repetition && a.decision == .answeredInPart)
+        #expect(a.note == Retriever.repetitionNote)
+        #expect(a.passages.first?.id == "saheeh-1947:55:21")
+        #expect(a.citations.contains("mukhtasar-27824:55:21"))
+        if corpus.footnotesLoaded { #expect(a.citations.contains("saheeh-1947-footnote:55:13#1")) }
+        #expect(a.lead.isEmpty && a.leadStatus == "none: no lead writer")
+        let r = await engine.ask("which other verses are similar to this one?", anchorAyah: 13)
+        #expect(r.route == .related && r.decision == .answeredInPart && r.note == Retriever.relatedUnavailableNote)
+        #expect(r.passages.map(\.ayah) == [13, 13])
     }
 
     @Test func answersCiteExactlyTheRetrievedPassagesAnchorFirst() async throws {
@@ -45,7 +70,8 @@ struct EngineTests {
         #expect(rel.passages.map(\.ayah) == [11, 52, 68])
         #expect(rel.passages.allSatisfy { $0.source == .saheehTranslation })
         let none = await engine.ask("Which other verses are similar to this one?", anchorAyah: 13)
-        #expect(none.passages.map(\.ayah) == [13])
+        #expect(none.decision == .answeredInPart)
+        #expect(none.passages.map(\.ayah) == [13, 13])
     }
 
     /// Every passage in every answer is byte-identical to a corpus text - nothing is rewritten.

@@ -12,9 +12,10 @@ struct EvalTests {
     struct Report: Encodable { let router: String; let availability: String; let total: Int; let routeCorrect: Int; let routeAccuracy: Double; let decisionCorrect: Int; let decisionAccuracy: Double; let fallbacks: Int; let perRoute: [String: String]; let rows: [Row] }
 
     static let evalURL = Sources.repoRoot.appendingPathComponent("tests/eval/questions.json")
+    static let heldoutURL = Sources.repoRoot.appendingPathComponent("tests/eval/heldout.json")
 
-    static func run(_ router: any QuestionRouter, availability: String) async throws -> Report {
-        let file = try JSONDecoder().decode(File.self, from: Data(contentsOf: evalURL))
+    static func run(_ router: any QuestionRouter, availability: String, set url: URL = evalURL, label: String = "") async throws -> Report {
+        let file = try JSONDecoder().decode(File.self, from: Data(contentsOf: url))
         // Through the engine, so a router error takes the same fallback path the app takes,
         // and the row records who actually routed (e.g. a guardrail refusal -> rules).
         let corpus = try Corpus.load(Sources.files)
@@ -32,9 +33,9 @@ struct EvalTests {
         let fb = rows.filter { $0.routedBy != router.name }.count
         let report = Report(router: router.name, availability: availability, total: rows.count, routeCorrect: rc, routeAccuracy: Double(rc) / Double(rows.count), decisionCorrect: dc, decisionAccuracy: Double(dc) / Double(rows.count), fallbacks: fb, perRoute: perRoute.mapValues { "\($0.ok)/\($0.n)" }, rows: rows)
         let enc = JSONEncoder(); enc.outputFormatting = [.prettyPrinted, .sortedKeys]
-        let out = Sources.repoRoot.appendingPathComponent("tests/eval/results-\(router.name).json")
+        let out = Sources.repoRoot.appendingPathComponent("tests/eval/results-\(label)\(router.name).json")
         try enc.encode(report).write(to: out)
-        print("EVAL \(router.name): route \(rc)/\(rows.count), decision \(dc)/\(rows.count), fallbacks \(fb), per route \(report.perRoute)")
+        print("EVAL \(label)\(router.name): route \(rc)/\(rows.count), decision \(dc)/\(rows.count), fallbacks \(fb), per route \(report.perRoute)")
         for r in rows where !r.routeOK { print("  miss \(r.id) ayah \(r.ayah): expected \(r.expectedRoute), got \(r.route) — \(r.question)") }
         for r in rows where r.routedBy != router.name { print("  fallback \(r.id): \(r.routedBy) — \(r.question)") }
         return report
@@ -46,7 +47,39 @@ struct EvalTests {
         let counts = Dictionary(grouping: file.questions, by: \.expectedRoute).mapValues(\.count)
         #expect(counts[.meaning] == 10 && counts[.word] == 5 && counts[.repetition] == 5 && counts[.ruling] == 5 && counts[.offTopic] == 5)
         #expect(Set(file.questions.map(\.ayah)).count >= 15)
-        for q in file.questions { #expect(AskEngine.decision(for: q.expectedRoute) == q.expectedDecision) }
+        guard Sources.present else { return }
+        let corpus = try Corpus.load(Sources.files)
+        for q in file.questions { #expect(AskEngine.decision(for: q.expectedRoute, anchorAyah: q.ayah, corpus: corpus) == q.expectedDecision, "\(q.id)") }
+    }
+
+    /// HELD-OUT (Day 2): written by a separate agent that saw only the route definitions and the
+    /// ayah list. Reported for both routers, never tuned against. Shape asserted; scores reported.
+    @Test func heldoutSetHasTheAgreedShape() throws {
+        let file = try JSONDecoder().decode(File.self, from: Data(contentsOf: Self.heldoutURL))
+        #expect(file.questions.count == 40)
+        let counts = Dictionary(grouping: file.questions, by: \.expectedRoute).mapValues(\.count)
+        #expect(counts[.meaning] == 12 && counts[.word] == 6 && counts[.repetition] == 5 && counts[.related] == 4 && counts[.ruling] == 5 && counts[.offTopic] == 5 && counts[.unclear] == 3)
+        guard Sources.present else { return }
+        let corpus = try Corpus.load(Sources.files)
+        for q in file.questions { #expect(AskEngine.decision(for: q.expectedRoute, anchorAyah: q.ayah, corpus: corpus) == q.expectedDecision, "\(q.id)") }
+    }
+
+    @Test func heldoutRuleBasedRouter() async throws {
+        guard Sources.present else { withKnownIssue("sources absent") { Issue.record("local source files not present") }; return }
+        let r = try await Self.run(RuleBasedRouter(), availability: "n/a", set: Self.heldoutURL, label: "heldout-")
+        #expect(r.total == 40)
+    }
+
+    @Test func heldoutFoundationModelsRouter() async throws {
+        guard Sources.present else { withKnownIssue("sources absent") { Issue.record("local source files not present") }; return }
+        let availability = FoundationModelsSupport.availability
+        guard let fm = FoundationModelsSupport.router() else {
+            print("EVAL heldout-foundation-models: NOT RUN — \(availability)")
+            withKnownIssue("Foundation Models \(availability)") { Issue.record("Foundation Models router not available on this machine") }
+            return
+        }
+        let r = try await Self.run(fm, availability: availability, set: Self.heldoutURL, label: "heldout-")
+        #expect(r.total == 40)
     }
 
     @Test func ruleBasedRouterOnTheEvalSet() async throws {

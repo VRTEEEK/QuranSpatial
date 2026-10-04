@@ -118,7 +118,20 @@ public struct Corpus: Sendable {
 
         var footnotes: [Int: [Passage]] = [:]
         var footnotesLoaded = false
-        if let rawURL = files.rawTranslation, let raw = try? Data(contentsOf: rawURL) {
+        if let notesURL = files.footnotes, FileManager.default.fileExists(atPath: notesURL.path) {
+            // The extracted footnotes file (bundled in the app): same shape and self-hash check as
+            // the other extracted files; several entries may share an ayah, in note order.
+            let notes = try loadExtracted(notesURL)
+            guard notes.rawSHA256 == translation.rawSHA256 else {
+                throw CorpusError.rawMismatch(file: notesURL.lastPathComponent, expected: translation.rawSHA256, actual: notes.rawSHA256)
+            }
+            var counter: [Int: Int] = [:]
+            for entry in notes.ayat {
+                let n = (counter[entry.ayah] ?? 0) + 1; counter[entry.ayah] = n
+                footnotes[entry.ayah, default: []].append(Passage(source: .saheehFootnote, ayah: entry.ayah, text: entry.text, suffix: "#\(n)"))
+            }
+            footnotesLoaded = true
+        } else if let rawURL = files.rawTranslation, let raw = try? Data(contentsOf: rawURL) {
             let actual = sha256Hex(data: raw)
             guard actual == translation.rawSHA256 else {
                 throw CorpusError.rawMismatch(file: rawURL.lastPathComponent, expected: translation.rawSHA256, actual: actual)
@@ -147,6 +160,12 @@ public struct Corpus: Sendable {
 
     public subscript(ayah: Int) -> AyahRecord? { records[ayah] }
     public var ayahCount: Int { records.count }
+
+    /// The 31 refrain ayat of Surah 55.
+    public static let refrainAyat: Set<Int> = [13, 16, 18, 21, 23, 25, 28, 30, 32, 34, 36, 38, 40, 42, 45, 47, 49, 51,
+                                               53, 55, 57, 59, 61, 63, 65, 67, 69, 71, 73, 75, 77]
+    /// The Saheeh translator's footnote on the refrain's "you two" (note 1594, on ayah 13).
+    public var refrainFootnote: Passage? { records[13]?.footnotes.first }
 }
 
 /// The refs-only file derived from Quranpedia's similar-ayat dump (committed; carries no text).

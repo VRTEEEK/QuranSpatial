@@ -1,6 +1,6 @@
 {
  "surah": 55,
- "description": "30 questions across different ayat with the expected route and decision. Routes: 10 meaning, 5 word, 5 repetition, 5 ruling, 5 off-topic. Decisions: answered for meaning/word/repetition, referred for ruling, declined for off-topic.",
+ "description": "30 questions across different ayat with the expected route and decision. Routes: 10 meaning, 5 word, 5 repetition, 5 ruling, 5 off-topic. Decisions: answered for meaning/word, answered-in-part for repetition (decided 2026-10-04), referred for ruling, declined for off-topic.",
  "questions": [
   {
    "id": "q01",
@@ -112,35 +112,35 @@
    "ayah": 13,
    "question": "Why does this verse repeat so many times?",
    "expectedRoute": "repetition",
-   "expectedDecision": "answered"
+   "expectedDecision": "answered-in-part"
   },
   {
    "id": "q17",
    "ayah": 16,
    "question": "How many times is this line repeated in the surah?",
    "expectedRoute": "repetition",
-   "expectedDecision": "answered"
+   "expectedDecision": "answered-in-part"
   },
   {
    "id": "q18",
    "ayah": 21,
    "question": "Why is the same question asked again and again?",
    "expectedRoute": "repetition",
-   "expectedDecision": "answered"
+   "expectedDecision": "answered-in-part"
   },
   {
    "id": "q19",
    "ayah": 40,
    "question": "Is this the refrain that keeps coming back?",
    "expectedRoute": "repetition",
-   "expectedDecision": "answered"
+   "expectedDecision": "answered-in-part"
   },
   {
    "id": "q20",
    "ayah": 77,
    "question": "Why repeat it 31 times?",
    "expectedRoute": "repetition",
-   "expectedDecision": "answered"
+   "expectedDecision": "answered-in-part"
   },
   {
    "id": "q21",

@@ -42,9 +42,29 @@ struct CorpusTests {
         }
     }
 
+    @Test func footnotesFileHasThePinnedHashAndTiesToTheRawFile() throws {
+        try Sources.whenPresent {
+            try withKnownIssue("footnotes file not generated", isIntermittent: false) {
+                let notes = try Corpus.loadExtracted(try #require(Sources.files.footnotes))
+                #expect(notes.textSHA256 == "82855314515949dcc58467f5ad523afff5eb28f63978ff8661e39846dff10cbd")
+                #expect(notes.rawSHA256 == "8c08a8332fae34788f556e5d13a78fe45f68f607cf7a2dabd6596a7fad573978")
+                #expect(notes.ayat.count == 14)
+                #expect(Set(notes.ayat.map(\.ayah)) == [6, 13, 17, 19, 27, 29, 31, 35, 37, 39, 46, 56, 58])
+                // The raw-file extraction (macOS path) must agree with the bundled file exactly.
+                if let raw = Sources.files.rawTranslation {
+                    var viaRaw = Sources.files; viaRaw.footnotes = nil
+                    let a = try Corpus.load(viaRaw), b = try Corpus.load(Sources.files)
+                    for n in 1...78 { #expect(a[n]?.footnotes == b[n]?.footnotes, "ayah \(n)") }
+                    _ = raw
+                }
+            } when: { Sources.files.footnotes == nil }
+        }
+    }
+
     @Test func footnotesComeFromTheRawFileAndTieToTheBundledText() throws {
         try Sources.whenPresent {
-            let corpus = try Corpus.load(Sources.files)
+            var files = Sources.files; files.footnotes = nil
+            let corpus = try Corpus.load(files)
             try withKnownIssue("raw 1947.json not in scratch/", isIntermittent: false) {
                 #expect(corpus.footnotesLoaded)
                 let r13 = try #require(corpus[13])
