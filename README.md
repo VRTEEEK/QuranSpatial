@@ -1,19 +1,72 @@
-# Quran Spatial
+# QuranSpatial
 
-An Apple Vision Pro app that presents **Surah Ar-Rahman** as an immersive spatial experience:
-the Arabic text floats in a night pavilion, shaped by Core Text in the Amiri Quran typeface; a
-dua posture (both hands raised) begins the recitation; each ayah dissolves into the next with a
-shader effect; and **Ask** lets the wearer look at an ayah, pinch, and ask a question in English,
-answered only from verbatim, cited sources - never from the model's own words.
+**Experience the Quran in space. Ask naturally. Receive answers grounded in trusted Islamic sources.**
 
-Built by Mohamed at [VRTEEK](https://vrteek.com), a digital heritage and spatial computing studio. App Store target: 3 November 2026.
+QuranSpatial is an immersive Apple Vision Pro experience built around Surah Ar-Rahman, combining
+spatial computing, Quranic recitation and grounded AI.
+
+The wearer enters a peaceful night pavilion where the ayat exist in the surrounding space - Arabic
+shaped by Core Text in the Amiri Quran typeface. Raising both hands in a natural dua posture begins
+the recitation, and each ayah dissolves spatially into the next.
+
+Built by Mohamed at [VRTEEK](https://vrteek.com), a digital heritage and spatial computing studio.
+App Store target: 3 November 2026.
 
 > **Challenge entry.** This repository is the public mirror of the entry to the
 > *AI Challenge Serving Islamic Content* (تحدي الذكاء الاصطناعي في خدمة المحتوى الإسلامي), track 3.
-> Start with **[docs/challenge/README-for-judges.md](docs/challenge/README-for-judges.md)** - what
-> Ask does, the integrity rules, how to run it on a Mac, and the evaluation numbers. The day-by-day
-> log is in `docs/challenge/day-*.md`; sources and licences in
+> Judges: start with **[docs/challenge/README-for-judges.md](docs/challenge/README-for-judges.md)** -
+> what Ask does in detail, the integrity rules, how to run it on a Mac, and the evaluation numbers.
+> The day-by-day log is in `docs/challenge/day-*.md`; sources and licences in
 > [docs/challenge/sources-tools-licences.md](docs/challenge/sources-tools-licences.md).
+
+## Ask anything
+
+At any moment, the wearer can look at an ayah, pinch and ask a question in English.
+
+The question does not have to be about the meaning of the selected ayah. The ayah gives
+QuranSpatial the context of where the wearer is in the experience; the wearer is free to ask
+naturally. For example, with ayah 13 on screen:
+
+| question | what QuranSpatial does |
+| --- | --- |
+| "Why is this ayah repeated?" | answers in part from the sources, and says plainly that none of them explains the repetition |
+| "What does mercy mean in Islam?" | answers from the Jamhara entry on *rahma* and the cited ayat |
+| "What happens after death?" | answers from the *after death* card: Jamhara entries and Saheeh International ayat, verbatim |
+| "Did Islam spread by the sword?" | declines - not covered by the English sources in this app; shows the annex's Arabic Q&A link instead |
+| "How can I become a better Muslim?" | refers the question to qualified human guidance - a personal situation |
+
+QuranSpatial then determines whether the question can be answered from its available trusted
+sources. It can **answer from retrieved sources**, **refer to qualified human guidance**, or
+**decline when reliable support is unavailable**. It does not invent Quranic knowledge to fill a
+gap. Questions involving religious rulings or personal situations are referred before any
+generative model runs.
+
+Any question can be asked; only questions the trusted sources support are answered. Today those
+sources are the Saheeh International translation and footnotes of Surah Ar-Rahman, the English
+Al-Mukhtasar tafsir of the surah, 30 cards built from the Jamhara dictionary of Islamic terms and
+cited ayat, and the Quranpedia related-ayat data.
+
+## How Ask works
+
+**Look -> Pinch -> Ask -> Retrieve -> Verify -> Answer / Refer / Decline**
+
+1. Look at an ayah and pinch.
+2. The recitation pauses on that ayah.
+3. Ask any question naturally in English; listening ends on silence.
+4. QuranSpatial classifies the question (a safety gate first, then a router) and searches its
+   local knowledge sources.
+5. Relevant passages are retrieved, verbatim, each with its source line.
+6. The response is checked against those passages by a deterministic verifier.
+7. QuranSpatial presents a grounded answer, refers the question, or declines. Play reads the
+   answer aloud on device; Continue resumes the recitation where it paused.
+
+The model never generates Quran text, translation or tafsir. Its role is deliberately
+constrained: it helps route the question and may write a short introductory lead, but the
+Islamic knowledge shown to the wearer comes from retrieved source material.
+
+**The AI helps navigate the knowledge. It is not the source of the knowledge.**
+
+Everything runs on the headset. No network, no accounts, no ads, no in-app purchases.
 
 ## The experience
 
@@ -23,9 +76,6 @@ Built by Mohamed at [VRTEEK](https://vrteek.com), a digital heritage and spatial
 | **Entry** | A dua posture recognizer (five gates with hysteresis, 1.5 s commit) is the only way to start the recitation. It is tuned to prefer a missed gesture over an unbidden one. A 3 s onboarding card shows the gesture on every entry. |
 | **Recitation** | One continuous audio file with a timings file; `AVFoundation` boundary observers advance the ayah. A quiet ambient bed plays underneath and ducks to silence during an Ask. |
 | **Dissolve** | A RealityKit ShaderGraph material; the primary transition between ayat. |
-| **Ask** | Pinch on an ayah -> recitation pauses -> speak a question (listening ends on silence) -> a panel shows a decision, the verbatim passages with their source lines, and an optional one-line lead that a deterministic verifier has checked. Play reads the answer aloud on device. Rulings and personal situations are referred to a scholar before any model runs. |
-
-Everything runs on the headset. No network, no accounts, no ads, no in-app purchases.
 
 ## Integrity rules
 
