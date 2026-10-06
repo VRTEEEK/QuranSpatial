@@ -1,0 +1,511 @@
+{
+  "surah": 55,
+  "description": "Directive 4 (5 Oct 2026), B2: a PRACTICE set of 40 general-question items (g01-g40) written by a fresh blind agent given only the 30 card ids/titles/levels, the decision rules and the heldout-2 style rules (prompt in general-dev-prompt.md). Questions are the agent's verbatim. Tuning on this set is allowed and must be reported. Shape: 22 covered, 8 uncovered, 4 personal, 3 hadith-or-qualified, 3 traps.",
+  "questions": [
+    {
+      "id": "g01",
+      "ayah": 1,
+      "category": "covered",
+      "question": "um so I'm kind of new to all this what's the deal with there being only one god",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g1-tawhid-newcomer",
+        "term-3529-tawhid"
+      ]
+    },
+    {
+      "id": "g02",
+      "ayah": 3,
+      "category": "covered",
+      "question": "what does tawheed actually mean",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-3529-tawhid",
+        "general-g1-tawhid-newcomer"
+      ]
+    },
+    {
+      "id": "g03",
+      "ayah": 5,
+      "category": "covered",
+      "question": "ok so why do muslims all turn the same way when they pray",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g2-face-kaaba",
+        "term-7670-qiblah",
+        "term-8189-kaaba"
+      ]
+    },
+    {
+      "id": "g04",
+      "ayah": 7,
+      "category": "covered",
+      "question": "like does it matter which direction you pray in and why that one",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g2-face-kaaba",
+        "term-7670-qiblah"
+      ]
+    },
+    {
+      "id": "g05",
+      "ayah": 9,
+      "category": "covered",
+      "question": "why can't muslims drink alcohol",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g3-alcohol-forbidden"
+      ]
+    },
+    {
+      "id": "g06",
+      "ayah": 10,
+      "category": "covered",
+      "question": "so what's the reason wine and beer are off limits in islam",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g3-alcohol-forbidden"
+      ]
+    },
+    {
+      "id": "g07",
+      "ayah": 13,
+      "category": "covered",
+      "question": "what does islam say happens to you after you die",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g4-after-death",
+        "term-2060-barzakh",
+        "term-484-hereafter"
+      ]
+    },
+    {
+      "id": "g08",
+      "ayah": 14,
+      "category": "covered",
+      "question": "wait where does the soul go in between dying and the day everyone gets judged",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-2060-barzakh",
+        "general-g4-after-death"
+      ]
+    },
+    {
+      "id": "g09",
+      "ayah": 17,
+      "category": "covered",
+      "question": "what is paradise like in islam",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-3911-jannah",
+        "general-g5-what-jannah-is"
+      ]
+    },
+    {
+      "id": "g10",
+      "ayah": 19,
+      "category": "covered",
+      "question": "um the place the good people end up after the judgement what do muslims call it and what's it like",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g5-what-jannah-is",
+        "term-3911-jannah"
+      ]
+    },
+    {
+      "id": "g11",
+      "ayah": 21,
+      "category": "covered",
+      "question": "why do the scholars disagree with each other so much",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g6-why-scholars-differ",
+        "term-454-ikhtilaf"
+      ]
+    },
+    {
+      "id": "g12",
+      "ayah": 22,
+      "category": "covered",
+      "question": "how come you get a different answer depending on which sheikh you ask",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g6-why-scholars-differ",
+        "term-454-ikhtilaf",
+        "term-196-ijtihad"
+      ]
+    },
+    {
+      "id": "g13",
+      "ayah": 26,
+      "category": "covered",
+      "question": "the four schools of thought hanafi and shafi and so on why are there four of them",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g7-why-madhhabs",
+        "term-9210-madhhab"
+      ]
+    },
+    {
+      "id": "g14",
+      "ayah": 27,
+      "category": "covered",
+      "question": "what's a madhab",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-9210-madhhab",
+        "general-g7-why-madhhabs"
+      ]
+    },
+    {
+      "id": "g15",
+      "ayah": 29,
+      "category": "covered",
+      "question": "who actually wrote the quran was it muhammad",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "gap-quran-authorship",
+        "term-7771-quran",
+        "term-10849-revelation"
+      ]
+    },
+    {
+      "id": "g16",
+      "ayah": 31,
+      "category": "covered",
+      "question": "so where did this book come from like who put the words together in the first place",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "gap-quran-authorship",
+        "term-10849-revelation",
+        "term-7771-quran"
+      ]
+    },
+    {
+      "id": "g17",
+      "ayah": 33,
+      "category": "covered",
+      "question": "who is ar rahman is that like another name for god",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-5172-ar-rahman"
+      ]
+    },
+    {
+      "id": "g18",
+      "ayah": 35,
+      "category": "covered",
+      "question": "this sura keeps going on about mercy what does that word mean here",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-5170-mercy"
+      ]
+    },
+    {
+      "id": "g19",
+      "ayah": 37,
+      "category": "covered",
+      "question": "wait this eye says the gin and the humans what are the gin",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-3903-jinn"
+      ]
+    },
+    {
+      "id": "g20",
+      "ayah": 39,
+      "category": "covered",
+      "question": "what's it called when you raise your hands and ask god for something",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-4887-dua"
+      ]
+    },
+    {
+      "id": "g21",
+      "ayah": 41,
+      "category": "covered",
+      "question": "what is sharia actually is it like a book of laws",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-5979-sharia"
+      ]
+    },
+    {
+      "id": "g22",
+      "ayah": 43,
+      "category": "covered",
+      "question": "the day when everybody gets brought back to life and judged what is that",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-11207-last-day",
+        "term-9661-resurrection",
+        "term-484-hereafter"
+      ]
+    },
+    {
+      "id": "g23",
+      "ayah": 46,
+      "category": "uncovered",
+      "question": "what does jihad actually mean",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g24",
+      "ayah": 48,
+      "category": "uncovered",
+      "question": "so the trip to mecca everyone has to do once in their life how does that work",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g25",
+      "ayah": 50,
+      "category": "uncovered",
+      "question": "what is the sunnah",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g26",
+      "ayah": 52,
+      "category": "uncovered",
+      "question": "um do muslims believe in angels and what do they do",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g27",
+      "ayah": 55,
+      "category": "uncovered",
+      "question": "why do people not eat all day during ramadan",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g28",
+      "ayah": 58,
+      "category": "uncovered",
+      "question": "how many prophets are there in islam and who was the first one",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g29",
+      "ayah": 60,
+      "category": "uncovered",
+      "question": "the money muslims have to give to the poor every year what's that called",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g30",
+      "ayah": 62,
+      "category": "uncovered",
+      "question": "why is the quran in arabic and not just any language",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g31",
+      "ayah": 64,
+      "category": "personal",
+      "question": "can I pray sitting down my knees are really bad",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g32",
+      "ayah": 66,
+      "category": "personal",
+      "question": "my boss wants me in a meeting during friday prayer what should I do",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g33",
+      "ayah": 68,
+      "category": "personal",
+      "question": "I missed like three days of fasting last year do I have to make them up",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g34",
+      "ayah": 70,
+      "category": "personal",
+      "question": "my wife wants to go on umrah without me should I let her",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g35",
+      "ayah": 72,
+      "category": "hadith-or-qualified",
+      "question": "is there a hadith about being good to your neighbours",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g36",
+      "ayah": 74,
+      "category": "hadith-or-qualified",
+      "question": "is alcohol ok if it's cooked into the food like in a sauce",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g37",
+      "ayah": 76,
+      "category": "hadith-or-qualified",
+      "question": "what about a tiny bit of alcohol in cough medicine is that allowed",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g38",
+      "ayah": 78,
+      "category": "trap",
+      "question": "what time does the garden centre close on a sunday",
+      "expectedRoute": "off-topic",
+      "acceptableDecisions": [
+        "declined"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g39",
+      "ayah": 2,
+      "category": "trap",
+      "question": "which direction should I be facing for the camera in this shot",
+      "expectedRoute": "off-topic",
+      "acceptableDecisions": [
+        "declined"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "g40",
+      "ayah": 12,
+      "category": "trap",
+      "question": "when is the last day of school before the holidays",
+      "expectedRoute": "off-topic",
+      "acceptableDecisions": [
+        "declined"
+      ],
+      "acceptableCards": []
+    }
+  ]
+}

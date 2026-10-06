@@ -12,15 +12,32 @@
 #   QuranSpatial/Resources/rahman-single.mp3     recitation audio, licence unresolved
 #   *.usdz, *.usdc                               environment assets, provenance not recorded
 #   en-*.json                                    translation / tafsir text, no licence notice
+#     (en-jamhara-terms.json, en-saheeh-1947-cited.json, en-dorar-55-overall.json named explicitly:
+#      the Ask cards' local sources, day 4)
 #   scratch/                                     raw downloads and unlicensed material
 #   capture/*.json                               the author's hand-tracking data
+#   QuranSpatial/Resources/background.m4a        immersive ambience loop, source not recorded
+#                                                (metadata: iMovie export, "My Movie 24")
+#   QuranSpatial/Resources/logo_sound.wav        launch chime, source not recorded
+#   tests/eval/day5/results-*.json, leads-audit.csv, heldout-2-prompt.md, annex12-paraphrase-prompt.md
+#                                                day-5 eval transcripts and prompts: the model's answers and
+#                                                the prompts quote the local translation / tafsir texts
 set -euo pipefail
 
 SRC="$(cd "$(dirname "$0")/.." && pwd)"
 DST="${QS_PUBLIC_DIR:-$HOME/src/QuranSpatial-baseline-public}"
-EXCLUDE_RE='^(QuranSpatial/Resources/rahman-single\.mp3$|.*\.(usdz|usdc)$|(.*/)?en-[^/]*\.json$|scratch/|capture/.*\.json$)'
+EXCLUDE_RE='^(QuranSpatial/Resources/rahman-single\.mp3$|QuranSpatial/Resources/background\.m4a$|QuranSpatial/Resources/logo_sound\.wav$|.*\.(usdz|usdc)$|(.*/)?en-[^/]*\.json$|scratch/|capture/.*\.json$|tests/eval/day5/leads-audit-passages\.csv$|tests/eval/heldout-2-prompt-full\.md$|tests/eval/day5/results-[^/]*\.json$|tests/eval/day5/leads-audit\.csv$|tests/eval/heldout-2-prompt\.md$|tests/eval/annex12-paraphrase-prompt\.md$)'
+# Never-TRACKED list: unlike the audio and environment assets, which are tracked privately and merely
+# dropped from the export, these may not be in the index or at HEAD at all. If one is staged or
+# committed the sync ABORTS before anything is exported. tools/test_sync_public_guard.py tests this.
+NEVER_TRACKED_RE='^((.*/)?en-[^/]*\.json|QuranSpatial/Resources/en-jamhara-terms\.json|QuranSpatial/Resources/en-saheeh-1947-cited\.json|QuranSpatial/Resources/en-dorar-55-overall\.json|tests/eval/day5/leads-audit-passages\.csv|tests/eval/heldout-2-prompt-full\.md)$'
 
 cd "$SRC"
+# Never-tracked source text: checked FIRST, so the abort names the file whether it is staged or at HEAD.
+TRACKED=$( (git ls-files --cached; git ls-tree -r --name-only HEAD) | sort -u | grep -E "$NEVER_TRACKED_RE" || true )
+if [ -n "$TRACKED" ]; then
+  echo "abort: never-tracked source text is staged or committed:" >&2; echo "$TRACKED" >&2; exit 1
+fi
 # The export is taken from HEAD, so untracked files cannot leak; modified tracked files mean
 # HEAD is not what the author is looking at, so they block the sync.
 if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
@@ -52,10 +69,22 @@ needles = []
 files = glob.glob(os.path.join(src, "QuranSpatial", "Resources", "en-*.json"))
 if not files:
     print("abort: no local en-*.json files to build the passage check from", file=sys.stderr); sys.exit(1)
+def add(t):
+    t = (t or "").strip()
+    if not t: return
+    needles.append(t)
+    if len(t) > 40: needles.extend([t[:25], t[len(t)//2:len(t)//2+25]])
 for path in files:
-    for a in json.load(open(path, encoding="utf-8"))["ayat"]:
-        t = a["text"]; needles.append(t)
-        if len(t) > 40: needles += [t[:25], t[len(t)//2:len(t)//2+25]]
+    d = json.load(open(path, encoding="utf-8"))
+    # Two schemas: translation/tafsir files carry ayat[].text; the Jamhara terms file
+    # (day 4) carries entries[].definition / .explanation. Both are passage text.
+    if "ayat" in d:
+        for a in d["ayat"]: add(a["text"])
+    elif "entries" in d:
+        for e in d["entries"]:
+            add(e.get("definition")); add(e.get("explanation"))
+    else:
+        print("abort: %s has neither 'ayat' nor 'entries'; passage check cannot run" % path, file=sys.stderr); sys.exit(1)
 raw = os.path.join(src, "scratch", "1947.json")
 if os.path.exists(raw):
     for a in json.load(open(raw, encoding="utf-8"))["ayahs"]:

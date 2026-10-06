@@ -1,0 +1,773 @@
+{
+  "note": "Ask cards: REFERENCES ONLY. This file carries ids, titles, levels, keywords and phrasings written for this project, and pointers into the sources named by the challenge annex. It never carries Jamhara, Quran or translation text; those live in local-only files (en-jamhara-terms.json, en-saheeh-1947-cited.json), gitignored and blocked by tools/sync-public.sh. Levels are the annex CONTENT levels (A stable, B explanation/doubts, C disputed or sensitive), not audience levels. KEYWORDS MATCH WHOLE WORDS ONLY: a keyword matches a question only at word boundaries on both sides (so 'eye' never matches 'eyes'); multi-word keywords match as a whole-word phrase. Speech-recogniser spellings (e.g. 'gin' for jinn) are handled in transcript clean-up, not here.",
+  "sources": {
+    "jamhara": {
+      "name": "Jamhara dictionary (islamic-content.com), English",
+      "urlPattern": "https://islamic-content.com/dictionary/word/<id>/en"
+    },
+    "quran": {
+      "name": "Saheeh International translation, Quranpedia book 1947 (local only)",
+      "refFormat": "surah:ayah or surah:first-last"
+    },
+    "arabicLinks": [
+      "https://dawa.center"
+    ]
+  },
+  "levels": {
+    "A": "stable, original information",
+    "B": "explanation, definitions, general questions and doubts",
+    "C": "disputed or highly sensitive"
+  },
+  "kinds": {
+    "term": "one Jamhara entry",
+    "general": "a question answered from several entries and/or cited ayat; may carry an arabicLink as further reading",
+    "gap": "not covered by an English source in this app; the answer is 'not covered' plus an Arabic link"
+  },
+  "cardCount": 30,
+  "cards": [
+    {
+      "id": "term-3529-tawhid",
+      "kind": "term",
+      "level": "A",
+      "title": "What Tawhid means",
+      "jamharaIDs": [
+        3529
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "tawhid",
+        "tawheed",
+        "oneness",
+        "one god",
+        "monotheism"
+      ],
+      "phrasings": [
+        "What is tawhid?",
+        "What does tawhid mean?",
+        "What is the oneness of God in Islam?",
+        "Why do Muslims say there is only one God?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-5172-ar-rahman",
+      "kind": "term",
+      "level": "A",
+      "title": "Who Ar-Rahman is",
+      "jamharaIDs": [
+        5172
+      ],
+      "quranRefs": [
+        "55:1"
+      ],
+      "keywords": [
+        "ar-rahman",
+        "rahman",
+        "the most merciful",
+        "name of god",
+        "names of allah"
+      ],
+      "phrasings": [
+        "What does Ar-Rahman mean?",
+        "Who is Ar-Rahman?",
+        "Is Ar-Rahman one of the names of God?",
+        "Why is God described as merciful?",
+        "How is God's mercy understood in the Quran?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-5170-mercy",
+      "kind": "term",
+      "level": "A",
+      "title": "What mercy (rahma) is",
+      "jamharaIDs": [
+        5170
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "mercy",
+        "rahma",
+        "rahmah",
+        "merciful",
+        "compassion"
+      ],
+      "phrasings": [
+        "What does mercy mean in Islam?",
+        "What is rahma?",
+        "What is the Islamic understanding of mercy?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-7771-quran",
+      "kind": "term",
+      "level": "A",
+      "title": "What the Quran is",
+      "jamharaIDs": [
+        7771
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "quran",
+        "qur'an",
+        "koran",
+        "holy book",
+        "scripture"
+      ],
+      "phrasings": [
+        "What is the Quran?",
+        "What do Muslims believe the Quran is?",
+        "Is the Quran the word of God?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-10849-revelation",
+      "kind": "term",
+      "level": "A",
+      "title": "What revelation (wahy) is",
+      "jamharaIDs": [
+        10849
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "revelation",
+        "wahy",
+        "revealed",
+        "sent down",
+        "inspiration"
+      ],
+      "phrasings": [
+        "What is revelation in Islam?",
+        "What does wahy mean?",
+        "What does it mean that a verse was sent down?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-6732-worship",
+      "kind": "term",
+      "level": "A",
+      "title": "What worship (ibadah) is",
+      "jamharaIDs": [
+        6732
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "worship",
+        "ibadah",
+        "ibada",
+        "serve god",
+        "devotion"
+      ],
+      "phrasings": [
+        "What does worship mean in Islam?",
+        "What is ibadah?",
+        "What counts as worship?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-5979-sharia",
+      "kind": "term",
+      "level": "B",
+      "title": "What Sharia is",
+      "jamharaIDs": [
+        5979
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "sharia",
+        "shariah",
+        "islamic law",
+        "divine law"
+      ],
+      "phrasings": [
+        "What is sharia?",
+        "What does sharia mean?",
+        "Is sharia the same as Islamic law?",
+        "Where does sharia come from?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-7399-fatwa",
+      "kind": "term",
+      "level": "B",
+      "title": "What a fatwa is",
+      "jamharaIDs": [
+        7399
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "fatwa",
+        "fatwah",
+        "religious opinion",
+        "legal opinion",
+        "mufti"
+      ],
+      "phrasings": [
+        "What is a fatwa?",
+        "Is a fatwa binding?",
+        "What does fatwa mean?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-3911-jannah",
+      "kind": "term",
+      "level": "A",
+      "title": "What Jannah is",
+      "jamharaIDs": [
+        3911
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "jannah",
+        "janna",
+        "paradise",
+        "heaven",
+        "garden"
+      ],
+      "phrasings": [
+        "What is jannah?",
+        "What is paradise in Islam?",
+        "Is jannah the same as heaven?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-3903-jinn",
+      "kind": "term",
+      "level": "A",
+      "title": "What the jinn are",
+      "jamharaIDs": [
+        3903
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "jinn",
+        "djinn",
+        "genie",
+        "spirits"
+      ],
+      "phrasings": [
+        "What are the jinn?",
+        "Are jinn real in Islam?",
+        "What is a jinn made of?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-484-hereafter",
+      "kind": "term",
+      "level": "A",
+      "title": "What the Hereafter is",
+      "jamharaIDs": [
+        484
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "hereafter",
+        "akhirah",
+        "akhira",
+        "afterlife",
+        "next life",
+        "life after death"
+      ],
+      "phrasings": [
+        "What is the hereafter?",
+        "What does akhirah mean?",
+        "Do Muslims believe in an afterlife?",
+        "What is the next life in Islam?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-11207-last-day",
+      "kind": "term",
+      "level": "A",
+      "title": "What the Last Day is",
+      "jamharaIDs": [
+        11207
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "last day",
+        "day of judgment",
+        "day of judgement",
+        "judgment day",
+        "qiyamah",
+        "end of the world"
+      ],
+      "phrasings": [
+        "What is the Last Day?",
+        "What is the Day of Judgment in Islam?",
+        "What happens on the Last Day?",
+        "What does qiyamah mean?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-9661-resurrection",
+      "kind": "term",
+      "level": "A",
+      "title": "What resurrection is",
+      "jamharaIDs": [
+        9661
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "resurrection",
+        "resurrected",
+        "raised",
+        "rise again",
+        "brought back to life"
+      ],
+      "phrasings": [
+        "What is resurrection in Islam?",
+        "Will people be brought back to life?",
+        "What does it mean to be raised on the Last Day?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-196-ijtihad",
+      "kind": "term",
+      "level": "B",
+      "title": "What ijtihad is",
+      "jamharaIDs": [
+        196
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "ijtihad",
+        "independent reasoning",
+        "juristic reasoning",
+        "derive rulings"
+      ],
+      "phrasings": [
+        "What is ijtihad?",
+        "What does ijtihad mean?",
+        "Who is allowed to do ijtihad?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-9210-madhhab",
+      "kind": "term",
+      "level": "B",
+      "title": "What a madhhab is",
+      "jamharaIDs": [
+        9210
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "madhhab",
+        "madhab",
+        "mazhab",
+        "school of law",
+        "school of thought",
+        "hanafi",
+        "shafi",
+        "maliki",
+        "hanbali"
+      ],
+      "phrasings": [
+        "What is a madhhab?",
+        "What does madhhab mean?",
+        "What is a school of thought in Islamic law?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-4887-dua",
+      "kind": "term",
+      "level": "A",
+      "title": "What dua is",
+      "jamharaIDs": [
+        4887
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "dua",
+        "du'a",
+        "duaa",
+        "supplication",
+        "prayer to god",
+        "ask god"
+      ],
+      "phrasings": [
+        "What is dua?",
+        "What does dua mean?",
+        "What is supplication in Islam?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-5023-dhikr",
+      "kind": "term",
+      "level": "A",
+      "title": "What dhikr is",
+      "jamharaIDs": [
+        5023
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "dhikr",
+        "zikr",
+        "remembrance",
+        "remember god",
+        "glorify"
+      ],
+      "phrasings": [
+        "What is dhikr?",
+        "What does dhikr mean?",
+        "What is remembrance of God?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-7670-qiblah",
+      "kind": "term",
+      "level": "A",
+      "title": "What the qiblah is",
+      "jamharaIDs": [
+        7670
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "qiblah",
+        "qibla",
+        "direction of prayer",
+        "face mecca",
+        "facing"
+      ],
+      "phrasings": [
+        "What is the qiblah?",
+        "What does qibla mean?",
+        "Which direction do Muslims pray in?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-8189-kaaba",
+      "kind": "term",
+      "level": "A",
+      "title": "What the Kaaba is",
+      "jamharaIDs": [
+        8189
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "kaaba",
+        "kabah",
+        "ka'bah",
+        "mecca",
+        "makkah",
+        "black cube"
+      ],
+      "phrasings": [
+        "What is the Kaaba?",
+        "Why is the Kaaba important?",
+        "What is the Kaaba in Islam?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-2060-barzakh",
+      "kind": "term",
+      "level": "A",
+      "title": "What barzakh is",
+      "jamharaIDs": [
+        2060
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "barzakh",
+        "grave",
+        "between death and resurrection",
+        "after death before judgment"
+      ],
+      "phrasings": [
+        "What is barzakh?",
+        "What happens between death and the Day of Judgment?",
+        "What does barzakh mean?",
+        "Where are the dead now?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "term-454-ikhtilaf",
+      "kind": "term",
+      "level": "B",
+      "title": "What ikhtilaf is",
+      "jamharaIDs": [
+        454
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "ikhtilaf",
+        "difference of opinion",
+        "scholars disagree",
+        "disagreement",
+        "differ"
+      ],
+      "phrasings": [
+        "What is ikhtilaf?",
+        "Why do Muslim scholars disagree?",
+        "Is difference of opinion allowed in Islam?",
+        "What does ikhtilaf mean?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "general-g1-tawhid-newcomer",
+      "kind": "general",
+      "level": "A",
+      "title": "Tawhid for a newcomer",
+      "jamharaIDs": [
+        3529
+      ],
+      "quranRefs": [
+        "112:1-4"
+      ],
+      "keywords": [
+        "one god",
+        "only one god",
+        "tawhid",
+        "monotheism",
+        "how many gods",
+        "son of god"
+      ],
+      "phrasings": [
+        "Why do Muslims believe in only one God?",
+        "Does God have a son in Islam?",
+        "What is the Islamic idea of God?",
+        "What is tawhid in simple terms?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "general-g2-face-kaaba",
+      "kind": "general",
+      "level": "B",
+      "title": "Why Muslims face the Kaaba",
+      "jamharaIDs": [
+        7670,
+        8189,
+        6732
+      ],
+      "quranRefs": [
+        "2:144"
+      ],
+      "keywords": [
+        "face the kaaba",
+        "face mecca",
+        "pray towards",
+        "direction",
+        "qiblah",
+        "worship a building",
+        "worship the kaaba"
+      ],
+      "phrasings": [
+        "Why do Muslims face the Kaaba when they pray?",
+        "Do Muslims worship the Kaaba?",
+        "Why do Muslims pray towards Mecca?",
+        "What is the point of praying in one direction?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "general-g3-alcohol-forbidden",
+      "kind": "general",
+      "level": "A",
+      "title": "Why alcohol is forbidden",
+      "jamharaIDs": [
+        4769
+      ],
+      "quranRefs": [
+        "5:90-91"
+      ],
+      "keywords": [
+        "alcohol",
+        "wine",
+        "intoxicant",
+        "beer",
+        "haram alcohol",
+        "drinking alcohol"
+      ],
+      "phrasings": [
+        "Why is alcohol forbidden in Islam?",
+        "Is alcohol haram?",
+        "Why can't Muslims drink?",
+        "What does the Quran say about wine?",
+        "Is drinking a sin in Islam?"
+      ],
+      "answersRuling": true
+    },
+    {
+      "id": "general-g4-after-death",
+      "kind": "general",
+      "level": "A",
+      "title": "What happens after death",
+      "jamharaIDs": [
+        2060,
+        11207,
+        484
+      ],
+      "quranRefs": [
+        "55:26-27"
+      ],
+      "keywords": [
+        "after death",
+        "when we die",
+        "death",
+        "afterlife"
+      ],
+      "phrasings": [
+        "What happens after death in Islam?",
+        "What happens when we die?",
+        "Where do people go after they die?",
+        "Does everything die?",
+        "Is there life after death?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "general-g5-what-jannah-is",
+      "kind": "general",
+      "level": "A",
+      "title": "What Jannah is",
+      "jamharaIDs": [
+        3911
+      ],
+      "quranRefs": [
+        "55:46"
+      ],
+      "keywords": [
+        "jannah",
+        "paradise",
+        "heaven",
+        "gardens",
+        "two gardens"
+      ],
+      "phrasings": [
+        "What is jannah like?",
+        "What is paradise in Islam?",
+        "Who goes to paradise?",
+        "What are the gardens the surah mentions?",
+        "Is heaven real in Islam?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "general-g6-why-scholars-differ",
+      "kind": "general",
+      "level": "C",
+      "title": "Why scholars differ",
+      "jamharaIDs": [
+        454,
+        196
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "scholars differ",
+        "disagree",
+        "different opinions",
+        "why do scholars",
+        "ikhtilaf",
+        "ijtihad"
+      ],
+      "phrasings": [
+        "Why do Muslim scholars differ?",
+        "Why are there different opinions in Islam?",
+        "If the Quran is one book why do scholars disagree?",
+        "Is disagreement between scholars a problem?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "general-g7-why-madhhabs",
+      "kind": "general",
+      "level": "C",
+      "title": "Why there are madhhabs",
+      "jamharaIDs": [
+        9210,
+        196
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "madhhab",
+        "madhab",
+        "schools",
+        "four schools",
+        "hanafi",
+        "shafi",
+        "maliki",
+        "hanbali",
+        "which school"
+      ],
+      "phrasings": [
+        "Why are there different madhhabs?",
+        "What are the four schools of Islam?",
+        "Which madhhab is correct?",
+        "Why did schools of law develop?"
+      ],
+      "answersRuling": false
+    },
+    {
+      "id": "gap-quran-authorship",
+      "kind": "general",
+      "level": "B",
+      "title": "Who wrote the Quran",
+      "jamharaIDs": [
+        7771
+      ],
+      "quranRefs": [],
+      "keywords": [
+        "who wrote",
+        "wrote the quran",
+        "author",
+        "authored",
+        "made up",
+        "muhammad wrote",
+        "written by"
+      ],
+      "phrasings": [
+        "Who wrote the Quran?",
+        "Did Muhammad write the Quran?",
+        "Was the Quran written by a man?",
+        "How do we know the Quran is from God?"
+      ],
+      "answersRuling": false,
+      "arabicLink": "https://dawa.center/file/7937"
+    },
+    {
+      "id": "gap-spread-by-sword",
+      "kind": "gap",
+      "level": "C",
+      "title": "Did Islam spread by the sword",
+      "jamharaIDs": [],
+      "quranRefs": [],
+      "keywords": [
+        "sword",
+        "spread by",
+        "forced",
+        "conversion",
+        "conquer",
+        "violence",
+        "violent"
+      ],
+      "phrasings": [
+        "Did Islam spread by the sword?",
+        "Were people forced to become Muslim?",
+        "Is Islam a violent religion?",
+        "How did Islam spread?"
+      ],
+      "answersRuling": false,
+      "arabicLink": "https://dawa.center/file/7937"
+    }
+  ]
+}

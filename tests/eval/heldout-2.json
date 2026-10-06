@@ -1,0 +1,483 @@
+{
+  "surah": 55,
+  "description": "HELD-OUT set 2 (5 Oct 2026, evening; moved from 6 Oct at Mo's request). 60 items: 50 ayah questions (k01-k50, expectedRoute/expectedDecision) and 10 general (k51-k60, category/acceptableDecisions/acceptableCards), written by a fresh blind agent that saw only the route definitions, the decision mapping, the 30 card ids/titles/levels and the 78 ayat of the Saheeh International translation (prompt in heldout-2-prompt.md; the full prompt with the ayat block is local-only). The router was frozen at commit 012801b before this set existed. Questions and labels are the agent's verbatim. Run ONCE (ScoredEvalTests.heldout2FinalOnce), never re-run, never tuned against.",
+  "questions": [
+    {
+      "id": "k01",
+      "ayah": 3,
+      "question": "so what is this one saying about how people came to be",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k02",
+      "ayah": 5,
+      "question": "um does this mean the sun and moon follow some kind of fixed schedule",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k03",
+      "ayah": 7,
+      "question": "ok why does it talk about the sky being raised and something being set up with it",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k04",
+      "ayah": 17,
+      "question": "wait how can there be two of each sunrise and sunset what is that about",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k05",
+      "ayah": 20,
+      "question": "what is this thing stopping the waters from mixing together",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k06",
+      "ayah": 27,
+      "question": "who is the one that stays when everything else is gone",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k07",
+      "ayah": 31,
+      "question": "um who is it talking to in this aya like who is being addressed",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k08",
+      "ayah": 33,
+      "question": "so is this a challenge to the gin and people like are they being dared to escape",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k09",
+      "ayah": 41,
+      "question": "what is this describing happening to the guilty ones on that day",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k10",
+      "ayah": 46,
+      "question": "why do the ones who were afraid of standing before their lord get two of them",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k11",
+      "ayah": 60,
+      "question": "is this a question or a statement what is the lesson here",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k12",
+      "ayah": 62,
+      "question": "so are these second gardens lesser than the first pair and why",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k13",
+      "ayah": 78,
+      "question": "what does this closing line teach us about allah",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k14",
+      "ayah": 15,
+      "question": "um what is this aya telling me about where gin come from",
+      "expectedRoute": "meaning",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k15",
+      "ayah": 4,
+      "question": "the word eloquence here what does it actually mean",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k16",
+      "ayah": 12,
+      "question": "what does husks refer to in this one",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k17",
+      "ayah": 22,
+      "question": "when it says coral is that the sea coral we know or something else",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k18",
+      "ayah": 24,
+      "question": "why is it translated as elevated what word is that",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k19",
+      "ayah": 37,
+      "question": "the rose colored bit what is that supposed to be",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k20",
+      "ayah": 54,
+      "question": "brocade um what is brocade",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k21",
+      "ayah": 72,
+      "question": "ok pavilions what does that refer to here",
+      "expectedRoute": "word",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k22",
+      "ayah": 13,
+      "question": "um is this the line that keeps coming back in this sura",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k23",
+      "ayah": 21,
+      "question": "ok i feel like i just read this exact same thing a minute ago",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k24",
+      "ayah": 34,
+      "question": "how many times does this question get asked in the whole chapter",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k25",
+      "ayah": 49,
+      "question": "why does it keep saying this over and over",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k26",
+      "ayah": 65,
+      "question": "wait is this eye the same again or did it change slightly",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k27",
+      "ayah": 77,
+      "question": "so what is the point of repeating this line so much",
+      "expectedRoute": "repetition",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k28",
+      "ayah": 11,
+      "question": "does this picture of fruit and palms come up again later in the sura",
+      "expectedRoute": "related",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k29",
+      "ayah": 68,
+      "question": "is there another aya in this chapter that lists fruits like this one",
+      "expectedRoute": "related",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k30",
+      "ayah": 19,
+      "question": "where else in the quran does it talk about two bodies of water meeting",
+      "expectedRoute": "related",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k31",
+      "ayah": 26,
+      "question": "um is there a similar verse somewhere else about everything passing away",
+      "expectedRoute": "related",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k32",
+      "ayah": 56,
+      "question": "how does this compare to what the later aya says about the women in the other gardens",
+      "expectedRoute": "related",
+      "expectedDecision": "answered-in-part"
+    },
+    {
+      "id": "k33",
+      "ayah": 9,
+      "question": "i run a shop and sometimes my scale is a bit off is that a sin for me",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "k34",
+      "ayah": 54,
+      "question": "can i read this while lying in bed or do i have to sit up",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "k35",
+      "ayah": 13,
+      "question": "my wife says i have to answer this out loud every time is that obligatory",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "k36",
+      "ayah": 6,
+      "question": "is it allowed to bow to a tree like out of respect not worship",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "k37",
+      "ayah": 29,
+      "question": "is there a hadith about asking allah for things every day",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "k38",
+      "ayah": 70,
+      "question": "um i missed fajr today because i overslept what do i do now",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "k39",
+      "ayah": 2,
+      "question": "can i touch the quran on my phone without wudu",
+      "expectedRoute": "ruling",
+      "expectedDecision": "referred"
+    },
+    {
+      "id": "k40",
+      "ayah": 16,
+      "question": "can you make the text bigger it is kind of small",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "k41",
+      "ayah": 50,
+      "question": "my eyes are getting tired how long have i been in here",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "k42",
+      "ayah": 38,
+      "question": "is the battery on this thing going to last another hour",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "k43",
+      "ayah": 25,
+      "question": "what is the score in the arsenal game",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "k44",
+      "ayah": 64,
+      "question": "is it going to rain tomorrow",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "k45",
+      "ayah": 8,
+      "question": "um can you tell me a joke",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "k46",
+      "ayah": 30,
+      "question": "the headset feels heavy on my nose can i adjust it",
+      "expectedRoute": "off-topic",
+      "expectedDecision": "declined"
+    },
+    {
+      "id": "k47",
+      "ayah": 40,
+      "question": "so um the thing with the",
+      "expectedRoute": "unclear",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k48",
+      "ayah": 59,
+      "question": "rubies and",
+      "expectedRoute": "unclear",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k49",
+      "ayah": 23,
+      "question": "wait wait no go back um never mind what was i",
+      "expectedRoute": "unclear",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k50",
+      "ayah": 73,
+      "question": "like the uh",
+      "expectedRoute": "unclear",
+      "expectedDecision": "answered"
+    },
+    {
+      "id": "k51",
+      "ayah": 36,
+      "category": "covered",
+      "question": "what does it mean to say god is one in islam",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-3529-tawhid",
+        "general-g1-tawhid-newcomer"
+      ]
+    },
+    {
+      "id": "k52",
+      "ayah": 45,
+      "category": "covered",
+      "question": "what happens to a person in the time between dying and the day of judgement",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-2060-barzakh",
+        "general-g4-after-death"
+      ]
+    },
+    {
+      "id": "k53",
+      "ayah": 10,
+      "category": "covered",
+      "question": "why do muslims all turn the same way when they pray",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g2-face-kaaba",
+        "term-7670-qiblah",
+        "term-8189-kaaba"
+      ]
+    },
+    {
+      "id": "k54",
+      "ayah": 57,
+      "category": "covered",
+      "question": "why do different scholars give different answers to the same question",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g6-why-scholars-differ",
+        "term-454-ikhtilaf"
+      ]
+    },
+    {
+      "id": "k55",
+      "ayah": 32,
+      "category": "covered",
+      "question": "um did muhammad write the quran himself or where did it come from",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "gap-quran-authorship",
+        "term-7771-quran",
+        "term-10849-revelation"
+      ]
+    },
+    {
+      "id": "k56",
+      "ayah": 18,
+      "category": "uncovered",
+      "question": "how many times a day do muslims pray and when",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "k57",
+      "ayah": 47,
+      "category": "uncovered",
+      "question": "so what is the month of ramadan actually about",
+      "expectedRoute": "general",
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "k58",
+      "ayah": 53,
+      "category": "personal",
+      "question": "i am travelling next week can i shorten my prayers",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "k59",
+      "ayah": 55,
+      "category": "personal",
+      "question": "i took a loan with interest to buy a car was that wrong of me",
+      "expectedRoute": "ruling",
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": []
+    },
+    {
+      "id": "k60",
+      "ayah": 61,
+      "category": "trap",
+      "question": "which direction is the nearest exit in this building",
+      "expectedRoute": "off-topic",
+      "acceptableDecisions": [
+        "declined"
+      ],
+      "acceptableCards": []
+    }
+  ]
+}

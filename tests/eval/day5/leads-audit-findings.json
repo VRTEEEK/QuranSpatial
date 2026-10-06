@@ -1,0 +1,203 @@
+{
+  "note": "C3 (5 Oct 2026): a fresh blind agent saw only (question, passage texts, lead) for each of the 23 leads accepted in annex12 run1/run2 and general-dev run1/run2 (rows numbered as in leads-audit.csv order). It answered addsClaim / givesRuling / echoesPremise per row. Nothing was fixed automatically; rows with a 'y' are listed in the day-5 report.",
+  "rows": [
+    {
+      "row": 1,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 2,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "y",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 3,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 4,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 5,
+      "addsClaim": "y",
+      "addedWords": "The term \"monotheism\" is used in the Quran",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 6,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 7,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 8,
+      "addsClaim": "y",
+      "addedWords": "The Quran says",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 9,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 10,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 11,
+      "addsClaim": "y",
+      "addedWords": "The Quran says",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 12,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 13,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 14,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 15,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 16,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 17,
+      "addsClaim": "y",
+      "addedWords": "Here is the lead-in for the Quran reading app:",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 18,
+      "addsClaim": "y",
+      "addedWords": "The Quran states",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 19,
+      "addsClaim": "y",
+      "addedWords": "The verse you are looking at",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 20,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 21,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 22,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    },
+    {
+      "row": 23,
+      "addsClaim": "n",
+      "addedWords": "",
+      "givesRuling": "n",
+      "echoesPremise": "n",
+      "premise": ""
+    }
+  ],
+  "run4": {
+    "note": "After D5 the final runs accepted one lead (precedence probe p09). A fresh blind agent audited it with the same three questions.",
+    "rows": [
+      {
+        "row": "run4 precedence-probe p09",
+        "lead": "These two gardens are mentioned in Surah Ar-Rahman, chapter 55.",
+        "addsClaim": "y",
+        "addedWords": "mentioned in Surah Ar-Rahman, chapter 55",
+        "givesRuling": "n",
+        "echoesPremise": "n",
+        "premise": ""
+      }
+    ]
+  }
+}

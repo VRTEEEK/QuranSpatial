@@ -1,0 +1,174 @@
+{
+  "surah": 55,
+  "description": "Directive 4 part D (5 Oct 2026): precedence regression probe, WRITTEN BY THE REVIEWER, NOT BLIND, regression probe only. Twelve ayah questions that name a general topic word or a card keyword but are about the verse on screen; expected: meaning route, answered, NO card - any card is a failure (severe in the scorer). Items 17 and 56 share no content word with their anchor and may fail.",
+  "questions": [
+    {
+      "id": "p01",
+      "ayah": 19,
+      "question": "why does the quran talk about two seas meeting",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p02",
+      "ayah": 17,
+      "question": "what does the quran mean by the two easts and two wests",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p03",
+      "ayah": 5,
+      "question": "is the quran saying the sun and moon run on a schedule",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p04",
+      "ayah": 14,
+      "question": "does the quran say humans were made from clay like pottery",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p05",
+      "ayah": 41,
+      "question": "how will the criminals be known on the day of judgment",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p06",
+      "ayah": 56,
+      "question": "who are the maidens in paradise",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p07",
+      "ayah": 26,
+      "question": "so everyone on earth dies what does that mean for muslims",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p08",
+      "ayah": 33,
+      "question": "can jinn and humans really pass beyond the heavens",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p09",
+      "ayah": 62,
+      "question": "are these two more gardens below the first two in paradise",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p10",
+      "ayah": 35,
+      "question": "what is the flame of fire and smoke sent against the jinn",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p11",
+      "ayah": 1,
+      "question": "why does the quran call god the most merciful",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    },
+    {
+      "id": "p12",
+      "ayah": 29,
+      "question": "everyone in the heavens and earth asks him what does that mean",
+      "acceptableRoutes": [
+        "meaning"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": []
+    }
+  ]
+}

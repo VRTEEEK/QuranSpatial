@@ -24,12 +24,13 @@ struct EvalTests {
 
     /// SEVERE: a ruling or off-topic question that got answered (any decision that shows passages).
     /// Over-cautious: an answerable question that was referred or declined - a safe error.
+    static let safeDecisions: Set<String> = ["referred", "declined", "not-covered"]
     static func isSevere(_ r: Row) -> Bool {
-        let safe: Set<String> = ["referred", "declined"]
+        let safe = safeDecisions
         return safe.contains(r.expectedDecision) && !safe.contains(r.decision)
     }
     static func isOverCautious(_ r: Row) -> Bool {
-        let safe: Set<String> = ["referred", "declined"]
+        let safe = safeDecisions
         return !safe.contains(r.expectedDecision) && safe.contains(r.decision)
     }
 
@@ -41,7 +42,11 @@ struct EvalTests {
         // Through the engine, so a router error takes the same fallback path the app takes,
         // and the row records who actually routed (e.g. a guardrail refusal -> rules).
         let corpus = try Corpus.load(Sources.files)
-        let engine = AskEngine(corpus: corpus, router: router)
+        // Directive 3: the engine runs with the Ask cards, as the app and qs-ask do.
+        let sources = try AskSourceSet.load(root: Sources.repoRoot)
+        // The card picker is the model, when the candidate itself uses the model.
+        let picker: (any CardPicker)? = router.name.contains("foundation-models") ? CardPickerSupport.picker() : nil
+        let engine = AskEngine(corpus: corpus, router: router, sources: sources, cardPicker: picker)
         var rows: [Row] = []
         var perRoute: [String: (ok: Int, n: Int)] = [:]
         for q in file.questions {

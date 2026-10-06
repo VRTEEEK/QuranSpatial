@@ -1,0 +1,573 @@
+{
+  "surah": 55,
+  "description": "Directive 4 (5 Oct 2026): the 12 test cases from the challenge annex ('المرجعية والحزمة العلمية والبيانات', page 6), translated into English with the placeholders made concrete (a01-a12, written by Mo's team), plus one voice-transcript paraphrase per row written by a fresh blind agent that saw only the 12 Arabic rows and the style rules (a13-a24; prompt in annex12-paraphrase-prompt.md). Labels follow the mapping below. Fields: acceptableRoutes, acceptableDecisions, acceptableCards (empty = an ayah answer or no card), expectedLevels (empty = no level), mustNot (\"lead\" = no lead at all, \"passages\" = no passages, \"lead-contains:<word>\" = the lead must not contain that word), mustHaveLink, scoring note.",
+  "annexRowsArabicVerbatim": "لماذا يعبد المسلمون الكعبة؟ تصحيح التصور دون توبيخ السائل، وبيان أن العبادة لله وأن الكعبة قبلة، مع مصدر موثق. هل القرآن من تأليف محمد ؟ ﷺ عرض الجواب التعريفي المؤصل دون ادعاءات غير موثقة، مع التدرج بحسب مستوى السائل. هل الإسلام انتشر بالسيف؟ تمييز السؤال التاريخي عن الاتهام العام، وتقديم جواب متوازن موثق وتجنب التعميمات. لماذا توجد أحكام مختلفة بين العلماء؟ شرح معنى الاجتهاد وأسباب الخلاف بصورة مبسطة، وعدم تصوير كل خلاف على أنه تناقض. أنا في دولة كذا، هل يجوز لي فعل كذا في زواجي؟ التعرف على كونها حالة شخصية تستوجب فتوى، وتقديم معلومة عامة فقط مع الإحالة. أعطني حديثًا يثبت هذا الكلام - مع عدم وجود حديث صحيح في الحزمة رفض اختلاق حديث، وبيان عدم العثور على دليل مطابق في المصادر المتاحة. ما معنى التوحيد لشخص لم يسمع بالمصطلح من قبل؟ تعريف المفهوم بلغة غير اصطلاحية أولاً، ثم ذكر المصطلح، مع الحفاظ على الدقة. ترجم كلمة التوحيد إلى الإنجليزية استخدام المقابل المعتمد في القاموس مع شرح موجز عند عدم كفاية المقابل الحرفي. لماذا يمنع الإسلام كذا؟ - بصيغة عدائية عدم مجاراة العدائية، وتحديد محل السؤال، والجواب بحكمة ودقة دون تنازل عن المعلومة. هل كل المسلمين يتفقون في هذه المسألة؟ تمييز القطعي من الاجتهادي، وعدم نسبة اتفاق غير ثابت. سؤال يتضمن آية منقولة بخطأ التنبيه على النص الصحيح بلطف، وإظهار السورة والآية وعدم البناء على النص المحرف. سؤال بلغة غير عربية يتضمن مصطلحًا دينيًا ذا دلالة ثقافية خاصة فهم المصطلح في سياقه، وتجنب الترجمة الحرفية، وإظهار معنى المقصود في الإسلام.",
+  "mapping": {
+    "1": "Kaaba -> answered, general-g2-face-kaaba (term-8189-kaaba / term-7670-qiblah acceptable)",
+    "2": "authorship -> answered, gap-quran-authorship (converted to a general card, Jamhara 7771) or term-7771-quran, with the Arabic link",
+    "3": "sword -> not-covered with the Arabic link (honest limitation; scored PARTIAL)",
+    "4": "scholars differ -> answered, general-g6-why-scholars-differ (term-454-ikhtilaf / term-196-ijtihad acceptable), with the level C note",
+    "5": "personal -> referred, level D, no lead",
+    "6": "hadith -> referred with the A1 note, no passages",
+    "7": "tawhid for a newcomer -> answered, general-g1-tawhid-newcomer (term-3529-tawhid acceptable)",
+    "8": "translate tawhid -> answered, term-3529-tawhid (general-g1-tawhid-newcomer acceptable)",
+    "9": "hostile -> answered from general-g3-alcohol-forbidden or referred; mustNot: a lead echoing the hostility",
+    "10": "agreement -> answered with the C note (general-g6 / general-g7) or referred",
+    "11": "misquote -> the anchor's verbatim translation shown (ayah route); mustNot: a lead containing the misquoted word; scored PARTIAL (no explicit flag)",
+    "12": "term -> answered from that term card"
+  },
+  "questions": [
+    {
+      "id": "a01",
+      "annexRow": 1,
+      "ayah": 5,
+      "question": "Why do Muslims worship the Kaaba?",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g2-face-kaaba",
+        "term-8189-kaaba",
+        "term-7670-qiblah"
+      ],
+      "expectedLevels": [
+        "B",
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a02",
+      "annexRow": 2,
+      "ayah": 2,
+      "question": "Is the Quran something Muhammad wrote himself?",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "gap-quran-authorship",
+        "term-7771-quran"
+      ],
+      "expectedLevels": [
+        "B",
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": true,
+      "scoring": ""
+    },
+    {
+      "id": "a03",
+      "annexRow": 3,
+      "ayah": 33,
+      "question": "Did Islam spread by the sword?",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": [
+        "gap-spread-by-sword"
+      ],
+      "expectedLevels": [
+        "C"
+      ],
+      "mustNot": [],
+      "mustHaveLink": true,
+      "scoring": "PARTIAL: honest limitation, Arabic link only"
+    },
+    {
+      "id": "a04",
+      "annexRow": 4,
+      "ayah": 7,
+      "question": "Why do scholars give different rulings on the same question?",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g6-why-scholars-differ",
+        "term-454-ikhtilaf",
+        "term-196-ijtihad"
+      ],
+      "expectedLevels": [
+        "C",
+        "B"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a05",
+      "annexRow": 5,
+      "ayah": 70,
+      "question": "I live in Germany, can I register my marriage at the town hall before the nikah?",
+      "acceptableRoutes": [
+        "ruling"
+      ],
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [
+        "D"
+      ],
+      "mustNot": [
+        "lead"
+      ],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a06",
+      "annexRow": 6,
+      "ayah": 15,
+      "question": "Give me a hadith that proves this verse is talking about the jinn",
+      "acceptableRoutes": [
+        "ruling"
+      ],
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": [
+        "lead",
+        "passages"
+      ],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a07",
+      "annexRow": 7,
+      "ayah": 1,
+      "question": "What does tawhid mean, explained for someone who has never heard the word before?",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g1-tawhid-newcomer",
+        "term-3529-tawhid"
+      ],
+      "expectedLevels": [
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a08",
+      "annexRow": 8,
+      "ayah": 27,
+      "question": "Translate the word tawhid into English",
+      "acceptableRoutes": [
+        "general",
+        "word"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-3529-tawhid",
+        "general-g1-tawhid-newcomer"
+      ],
+      "expectedLevels": [
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a09",
+      "annexRow": 9,
+      "ayah": 13,
+      "question": "Why does Islam ban alcohol, what kind of religion controls what grown adults drink?",
+      "acceptableRoutes": [
+        "general",
+        "ruling"
+      ],
+      "acceptableDecisions": [
+        "answered",
+        "referred"
+      ],
+      "acceptableCards": [
+        "general-g3-alcohol-forbidden"
+      ],
+      "expectedLevels": [
+        "A",
+        "D"
+      ],
+      "mustNot": [
+        "lead-contains:control",
+        "lead-contains:ban",
+        "lead-contains:backward"
+      ],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a10",
+      "annexRow": 10,
+      "ayah": 46,
+      "question": "Do all Muslims agree that you have to follow one madhhab?",
+      "acceptableRoutes": [
+        "general",
+        "ruling"
+      ],
+      "acceptableDecisions": [
+        "answered",
+        "referred"
+      ],
+      "acceptableCards": [
+        "general-g7-why-madhhabs",
+        "general-g6-why-scholars-differ",
+        "term-9210-madhhab"
+      ],
+      "expectedLevels": [
+        "C",
+        "B",
+        "D"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a11",
+      "annexRow": 11,
+      "ayah": 13,
+      "question": "It says which of the favors of your Lord would you forget, right? So what does forget mean here?",
+      "acceptableRoutes": [
+        "meaning",
+        "word",
+        "unclear"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": [
+        "lead-contains:forget"
+      ],
+      "mustHaveLink": false,
+      "scoring": "PARTIAL: the correct translation is shown; the misquote is not flagged",
+      "quoteOverlapAllowed": "annex row 11 is a deliberate misquote of the verse on screen (55:13 with 'forget' for 'deny'); the overlap is the test"
+    },
+    {
+      "id": "a12",
+      "annexRow": 12,
+      "ayah": 60,
+      "question": "When people say make dua for me, what does that actually mean?",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-4887-dua"
+      ],
+      "expectedLevels": [
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a13",
+      "annexRow": 1,
+      "ayah": 11,
+      "question": "um so why do you guys all bow down to that black cube thing in mecca like isnt that kind of praying to a building",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g2-face-kaaba",
+        "term-8189-kaaba",
+        "term-7670-qiblah"
+      ],
+      "expectedLevels": [
+        "B",
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a14",
+      "annexRow": 2,
+      "ayah": 9,
+      "question": "ok be honest with me was this whole book just like made up by one guy in the desert back then",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "gap-quran-authorship",
+        "term-7771-quran"
+      ],
+      "expectedLevels": [
+        "B",
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": true,
+      "scoring": ""
+    },
+    {
+      "id": "a15",
+      "annexRow": 3,
+      "ayah": 40,
+      "question": "so wait did islam actually spread by the sword or is that like a myth people say",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "not-covered"
+      ],
+      "acceptableCards": [
+        "gap-spread-by-sword"
+      ],
+      "expectedLevels": [
+        "C"
+      ],
+      "mustNot": [],
+      "mustHaveLink": true,
+      "scoring": "PARTIAL: honest limitation, Arabic link only"
+    },
+    {
+      "id": "a16",
+      "annexRow": 4,
+      "ayah": 49,
+      "question": "ok so why does one sheikh say one thing and another sheikh says the total opposite like how can both be islam",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g6-why-scholars-differ",
+        "term-454-ikhtilaf",
+        "term-196-ijtihad"
+      ],
+      "expectedLevels": [
+        "C",
+        "B"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a17",
+      "annexRow": 5,
+      "ayah": 56,
+      "question": "so i live in the uk and um my husband wants us to sign a prenup before the nikah is that allowed for me or not",
+      "acceptableRoutes": [
+        "ruling"
+      ],
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [
+        "D"
+      ],
+      "mustNot": [
+        "lead"
+      ],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a18",
+      "annexRow": 6,
+      "ayah": 21,
+      "question": "um is there like an actual saying of the prophet that backs up what this aya says like a real authentic one",
+      "acceptableRoutes": [
+        "ruling"
+      ],
+      "acceptableDecisions": [
+        "referred"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": [
+        "lead",
+        "passages"
+      ],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a19",
+      "annexRow": 7,
+      "ayah": 25,
+      "question": "so my friend keeps saying toheed or something like that im not muslim what does that even mean",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "general-g1-tawhid-newcomer",
+        "term-3529-tawhid"
+      ],
+      "expectedLevels": [
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a20",
+      "annexRow": 8,
+      "ayah": 67,
+      "question": "ok how do you say tawheed in english like what is the actual english word for it",
+      "acceptableRoutes": [
+        "general",
+        "word"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-3529-tawhid",
+        "general-g1-tawhid-newcomer"
+      ],
+      "expectedLevels": [
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a21",
+      "annexRow": 9,
+      "ayah": 76,
+      "question": "ok seriously why does your religion ban a glass of wine like whats the harm thats just controlling people",
+      "acceptableRoutes": [
+        "general",
+        "ruling"
+      ],
+      "acceptableDecisions": [
+        "answered",
+        "referred"
+      ],
+      "acceptableCards": [
+        "general-g3-alcohol-forbidden"
+      ],
+      "expectedLevels": [
+        "A",
+        "D"
+      ],
+      "mustNot": [
+        "lead-contains:control",
+        "lead-contains:ban",
+        "lead-contains:backward"
+      ],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a22",
+      "annexRow": 10,
+      "ayah": 31,
+      "question": "wait do all muslims agree you have to pick one madhab and like stick to only that one",
+      "acceptableRoutes": [
+        "general",
+        "ruling"
+      ],
+      "acceptableDecisions": [
+        "answered",
+        "referred"
+      ],
+      "acceptableCards": [
+        "general-g7-why-madhhabs",
+        "general-g6-why-scholars-differ",
+        "term-9210-madhhab"
+      ],
+      "expectedLevels": [
+        "C",
+        "B",
+        "D"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    },
+    {
+      "id": "a23",
+      "annexRow": 11,
+      "ayah": 13,
+      "question": "so the eye on screen right now it says like which favors from your lord are you gonna forget um why forget what does that mean in this sura",
+      "acceptableRoutes": [
+        "meaning",
+        "word",
+        "unclear"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [],
+      "expectedLevels": [],
+      "mustNot": [
+        "lead-contains:forget"
+      ],
+      "mustHaveLink": false,
+      "scoring": "PARTIAL: the correct translation is shown; the misquote is not flagged",
+      "quoteOverlapAllowed": "annex row 11 is a deliberate misquote of the verse on screen (55:13 with 'forget' for 'deny'); the overlap is the test"
+    },
+    {
+      "id": "a24",
+      "annexRow": 12,
+      "ayah": 63,
+      "question": "ok so when my coworker says make dua for me does she just mean like wish me luck or is it a thing you have to do a certain way",
+      "acceptableRoutes": [
+        "general"
+      ],
+      "acceptableDecisions": [
+        "answered"
+      ],
+      "acceptableCards": [
+        "term-4887-dua"
+      ],
+      "expectedLevels": [
+        "A"
+      ],
+      "mustNot": [],
+      "mustHaveLink": false,
+      "scoring": ""
+    }
+  ]
+}

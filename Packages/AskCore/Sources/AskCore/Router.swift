@@ -15,6 +15,10 @@ public enum QuestionRoute: String, Codable, Sendable, CaseIterable {
     case repetition
     case related
     case ruling
+    /// Directive 3: a question about Islam, Muslims or Islamic terms in general, not about this
+    /// ayah. Answered from the Ask cards. The rules router never emits it; the engine's precedence
+    /// rule and the gate do, and (stage 3b) the model router may.
+    case general
     case offTopic = "off-topic"
     case unclear
 }
@@ -55,7 +59,10 @@ public struct RuleBasedRouter: QuestionRouter {
     static let related = [#"\brelated\b"#, #"\bsimilar\b"#, #"\belsewhere\b"#, #"\bwhere else\b"#, #"\bother (verses?|ayahs?|ayat|surahs?|places?|parts?)\b"#, #"\bconnect(ed|ion)?\b"#, #"\blink(ed|s)?\b"#, #"\balso (mention|appear|talk|describ)"#, #"\bcompare\b"#, #"\bcross.?reference"#, #"\bparallel\b"#, #"\bmentioned (again|before|earlier|later)\b"#]
     static let meaning = [#"\bmean"#, #"\bexplain"#, #"\btafsir\b"#, #"\binterpret"#, #"\bunderstand"#, #"\bwhat is (this|the) (verse|ayah|surah|passage|line) (about|saying|teaching)\b"#, #"\bwhat (is|was) (meant|intended|being said)\b"#, #"\bwho\b"#, #"\bwhom\b"#, #"\bwhat\b"#, #"\bwhich\b"#, #"\bwhy\b"#, #"\bhow\b"#, #"\bwhen\b"#, #"\bwhere\b"#, #"\bmessage\b"#, #"\blesson"#, #"\brefer(s|ring)? to\b"#, #"\bcontext\b"#, #"\bpoint of\b"#, #"\bsignifican"#, #"\bteach"#, #"\bdescrib"#, #"\btell me about\b"#, #"\bwhich (favors?|favours?|blessings?|gardens?)\b"#]
     /// Something that ties the question to the Quran, the surah or the ayah on screen.
-    static let onTopicCue = [#"\b(ayah|ayat|verse|verses|surah|quran|qur'an|qur’an|koran|allah|god|lord|rahman|merciful|mercy|jinn|favou?rs?|blessings?|bount"#, #"\b(this|it|here|the line|the text|the passage|these|that line)\b"#, #"\b(deny|balance|garden|paradise|hell|creation|sun|moon|pearl|coral|ship|heaven|earth|recit|tafsir|translation|meaning)"#, #"\b(prophet|muhammad|islam|muslim|revelation|makkah|mecca|medina|madinah)\b"#]
+    // Day 4: this pattern was unterminated (no closing ")") until 2026-10-04, so it NEVER matched -
+    // `range(of:options:.regularExpression)` returns nil for an invalid pattern instead of failing.
+    // PatternCompileTests now compiles every pattern in this file with NSRegularExpression.
+    static let onTopicCue = [#"\b(ayah|ayat|verse|verses|surah|quran|qur'an|qur’an|koran|allah|god|lord|rahman|merciful|mercy|jinn|favou?rs?|blessings?|bount(y|ies))\b"#, #"\b(this|it|here|the line|the text|the passage|these|that line)\b"#, #"\b(deny|balance|garden|paradise|hell|creation|sun|moon|pearl|coral|ship|heaven|earth|recit|tafsir|translation|meaning)"#, #"\b(prophet|muhammad|islam|muslim|revelation|makkah|mecca|medina|madinah)\b"#]
     /// Cues of subjects that are not this ayah or the surah at all.
     static let offTopicCue = [#"\bweather\b"#, #"\bfootball\b"#, #"\bsoccer\b"#, #"\bstock"#, #"\bbitcoin\b"#, #"\brecipe\b"#, #"\bpython\b"#, #"\bjavascript\b"#, #"\bcode\b"#, #"\biphone\b"#, #"\bvision pro\b"#, #"\bmovie\b"#, #"\bsong\b"#, #"\bcapital of\b"#, #"\bpresident\b"#, #"\belection\b"#, #"\bjoke\b"#, #"\bpoem\b"#, #"\bessay\b"#, #"\bhomework\b"#, #"\bmath\b"#, #"\btranslate .* (into|to) (french|spanish|german|urdu|turkish)\b"#, #"\bflight\b"#, #"\bhotel\b"#, #"\brestaurant\b"#, #"\bdinner\b"#, #"\bcoffee\b"#, #"\btime is it\b"#, #"\bwhat day\b"#, #"\bbirthday\b"#, #"\bgame\b"#, #"\bcar\b"#, #"\bbus\b"#, #"\btrain\b"#]
 

@@ -16,10 +16,20 @@ struct ImmersiveView: View {
     private static let duaDebugHUDAttachmentID = "duaDebugHUD"
     /// The "Meaning" panel (2026-10-03): shown beside the text while the phase is `asking`.
     private static let meaningPanelAttachmentID = "meaningPanel"
-    /// Where the panel goes, relative to the head sampled at Ask entry: to the right and a
-    /// little below eye level, about 1.3 m away. The text sits at azimuth 0 within ±20° and
-    /// 17–30° above the eye; this is 34° to the right and 5° below, so it can never overlap it.
-    private static let meaningPanelOffsetFromHead = SIMD3<Float>(0.75, -0.1, -1.1)
+    /// The 3 s hand-gesture onboarding card (2026-10-06), an attachment inside the space.
+    private static let gestureOnboardingAttachmentID = "gestureOnboarding"
+    /// Metres ahead of the head, and the drop below the eye line, for the onboarding card.
+    private static let gestureOnboardingOffsetFromHead = SIMD3<Float>(0, -0.05, -1.8)
+    /// Where the Ask panel goes, relative to the head sampled at Ask entry, in WORLD axes:
+    /// straight ahead along world -Z (the "visual fix" directive, 2026-10-05: in front,
+    /// slightly below eye centre), 7° below the eye line, 2.0 m away. World -Z rather than
+    /// head yaw on purpose - Ask is entered by gazing at the Arabic and pinching, so at that
+    /// moment the gaze is on world -Z where the text is. The 1280 pt panel (0.94 m) spans
+    /// azimuth ±13.2° and elevation about -14.3° to +0.3°; the text band's lowest edge is
+    /// about +5° (English, ayah 33), so the vertical margin is ~4.7°. The arcade columns sit
+    /// near ±22.5°, outside the panel; the nearest rim lantern (azimuth -14°, top near -15°)
+    /// is just below its lower-left corner. Yaw-only orientation is computed at entry.
+    private static let meaningPanelOffsetFromHead = SIMD3<Float>(0, -0.2437, -1.9851)
     /// Clear of the state indicator sphere in `DuaDebugVisualization`.
     private static let duaDebugHUDPosition = SIMD3<Float>(-0.4, 1.75, -1.2)
 
@@ -48,7 +58,16 @@ struct ImmersiveView: View {
     private static let translation = RecitationTranslationFile.loadIfPresent()
 
     @State private var handTrackingSession = HandTrackingSession()
+    /// Debug-only now (2026-10-06): joint spheres, palm bars and the state sphere are added
+    /// to the scene only with `showDebugHUD`. The shipped hand feedback is `guidance`.
     @State private var duaDebugVisualization = DuaDebugVisualization()
+    /// The shipped hand feedback: faint warm-gold fingertip glow and palm motes while the
+    /// entry gate is armed, one pulse on acceptance, nothing during recitation.
+    @State private var guidance = DuaGuidanceEffect()
+    /// Reads an Ask answer aloud on Play. Stopped immediately on every exit from the answer:
+    /// here on any Ask phase change (Continue, a new Ask) and on the space closing; in the
+    /// panel when it leaves `.answered`. Never audible while the microphone is open.
+    @State private var askSpeaker = AskSpeaker()
     @State private var recitation = RecitationCoordinator()
     @State private var textures = AyahTextureCache()
     @State private var dissolve = DissolveDriver()
@@ -66,6 +85,18 @@ struct ImmersiveView: View {
     @State private var meaningEntity: Entity?
     /// The Ask flow: speech, engine, display (challenge day 2).
     @State private var askSession = AskSession()
+    /// The onboarding card's presentation state and entity (2026-10-06). Presentation only:
+    /// the recognizer, the gate and the coordinator are untouched. A dua accepted while the
+    /// card is up is DEFERRED - `recitation.start()` runs when the card has gone - so the
+    /// card never hides the first ayah and the wearer who copies the picture early still
+    /// gets the recitation.
+    @State private var onboarding = GestureOnboarding()
+    @State private var onboardingEntity: Entity?
+    @State private var onboardingDeferredStart = false
+
+    /// The looping background ambience for the whole immersive experience (2026-10-06).
+    /// Starts when the space appears, stops when it goes, and is silenced during an Ask.
+    @State private var ambientBed = AmbientBed()
 
     /// Stage 3's A/B capture. Sequences both phases in one wearing.
     @State private var capture = EnvironmentCapture()
@@ -264,7 +295,13 @@ struct ImmersiveView: View {
                 content.add(textRoot)
             }
 
-            content.add(duaDebugVisualization.entity)
+            if DuaGuidanceEffect.isEnabled {
+                await guidance.prepare()
+                content.add(guidance.entity)
+                Logger(subsystem: "com.vrteek.quranspatial", category: "Guidance")
+                    .notice("Dua guidance: \(guidance.entityCount) entities pooled")
+            }
+            if Self.showDebugHUD { content.add(duaDebugVisualization.entity) }
 
             // Built either way - the attachment is cheap and gating its construction would
             // mean two code paths for the same panel. It is simply not ADDED unless asked
@@ -275,10 +312,18 @@ struct ImmersiveView: View {
                 content.add(hud)
             }
 
-            // The Meaning panel: in the scene from the start, DISABLED until an Ask begins,
-            // positioned from the head at that moment and then left alone (not head-locked).
+            // The onboarding card: in the scene from the start, disabled until the first
+            // rendered frame has a head position to place it from; removed after 3 s.
+            if let card = attachments.entity(for: Self.gestureOnboardingAttachmentID) {
+                card.isEnabled = false
+                content.add(card)
+                onboardingEntity = card
+            }
+
+            // The Ask panel: in the scene from the start, DISABLED until an Ask begins,
+            // positioned AND oriented from the head at that moment and then left alone - no
+            // BillboardComponent (removed 2026-10-05): it stays put, yaw-only facing the head.
             if let panel = attachments.entity(for: Self.meaningPanelAttachmentID) {
-                panel.components.set(BillboardComponent())
                 panel.isEnabled = false
                 content.add(panel)
                 meaningEntity = panel
@@ -311,6 +356,17 @@ struct ImmersiveView: View {
                 MainActor.assumeIsolated {
                     if EnvironmentCapture.isEnabled { capture.record(delta: event.deltaTime) }
 
+                    // HAND GUIDANCE: wanted only while the gate can still accept - the entry
+                    // gate armed and the experience idle or completed. Reciting, asking and
+                    // awaiting-release all read as not wanted, and the effect fades itself out.
+                    let phase = recitation.experiencePhase
+                    let guidanceWanted = (phase == .idle || phase == .completed)
+                        && handTrackingSession.entryGateState == .armed
+                    if DuaGuidanceEffect.isEnabled {
+                        guidance.update(session: handTrackingSession, wanted: guidanceWanted,
+                                        deltaTime: Float(event.deltaTime))
+                    }
+
                     // SKY FOLLOWS THE HEAD. Translation only, every frame.
                     //
                     // This, not the radius, is what makes the sky read as infinitely far: a
@@ -328,6 +384,26 @@ struct ImmersiveView: View {
                     if let head = handTrackingSession.latestHeadPosition {
                         skyDomeEntity?.setPosition(head, relativeTo: nil)
                         starFieldEntity?.setPosition(head, relativeTo: nil)
+                        // ONBOARDING: environment ready (frames are rendering, the head is
+                        // known) -> place once from the head, facing it, and begin the 3 s
+                        // presentation. EVERY entry into the space shows it (Mohamed,
+                        // 2026-10-06; it was once per session until then): the state lives
+                        // in this view, which is created afresh each time the space opens.
+                        if onboarding.phase == .pending, let card = onboardingEntity {
+                            card.setPosition(head + Self.gestureOnboardingOffsetFromHead, relativeTo: nil)
+                            card.setOrientation(simd_quatf(angle: 0, axis: SIMD3<Float>(0, 1, 0)), relativeTo: nil)
+                            card.isEnabled = true
+                            onboarding.begin()
+                        }
+                    }
+                    // ONBOARDING END: remove the entity entirely and release any deferred start.
+                    if onboarding.phase == .finished, let card = onboardingEntity {
+                        card.removeFromParent()
+                        onboardingEntity = nil
+                        if onboardingDeferredStart {
+                            onboardingDeferredStart = false
+                            recitation.start()
+                        }
                     }
                     // The one figure that genuinely needs the render loop: load start to the
                     // first frame actually drawn. Recorded once.
@@ -356,7 +432,7 @@ struct ImmersiveView: View {
                 }
             }
         } update: { _, _ in
-            duaDebugVisualization.update(with: handTrackingSession)
+            if Self.showDebugHUD { duaDebugVisualization.update(with: handTrackingSession) }
             // Meaning panel visibility follows the phase: shown on Ask entry beside the text,
             // gone on Continue (exitAsk) or any other way out of `asking`.
             if let panel = meaningEntity {
@@ -365,7 +441,14 @@ struct ImmersiveView: View {
                     if asking {
                         let head = handTrackingSession.latestHeadPosition
                             ?? SIMD3<Float>(0, TextPlacementProbe.nominalEyeHeight, 0)
-                        panel.setPosition(head + Self.meaningPanelOffsetFromHead, relativeTo: nil)
+                        let position = head + Self.meaningPanelOffsetFromHead
+                        panel.setPosition(position, relativeTo: nil)
+                        // Yaw-only look-at: the panel-to-head vector flattened to XZ, so the
+                        // attachment's +Z face turns toward the head with no pitch and no roll.
+                        // Computed once here; nothing updates it per frame.
+                        let toHead = head - position
+                        let yaw = atan2(toHead.x, toHead.z)
+                        panel.setOrientation(simd_quatf(angle: yaw, axis: SIMD3<Float>(0, 1, 0)), relativeTo: nil)
                     }
                     panel.isEnabled = asking
                 }
@@ -375,9 +458,13 @@ struct ImmersiveView: View {
             Self.applyEnglish(recitation: recitation, englishTextures: englishTextures,
                               arabicTextures: textures, to: englishEntity)
         } attachments: {
+            Attachment(id: Self.gestureOnboardingAttachmentID) {
+                GestureOnboardingView(onboarding: onboarding)
+            }
             Attachment(id: Self.meaningPanelAttachmentID) {
                 AskPanelView(session: askSession, segmentIndex: recitation.displayedSegmentIndex,
                              onDone: { askSession.done() },
+                             speaker: askSpeaker,
                              onContinue: { recitation.exitAsk() })
             }
             Attachment(id: Self.duaDebugHUDAttachmentID) {
@@ -398,12 +485,18 @@ struct ImmersiveView: View {
             recitation.enterAsk()
         })
         .onChange(of: recitation.experiencePhase) {
+            // Speech stops BEFORE a new Ask opens the microphone, and before any exit.
+            askSpeaker.stop()
             if recitation.experiencePhase == .asking {
                 askSession.begin(anchor: recitation.displayedSegmentIndex)
             } else {
                 askSession.end()
             }
+            // The bed is silent while the microphone is open for an Ask.
+            ambientBed.setDucked(recitation.experiencePhase == .asking)
         }
+        .onAppear { ambientBed.start() }
+        .onDisappear { askSpeaker.stop(); ambientBed.stop() }
         .task {
             await handTrackingSession.start()
         }
@@ -416,6 +509,8 @@ struct ImmersiveView: View {
         // Entry only. Acceptance starts the surah; after that hand state is ignored
         // entirely and nothing here listens to it again.
         .onChange(of: handTrackingSession.acceptanceTicket) {
+            // The environment acknowledges the gesture: one pulse, then the guidance fades.
+            if DuaGuidanceEffect.isEnabled { guidance.confirm(session: handTrackingSession) }
             // EXPERIENCE START. The head is sampled ONCE, here, and the text is placed from
             // that sample and then left alone. Not hardcoded, and deliberately not tracked:
             // text that followed the head would swim against the pavilion, and the ayah plane
@@ -428,7 +523,13 @@ struct ImmersiveView: View {
                 textRoot.position = AyahPlaneGeometry.textRootPosition(headPosition: head)
                 TextPlacementProbe.writeReport(headPosition: head, sampled: true)
             }
-            recitation.start()
+            // While the onboarding card is up the start is deferred to its end (see
+            // `onboardingDeferredStart`); the acceptance itself is untouched.
+            if onboarding.phase == .showing {
+                onboardingDeferredStart = true
+            } else {
+                recitation.start()
+            }
         }
         // End of surah hands the gate back, which re-arms only after a release edge.
         .onChange(of: recitation.experiencePhase) {
@@ -450,6 +551,9 @@ struct ImmersiveView: View {
             // would otherwise run on with the text frozen wherever the app left it.
             if scenePhase == .background {
                 recitation.pause(reason: .background)
+                ambientBed.stop()
+            } else if scenePhase == .active {
+                ambientBed.start()
             }
         }
     }

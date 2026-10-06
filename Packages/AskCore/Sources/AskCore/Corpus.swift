@@ -18,6 +18,11 @@ public enum PassageSource: String, Codable, Sendable, CaseIterable {
     case saheehTranslation = "saheeh-1947"
     case saheehFootnote = "saheeh-1947-footnote"
     case mukhtasar = "mukhtasar-27824"
+    /// Directive 3: Jamhara English entries ("jamhara-en:<id>#definition" / "#explanation").
+    case jamharaEnglish = "jamhara-en"
+    /// Directive 3: Saheeh ayat OUTSIDE Surah 55 that a card cites ("saheeh-1947-cited:112:1").
+    /// Surah 55 ayat always come from the corpus with their existing IDs.
+    case saheehCited = "saheeh-1947-cited"
 
     /// The attribution line shown with every passage from this source.
     public var sourceLine: String {
@@ -25,6 +30,8 @@ public enum PassageSource: String, Codable, Sendable, CaseIterable {
         case .saheehTranslation: return "Saheeh International, via Quranpedia, book 1947"
         case .saheehFootnote: return "Saheeh International (translator's footnote), via Quranpedia, book 1947"
         case .mukhtasar: return "Al-Mukhtasar fi Tafsir al-Quran (English), via Quranpedia, book 27824"
+        case .jamharaEnglish: return JamharaTerms.sourceLine
+        case .saheehCited: return "Saheeh International, via Quranpedia, book 1947"
         }
     }
 }
@@ -36,14 +43,23 @@ public struct Passage: Codable, Sendable, Equatable, Identifiable {
     public let surah: Int
     public let ayah: Int
     public let text: String
-    public var sourceLine: String { source.sourceLine }
+    /// The attribution line shown under the passage. The source's line unless the passage names
+    /// its own (a Jamhara entry's title, or a cited ayah's surah and number).
+    public let sourceLine: String
 
+    /// EXISTING IDs MUST NOT CHANGE - past results cite them: "<source>:<surah>:<ayah><suffix>".
     public init(source: PassageSource, surah: Int = 55, ayah: Int, text: String, suffix: String = "") {
         self.source = source
         self.surah = surah
         self.ayah = ayah
         self.text = text
         self.id = "\(source.rawValue):\(surah):\(ayah)\(suffix)"
+        self.sourceLine = source.sourceLine
+    }
+
+    /// A passage with its own ID and source line (Jamhara entries, cited ayat).
+    public init(id: String, source: PassageSource, surah: Int, ayah: Int, text: String, sourceLine: String) {
+        self.id = id; self.source = source; self.surah = surah; self.ayah = ayah; self.text = text; self.sourceLine = sourceLine
     }
 }
 

@@ -20,11 +20,12 @@ import FoundationModels
     repetition: why this line or question is repeated so many times in the surah, or how often. \
     related: where else this appears, which other ayat are similar, related or connected. \
     ruling: a religious ruling - halal, haram, permissible, obligatory, sinful, what one may or must do. \
+    general: a question about a term or a practice in general (what tawhid means, what a fatwa is), not about this ayah. \
     offTopic: not about this ayah, the surah or the Quran at all. \
     unclear: cannot be classified - too short, garbled or ambiguous.
     """)
 enum RouteChoice: String, CaseIterable {
-    case meaning, word, repetition, related, ruling, offTopic, unclear
+    case meaning, word, repetition, related, ruling, general, offTopic, unclear
 }
 
 @available(macOS 26.0, iOS 26.0, visionOS 26.0, *)
@@ -51,6 +52,13 @@ public struct FoundationModelsRouter: QuestionRouter {
 
     public func route(_ question: String, anchorAyah: Int) async throws -> QuestionRoute {
         guard Self.isAvailable else { throw Unavailable.model(Self.availabilityDescription) }
+        // PROMPT WORDING IS LOAD-BEARING FOR REFUSALS, and refusals are deterministic. Measured
+        // 2026-10-04 over the 63 dev.json questions, same questions, same guardrails:
+        //   no general label (the 3a prompt)                                  20 refusals (twice)
+        //   general "about the religion, a term ... or a belief"              38 refusals
+        //   general "about a term or a practice in general (what tawhid ...)" 21 refusals
+        // The 3b draft's "about Islam, Muslims or Islamic terms" / "NOT about Islam at all" doubled
+        // the model-alone fallbacks on the dev run (19 -> 40). Hence the wording used below.
         // Classification only, so the model never writes an answer. The default guardrails
         // refused 13 of 30 benign questions about the surah as "sensitive content"
         // (tests/eval/results-foundation-models-default-guardrails.json); the permissive
@@ -70,6 +78,7 @@ public struct FoundationModelsRouter: QuestionRouter {
               appears, which other verses are similar, how it compares with another verse. Never for a \
               question about this ayah alone.
             - ruling: asks whether something is halal, haram, permissible, obligatory, sinful, or what one may or must do.
+            - general: a question about a term or a practice in general (what tawhid means, what a fatwa is), NOT about this ayah.
             - offTopic: NOT about this ayah, the surah or the Quran (weather, sport, programming, geography, jokes, chit-chat).
             - unclear: a fragment with no question in it, garbled, or too ambiguous to label.
             Never answer the question. Output only the label.
@@ -81,6 +90,7 @@ public struct FoundationModelsRouter: QuestionRouter {
         case .repetition: return .repetition
         case .related: return .related
         case .ruling: return .ruling
+        case .general: return .general
         case .offTopic: return .offTopic
         case .unclear: return .unclear
         }

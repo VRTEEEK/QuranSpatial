@@ -41,7 +41,8 @@ struct EngineTests {
         let engine = AskEngine(corpus: corpus, router: RuleBasedRouter())
         let a = await engine.ask("why does this keep repeating", anchorAyah: 21)
         #expect(a.route == .repetition && a.decision == .answeredInPart)
-        #expect(a.note == Retriever.repetitionNote)
+        #expect(a.note == Retriever.repetitionNoteWithLink && a.note.hasPrefix(Retriever.repetitionNote))
+        #expect(a.links == [Retriever.repetitionDorarLink])
         #expect(a.passages.first?.id == "saheeh-1947:55:21")
         #expect(a.citations.contains("mukhtasar-27824:55:21"))
         if corpus.footnotesLoaded { #expect(a.citations.contains("saheeh-1947-footnote:55:13#1")) }

@@ -36,10 +36,16 @@ struct QuranSpatialApp: App {
     }
 
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: appModel.launchWindowID) {
             ContentView()
                 .environment(appModel)
         }
+        // Launch UI, 2026-10-05: no system glass slab behind the whole window. The controls
+        // carry their own glass, so the window reads as objects suspended in space rather
+        // than an iPad panel.
+        .windowStyle(.plain)
+        .defaultSize(width: 640, height: 620)
+        .windowResizability(.contentSize)
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
             ImmersiveView()
@@ -50,6 +56,9 @@ struct QuranSpatialApp: App {
                 .onDisappear {
                     appModel.immersiveSpaceState = .closed
                 }
+                // The launch window is dismissed while the space is open; bring it back
+                // when the space closes so the wearer is never left with no UI.
+                .modifier(ReopenLaunchWindowOnExit(appModel: appModel))
         }
         // FULL immersion, changed 2026-09-06 with the environment: the grey-box night sky,
         // water and mountains only read as a place if passthrough is replaced. Hand tracking

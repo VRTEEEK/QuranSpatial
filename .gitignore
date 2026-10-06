@@ -24,6 +24,17 @@ scratch/
 # the repo until a licence or permission is documented. Local builds place the extracted
 # file here; its ABSENCE is a supported state (RecitationTranslation). Never commit it.
 QuranSpatial/Resources/en-*.json
+# Day 4 Ask sources, named explicitly as well as by the pattern above: Jamhara (islamic-content.com)
+# English entries, the Saheeh ayat the cards cite, and the Dorar English overall meaning. Local only;
+# permission requested, none granted. tools/sync-public.sh refuses to run if any is tracked.
+QuranSpatial/Resources/en-jamhara-terms.json
+QuranSpatial/Resources/en-saheeh-1947-cited.json
+QuranSpatial/Resources/en-dorar-55-overall.json
+# Day 5 leads audit: the companion file carries Jamhara / translation passage TEXTS (local only).
+tests/eval/day5/leads-audit-passages.csv
+# The heldout-2 agent's full prompt contains the 78 ayat of the local translation; the committed
+# heldout-2-prompt.md carries a marker and the block's SHA-256 instead.
+tests/eval/heldout-2-prompt-full.md
 
 # Review environment asset (67 MB): placed by hand; SHA-256 recorded in docs/baseline-disclosure.md
 QuranSpatial/Resources/Environment/QuranSpatial_Review.usdz
